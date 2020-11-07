@@ -1,13 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import Login from "./src/components/Authentication/Login/login";
 import Home from "./src/components/Main/Home/home";
-import ListCourses from "./src/components/Courses/ListCourses/list-courses";
+import {themeColor} from "./src/globals/styles";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <ListCourses/>
+      <StatusBar backgroundColor={themeColor}/>
+      <Login />
     </View>
   );
 }
