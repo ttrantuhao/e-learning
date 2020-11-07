@@ -1,32 +1,57 @@
-import React from 'react';
-import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
-import LoginForm from "./LoginForm/login-form";
-import {Icon} from "react-native-elements";
+import React, {useState} from 'react';
+import {View, Text, TouchableOpacity} from 'react-native';
+import {Icon, Input} from "react-native-elements";
 import PrimaryButton from "../../Common/primary-button";
-import {themeColor} from "../../../globals/styles";
+import {themeColor, myGray} from "../../../globals/styles";
+import {styles} from './styles'
 
 const Login = () => {
+    const [emailValid, setEmailValid] = useState(true);
+    const [passwordValid, setPasswordValid] = useState(true);
+
     return (
         <View style={styles.container}>
             <Icon name='account-circle' type={'material-community'} color={themeColor} size={70}/>
             <Text style={styles.title}>Login</Text>
-            <LoginForm/>
-            <PrimaryButton title='Login' onPress={() => {
-            }}/>
+            <Input
+                inputContainerStyle={styles.inputContainer}
+                leftIcon={
+                    <Icon name='user' type={'simple-line-icon'} color={myGray} size={18}/>
+                }
+                inputStyle={styles.inputStyle}
+                errorStyle={styles.errorInputStyle}
+                errorMessage={
+                    emailValid ? null : 'Please enter a valid email address'
+                }
+                placeholderTextColor={myGray}
+                placeholder='email'
+            />
 
-
+            <Input
+                inputContainerStyle={styles.inputContainer}
+                leftIcon={
+                    <Icon name='lock' type={'simple-line-icon'} color={myGray} size={18}/>
+                }
+                inputStyle={styles.inputStyle}
+                errorStyle={styles.errorInputStyle}
+                placeholderTextColor={myGray}
+                placeholder='password'
+                secureTextEntry
+                errorMessage={
+                    passwordValid ? null : 'Please enter at least 8 characters'
+                }
+            />
+            <PrimaryButton title='Login' onPress={() => {}}/>
             <View style={styles.textContainer}>
-                {/*<PrimaryButton title='1'/>*/}
-                {/*<PrimaryButton title='2'/>*/}
                 <TouchableOpacity>
                     <Text style={{color: themeColor}}>
                         Forget password
                     </Text>
                 </TouchableOpacity>
                 <TouchableOpacity>
-                <Text style={{color: themeColor}}>
-                    Register
-                </Text>
+                    <Text style={{color: themeColor}}>
+                        Register
+                    </Text>
                 </TouchableOpacity>
             </View>
         </View>
@@ -35,24 +60,3 @@ const Login = () => {
 
 export default Login;
 
-const styles = StyleSheet.create({
-    container: {
-        width: '100%',
-        flex: 1,
-        justifyContent: 'center',
-        backgroundColor: 'whitesmoke',
-        padding: 20
-    },
-    title: {
-        color: themeColor,
-        fontSize: 30,
-        textAlign: 'center',
-        marginBottom: 60,
-    },
-    textContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        paddingLeft: 15,
-        paddingRight: 15
-    }
-});
