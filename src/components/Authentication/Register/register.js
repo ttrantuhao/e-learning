@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
 import {Icon, Input} from "react-native-elements";
 import PrimaryButton from "../../Common/primary-button";
-import {myGray, themeColor} from "../../../globals/styles";
+import {myGray, myMediumBlue} from "../../../globals/styles";
 import {styles} from './styles'
 
 const Register = () => {
@@ -12,7 +12,7 @@ const Register = () => {
 
     return (
         <View style={styles.container}>
-            <Icon name='account-circle' type={'material-community'} color={themeColor} size={70}/>
+            <Icon name='account-circle' type={'material-community'} color={myMediumBlue} size={70}/>
             <Text style={styles.title}>Register</Text>
             <Input
                 inputContainerStyle={styles.inputContainer}

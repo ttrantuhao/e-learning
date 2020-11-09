@@ -1,6 +1,6 @@
 import React from 'react';
 import {TouchableOpacity, StyleSheet, Text} from 'react-native';
-import {themeColor} from "../../globals/styles";
+import {myMediumBlue} from "../../globals/styles";
 
 const SecondaryButton = ({title, onPress}) => {
     return (
@@ -19,14 +19,14 @@ const styles = StyleSheet.create ({
     button: {
         borderRadius: 40,
         borderWidth: 1,
-        borderColor: themeColor,
+        borderColor: myMediumBlue,
         height: 45,
         justifyContent: 'center'
     },
     text: {
         fontSize: 20,
         fontWeight: 'bold',
-        color: themeColor,
+        color: myMediumBlue,
         textAlign: 'center',
     }
 })

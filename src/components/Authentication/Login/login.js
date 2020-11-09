@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import {Icon, Input} from "react-native-elements";
 import PrimaryButton from "../../Common/primary-button";
-import {themeColor, myGray} from "../../../globals/styles";
+import {myMediumBlue, myGray} from "../../../globals/styles";
 import {styles} from './styles'
 
 const Login = () => {
@@ -11,7 +11,7 @@ const Login = () => {
 
     return (
         <View style={styles.container}>
-            <Icon name='account-circle' type={'material-community'} color={themeColor} size={70}/>
+            <Icon name='account-circle' type={'material-community'} color={myMediumBlue} size={70}/>
             <Text style={styles.title}>Login</Text>
             <Input
                 inputContainerStyle={styles.inputContainer}
@@ -44,12 +44,12 @@ const Login = () => {
             <PrimaryButton title='Login' onPress={() => {}}/>
             <View style={styles.textContainer}>
                 <TouchableOpacity>
-                    <Text style={{color: themeColor}}>
+                    <Text style={{color: myMediumBlue}}>
                         Forget password
                     </Text>
                 </TouchableOpacity>
                 <TouchableOpacity>
-                    <Text style={{color: themeColor}}>
+                    <Text style={{color: myMediumBlue}}>
                         Register
                     </Text>
                 </TouchableOpacity>

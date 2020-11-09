@@ -1,16 +1,16 @@
 import {StyleSheet} from "react-native";
-import {themeColor} from "../../../globals/styles";
+import {myMediumBlue, myWhite} from "../../../globals/styles";
 
 export const styles = StyleSheet.create({
     container: {
         width: '100%',
         flex: 1,
         justifyContent: 'center',
-        backgroundColor: 'whitesmoke',
+        backgroundColor: myWhite,
         padding: 20
     },
     title: {
-        color: themeColor,
+        color: myMediumBlue,
         fontSize: 30,
         textAlign: 'center',
         marginBottom: 60,
@@ -25,13 +25,13 @@ export const styles = StyleSheet.create({
         paddingLeft: 8,
         borderRadius: 40,
         borderWidth: 1,
-        borderColor: themeColor,
+        borderColor: myMediumBlue,
         height: 45,
     },
     inputStyle: {
         flex: 1,
         marginLeft: 10,
-        color: themeColor,
+        color: myMediumBlue,
         fontSize: 16,
     },
     errorInputStyle: {

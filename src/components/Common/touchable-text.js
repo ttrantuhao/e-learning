@@ -1,6 +1,6 @@
 import React from 'react';
 import {Text, StyleSheet} from 'react-native';
-import {themeColor} from "../../globals/styles";
+import {myMediumBlue} from "../../globals/styles";
 
 const TouchableText = ({text}) => {
     return (
@@ -12,7 +12,7 @@ const TouchableText = ({text}) => {
 
 const styles = StyleSheet.create({
     text: {
-        color: themeColor,
+        color: myMediumBlue,
         fontSize: 16,
         textAlign: 'center'
     }
