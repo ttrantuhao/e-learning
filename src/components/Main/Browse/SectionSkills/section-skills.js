@@ -1,8 +1,8 @@
 import React from 'react';
-import {FlatList, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {FlatList, StyleSheet, Text, View} from 'react-native';
 import {popularSkills} from "../../../../globals/mockData";
 import SkillItem from "./SkillItem/skill-item";
-import {myDarkBlue, myGrayBlue, myMediumBlue} from "../../../../globals/styles";
+import {myWhite} from "../../../../globals/styles";
 
 const SectionSkills = () => {
     return (
@@ -20,12 +20,12 @@ const SectionSkills = () => {
 
 const styles = StyleSheet.create ({
     container: {
-        marginTop: 20
+        marginTop: 10,
+        marginBottom: 10
     },
     title: {
         fontSize: 16,
-        fontWeight: 'bold',
-        color: myGrayBlue,
+        color: myWhite,
         margin: 5,
         marginBottom: 10
     }

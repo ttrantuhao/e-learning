@@ -122,11 +122,11 @@ export const paths = [
         title: 'Building Web Applications with React',
         numberOfCourse: 9
     },
-
-
-
-
 ]
 
 export const topAuthor = ['Emmanuel Henri', 'Gary Grudzinskas', 'Hugo Barona', 'Tommy van Schaik',
-    'John Savill', 'Mike Erickson', 'Phil Weinmeister', 'Karun Subramanian', 'Scott Lee', 'Bill Stavroulakis']
+    'John Savill', 'Mike Erickson', 'Phil Weinmeister', 'Karun Subramanian', 'Scott Lee', 'Bill Stavroulakis'];
+
+export const welcomeTitle = 'Welcome to E-learning';
+export const welcomeContent = 'With E-learning, you can build and apply skills in top technologies. You have free ' +
+    'access to Skill IQ, Role IQ, a limited library of courses and a weekly rotation of new courses.';

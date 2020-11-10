@@ -1,23 +1,28 @@
 import React from 'react';
-import {View, Text, ScrollView} from "react-native";
-import SectionCoursesItem from "../SectionCoursesItem/section-courses-item";
+import {View, StyleSheet, ScrollView, FlatList} from "react-native";
+import CourseItem from "./CoursesItem/course-item";
 import {sectionCourses} from "../../../../globals/mockData";
+import ListHeader from "../../../Common/list-header";
 
-const SectionCourses = (props) => {
-    const renderListItems =  (courses) => {
-        return courses.map((item) => <SectionCoursesItem item={item} key={item.id}/>);
-    }
-
+const SectionCourses = ({title}) => {
     return (
-        <View>
-            <View>
-                <Text>{props.title}</Text>
-            </View>
-            <ScrollView horizontal={true}>
-                {renderListItems(sectionCourses)}
-            </ScrollView>
+        <View style={styles.container}>
+            <ListHeader title={title}/>
+            <FlatList
+                horizontal={true}
+                showsHorizontalScrollIndicator={false}
+                data={sectionCourses}
+                renderItem={({item}) => (<CourseItem item={item}/>)}
+            />
         </View>
     );
 };
+
+const styles = StyleSheet.create({
+    container: {
+        marginTop: 10,
+        marginBottom: 10,
+    }
+})
 
 export default SectionCourses;

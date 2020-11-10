@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {Icon} from "react-native-elements";
-import {myDarkBlue, myGrayBlue, myLightMediumBlue} from "../../globals/styles";
+import {myDarkBlue, mySilver, myWhite} from "../../globals/styles";
 
 const ListHeader = ({title}) => {
     return (
@@ -22,8 +22,7 @@ const styles = StyleSheet.create ({
     },
     title: {
         fontSize: 16,
-        fontWeight: 'bold',
-        color: myGrayBlue,
+        color: myWhite,
         margin: 5,
     },
     seeAll: {
@@ -31,7 +30,7 @@ const styles = StyleSheet.create ({
         alignItems: "center"
     },
     seeAllText: {
-        color: myGrayBlue,
+        color: mySilver,
         fontSize: 13
     }
 })

@@ -1,16 +1,16 @@
 import {StyleSheet} from "react-native";
-import {myMediumBlue} from "../../../globals/styles";
+import {bgColor, myDarkBlue, myLightWhite, myMediumBlue} from "../../../globals/styles";
 
 export const styles = StyleSheet.create({
     container: {
         width: '100%',
         flex: 1,
         justifyContent: 'center',
-        backgroundColor: 'whitesmoke',
+        backgroundColor: bgColor,
         padding: 20
     },
     title: {
-        color: myMediumBlue,
+        color: myDarkBlue,
         fontSize: 30,
         textAlign: 'center',
         marginBottom: 60,
@@ -19,13 +19,13 @@ export const styles = StyleSheet.create({
         paddingLeft: 8,
         borderRadius: 40,
         borderWidth: 1,
-        borderColor: myMediumBlue,
+        borderColor: myDarkBlue,
         height: 45,
     },
     inputStyle: {
         flex: 1,
         marginLeft: 10,
-        color: myMediumBlue,
+        color: myLightWhite,
         fontSize: 16,
     },
     errorInputStyle: {
@@ -34,6 +34,6 @@ export const styles = StyleSheet.create({
     },
     loginText: {
         textAlign: 'center',
-        color: myMediumBlue
+        color: myDarkBlue
     }
 });

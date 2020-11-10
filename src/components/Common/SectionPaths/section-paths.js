@@ -1,14 +1,14 @@
 import React from 'react';
-import {FlatList, ScrollView, StyleSheet, View} from 'react-native';
-import {listCourses, paths} from "../../../../globals/mockData";
+import {FlatList, StyleSheet, View} from 'react-native';
+import {paths} from "../../../globals/mockData";
 import PathItem from "./PathItem/path-item";
-import ListHeader from "../../../Common/list-header";
+import ListHeader from "../list-header";
 
 
-const SectionPaths = () => {
+const SectionPaths = ({title}) => {
     return (
         <View style={styles.container}>
-            <ListHeader title='Paths'/>
+            <ListHeader title={title}/>
             <FlatList
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}
@@ -22,8 +22,8 @@ const SectionPaths = () => {
 
 const styles = StyleSheet.create ({
     container: {
-        marginTop: 20,
-        // marginBottom: 30
+        marginTop: 10,
+        marginBottom: 10
     },
 })
 

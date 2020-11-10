@@ -1,6 +1,6 @@
 import React from 'react';
 import {TouchableOpacity, StyleSheet, Text} from 'react-native';
-import {myMediumBlue} from "../../globals/styles";
+import {myDarkBlue, myLightWhite, myMediumBlue} from "../../globals/styles";
 
 const PrimaryButton = ({title, onPress}) => {
     return (
@@ -17,7 +17,7 @@ const PrimaryButton = ({title, onPress}) => {
 
 const styles = StyleSheet.create ({
     button: {
-        backgroundColor: myMediumBlue,
+        backgroundColor: myDarkBlue,
         borderRadius: 40,
         height: 45,
         justifyContent: 'center',
@@ -26,7 +26,7 @@ const styles = StyleSheet.create ({
     text: {
         fontSize: 20,
         fontWeight: 'bold',
-        color:'white',
+        color: myLightWhite,
         textAlign: 'center',
         padding: 10
     }

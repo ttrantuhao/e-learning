@@ -1,7 +1,7 @@
 import React from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import {Avatar} from "react-native-elements";
-import {myDarkBlue, myGrayBlue} from "../../../../../globals/styles";
+import {myWhite} from "../../../../../globals/styles";
 
 const AuthorItem = ({item}) => {
     return (
@@ -23,9 +23,10 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     text: {
-        fontSize: 14,
+        fontSize: 13,
         textAlign: 'center',
-        color: myGrayBlue
+        color: myWhite,
+        fontWeight: 'bold'
     }
 })
 export default AuthorItem;

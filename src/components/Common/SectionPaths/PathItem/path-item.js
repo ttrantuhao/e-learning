@@ -1,11 +1,11 @@
 import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
-import {myDarkBlue, myGray, myGrayBlue, myLightBlue, myLightMediumBlue, myWhite} from "../../../../../globals/styles";
+import {cardColor, myLightWhite, mySilver, myWhite} from "../../../../globals/styles";
 
 const PathItem = ({item}) => {
     return (
         <View style={styles.container}>
-            <Image source={require('../../../../../../assets/ic_course.png')} style={styles.image}/>
+            <Image source={require('../../../../../assets/ic_course.png')} style={styles.image}/>
             <View style={{margin: 5}}>
                 <Text style={styles.title}>{item.title}</Text>
                 <Text style={styles.content}>{`${item.numberOfCourse} courses`}</Text>
@@ -19,7 +19,7 @@ const styles = StyleSheet.create ({
         margin: 5,
         width: 200,
         height: 180,
-        backgroundColor: myWhite,
+        backgroundColor: cardColor,
         elevation: 1
     },
     image: {
@@ -28,11 +28,11 @@ const styles = StyleSheet.create ({
     },
     title: {
         fontSize: 15,
-        color: myGrayBlue,
+        color: myWhite,
     },
     content: {
         fontSize: 13,
-        color: myDarkBlue
+        color: mySilver
     }
 })
 

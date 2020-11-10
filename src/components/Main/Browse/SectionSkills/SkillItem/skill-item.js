@@ -1,7 +1,6 @@
 import React from 'react';
-import {TouchableOpacity, View, StyleSheet} from 'react-native';
-import {Text} from "react-native";
-import {myDarkBlue, myGray, myGrayBlue, myLightBlue, myMediumBlue, myWhite} from "../../../../../globals/styles";
+import {StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {myLightWhite, skillBtnColor} from "../../../../../globals/styles";
 
 const SkillItem = ({title, onPress}) => {
     return (
@@ -18,16 +17,16 @@ const SkillItem = ({title, onPress}) => {
 
 const styles = StyleSheet.create ({
     button: {
-        backgroundColor: myGrayBlue,
+        backgroundColor: skillBtnColor,
         borderRadius: 40,
-        height: 25,
+        height: 30,
         justifyContent: 'center',
         margin: 3
     },
     text: {
         fontSize: 13,
         fontWeight: 'bold',
-        color: myWhite,
+        color: myLightWhite,
         textAlign: 'center',
         padding: 12
     }

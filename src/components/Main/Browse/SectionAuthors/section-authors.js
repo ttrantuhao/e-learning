@@ -1,8 +1,7 @@
 import React from 'react';
 import {FlatList, StyleSheet, Text, View} from 'react-native';
 import {topAuthor} from "../../../../globals/mockData";
-import SkillItem from "../SectionSkills/SkillItem/skill-item";
-import {myDarkBlue, myGrayBlue} from "../../../../globals/styles";
+import {myWhite} from "../../../../globals/styles";
 import AuthorItem from "./AuthorItem/author-item";
 
 const SectionAuthors = () => {
@@ -21,13 +20,12 @@ const SectionAuthors = () => {
 
 const styles = StyleSheet.create ({
     container: {
-        marginTop: 20,
-        marginBottom: 30
+        marginTop: 10,
+        marginBottom: 10
     },
     title: {
         fontSize: 16,
-        fontWeight: 'bold',
-        color: myGrayBlue,
+        color: myWhite,
         margin: 5,
         marginBottom: 10
     }

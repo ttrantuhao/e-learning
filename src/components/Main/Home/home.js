@@ -1,20 +1,19 @@
 import React from 'react';
 import SectionCourses from "./SectionCourses/section-courses";
-import {View, ScrollView} from "react-native";
-import ImageButton from "../../Common/image-button";
+import {ScrollView} from "react-native";
+import SectionPaths from "../../Common/SectionPaths/section-paths";
+import {styles} from "./styles";
+import WelcomeImage from "./WelcomeImage/welcome-image";
 
 const Home = () => {
-
-    const onPressNewRelease = () => {
-        console.log('on press new release!')
-    }
     return (
-        <ScrollView>
-            <ImageButton title='NEW RELEASES' onPress={onPressNewRelease}/>
-            <SectionCourses title='Continue learning'/>
-            <SectionCourses title='Path'/>
-            <SectionCourses title='Chanel'/>
-            <SectionCourses title='Bookmarks'/>
+        <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
+            <WelcomeImage/>
+            <SectionCourses title='Software Development'/>
+            <SectionCourses title='IT Operations'/>
+            <SectionCourses title='Data professional'/>
+            <SectionCourses title='Security professional'/>
+            <SectionPaths title='My paths'/>
         </ScrollView>
 
     );
