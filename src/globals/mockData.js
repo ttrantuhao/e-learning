@@ -1,4 +1,4 @@
-export const sectionCourses = [
+export const courses = [
     {
         id: 1,
         title: "React Native",
@@ -22,69 +22,125 @@ export const sectionCourses = [
         level: "Beginner",
         released: "Oct 26th, 2020",
         duration: "25 hours"
-    }
-];
-
-export const listCourses = [
-    {
-        title: 'Mobile',
-        data: [
-            {
-                id: 1,
-                title: "React Native",
-                author: "Hao Tran",
-                level: "Advance",
-                released: "Oct 21th, 2020",
-                duration: "20 hours"
-            },
-            {
-                id: 2,
-                title: "IOS Development",
-                author: "Hao Tran",
-                level: "Beginner",
-                released: "Oct 26th, 2020",
-                duration: "25 hours"
-            },
-            {
-                id: 3,
-                title: "Android Development",
-                author: "Hao Tran",
-                level: "Beginner",
-                released: "Oct 26th, 2020",
-                duration: "25 hours"
-            }
-        ]
     },
     {
-        title: 'Web',
-        data: [
-            {
-                id: 1,
-                title: "React",
-                author: "Hao Tran",
-                level: "Advance",
-                released: "Oct 21th, 2020",
-                duration: "20 hours"
-            },
-            {
-                id: 2,
-                title: "ASP.NET",
-                author: "Hao Tran",
-                level: "Beginner",
-                released: "Oct 26th, 2020",
-                duration: "25 hours"
-            },
-            {
-                id: 3,
-                title: "Java",
-                author: "Hao Tran",
-                level: "Beginner",
-                released: "Oct 26th, 2020",
-                duration: "25 hours"
-            }
-        ]
-    }
+        id: 4,
+        title: "IOS Development",
+        author: "Hao Tran",
+        level: "Beginner",
+        released: "Oct 26th, 2020",
+        duration: "25 hours"
+    },
+    {
+        id: 5,
+        title: "Android Development",
+        author: "Hao Tran",
+        level: "Beginner",
+        released: "Oct 26th, 2020",
+        duration: "25 hours"
+    },
+    {
+        id: 6,
+        title: "IOS Development",
+        author: "Hao Tran",
+        level: "Beginner",
+        released: "Oct 26th, 2020",
+        duration: "25 hours"
+    },
+    {
+        id: 7,
+        title: "Android Development",
+        author: "Hao Tran",
+        level: "Beginner",
+        released: "Oct 26th, 2020",
+        duration: "25 hours"
+    },
+    {
+        id: 8,
+        title: "IOS Development",
+        author: "Hao Tran",
+        level: "Beginner",
+        released: "Oct 26th, 2020",
+        duration: "25 hours"
+    },
+    {
+        id: 9,
+        title: "Android Development",
+        author: "Hao Tran",
+        level: "Beginner",
+        released: "Oct 26th, 2020",
+        duration: "25 hours"
+    },
+    {
+        id: 10,
+        title: "IOS Development",
+        author: "Hao Tran",
+        level: "Beginner",
+        released: "Oct 26th, 2020",
+        duration: "25 hours"
+    },
 ];
+
+// export const listCourses = [
+//     {
+//         title: 'Mobile',
+//         data: [
+//             {
+//                 id: 1,
+//                 title: "React Native",
+//                 author: "Hao Tran",
+//                 level: "Advance",
+//                 released: "Oct 21th, 2020",
+//                 duration: "20 hours"
+//             },
+//             {
+//                 id: 2,
+//                 title: "IOS Development",
+//                 author: "Hao Tran",
+//                 level: "Beginner",
+//                 released: "Oct 26th, 2020",
+//                 duration: "25 hours"
+//             },
+//             {
+//                 id: 3,
+//                 title: "Android Development",
+//                 author: "Hao Tran",
+//                 level: "Beginner",
+//                 released: "Oct 26th, 2020",
+//                 duration: "25 hours"
+//             }
+//         ]
+//     },
+//     {
+//         title: 'Web',
+//         data: [
+//             {
+//                 id: 1,
+//                 title: "React",
+//                 author: "Hao Tran",
+//                 level: "Advance",
+//                 released: "Oct 21th, 2020",
+//                 duration: "20 hours"
+//             },
+//             {
+//                 id: 2,
+//                 title: "ASP.NET",
+//                 author: "Hao Tran",
+//                 level: "Beginner",
+//                 released: "Oct 26th, 2020",
+//                 duration: "25 hours"
+//             },
+//             {
+//                 id: 3,
+//                 title: "Java",
+//                 author: "Hao Tran",
+//                 level: "Beginner",
+//                 released: "Oct 26th, 2020",
+//                 duration: "25 hours"
+//             }
+//         ]
+//     }
+// ];
 
 export const popularSkills = ['Java', 'Angular', 'Javascript', 'C#', 'Data Analysis', 'ASP.NET',
     'Node.js', 'Design Pattern', 'Python', 'React', '.NET', 'SQL Server', "Data Administration",
@@ -102,7 +158,7 @@ export const paths = [
     {
         title: 'Pluralsight LIVE 2020',
         numberOfCourse: 109
-    },{
+    }, {
         title: 'Building Web Applications with React',
         numberOfCourse: 9
     },

@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, StyleSheet, Image, Text} from "react-native";
-import {cardColor, myDarkBlue, myGrayBlue, myLightWhite, mySilver, myWhite} from "../../../../../globals/styles";
+import {cardColor, myBlue, myGrayBlue, myLightWhite, mySilver, myWhite} from "../../../../../globals/styles";
 
 const CourseItem = (props) => {
     return (

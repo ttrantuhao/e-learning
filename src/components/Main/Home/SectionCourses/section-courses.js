@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, StyleSheet, ScrollView, FlatList} from "react-native";
 import CourseItem from "./CoursesItem/course-item";
-import {sectionCourses} from "../../../../globals/mockData";
+import {courses} from "../../../../globals/mockData";
 import ListHeader from "../../../Common/list-header";
 
 const SectionCourses = ({title}) => {
@@ -11,7 +11,7 @@ const SectionCourses = ({title}) => {
             <FlatList
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}
-                data={sectionCourses}
+                data={courses}
                 renderItem={({item}) => (<CourseItem item={item}/>)}
             />
         </View>

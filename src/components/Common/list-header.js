@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {Icon} from "react-native-elements";
-import {myDarkBlue, mySilver, myWhite} from "../../globals/styles";
+import {myBlue, mySilver, myWhite} from "../../globals/styles";
 
 const ListHeader = ({title}) => {
     return (
@@ -9,7 +9,7 @@ const ListHeader = ({title}) => {
             <Text style={styles.title}>{title}</Text>
             <TouchableOpacity style={styles.seeAll}>
                 <Text style={styles.seeAllText}>See all</Text>
-                <Icon name={'chevron-small-right'} type={'entypo'} color={myDarkBlue} size={20}/>
+                <Icon name={'chevron-small-right'} type={'entypo'} color={myBlue} size={20}/>
             </TouchableOpacity>
         </View>
     );

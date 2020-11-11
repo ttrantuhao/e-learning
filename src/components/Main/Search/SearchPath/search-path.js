@@ -1,14 +1,11 @@
 import React from 'react';
 import {FlatList, StyleSheet, Text, View} from 'react-native';
-import ListCoursesItem from "../ListCoursesItem/list-courses-item";
-import {courses} from '../../../globals/mockData'
-import {myBlue, mySilver} from "../../../globals/styles";
+import { paths} from "../../../../globals/mockData";
+import {mySilver} from "../../../../globals/styles";
+import SearchPathItem from "./SearchPathItem/search-path-item";
 
-const ListCourses = ({navigation}) => {
-    const handleClick = () => {
-
-    }
-
+const SearchPath = () => {
+    const renderSeparator = () => (<View style={styles.separator}/>);
     const header = (resultNumber) => {
         return (
             <Text style={styles.header}>
@@ -16,26 +13,26 @@ const ListCourses = ({navigation}) => {
             </Text>
         );
     }
-    const renderSeparator = () => (<View style={styles.separator}/>);
     return (
+        <View style={styles.container}>
             <FlatList
-                data={courses}
-                renderItem={({item}) => <ListCoursesItem item={item} navigation={navigation}/>}
-                ListHeaderComponent={() => header(courses.length)}
+                data={paths}
+                renderItem={({item}) => (<SearchPathItem item={item}/>)}
                 ItemSeparatorComponent={renderSeparator}
+                ListHeaderComponent={() => header(10)}
             />
+        </View>
     );
 };
 
 const styles = StyleSheet.create({
     header: {
         color: mySilver,
-        padding: 10,
         fontSize: 13,
-        marginBottom: 5
+        marginBottom: 20
     },
     container: {
-
+        margin: 10
     },
     separator: {
         height: 0.5,
@@ -44,4 +41,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default ListCourses;
+export default SearchPath;

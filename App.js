@@ -1,21 +1,27 @@
-import {StatusBar} from 'expo-status-bar';
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
-import {navColor} from "./src/globals/styles";
-import VerifyPassword from "./src/components/Authentication/VerifyPassword/verify-password";
+import {StatusBar, StyleSheet} from 'react-native';
+import {bgColor, MyDarkTheme} from "./src/globals/styles";
+import 'react-native-gesture-handler'
+import {NavigationContainer} from '@react-navigation/native';
+import MainNavigation from "./src/Navigation/MainNavigation";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <StatusBar backgroundColor={navColor} style={'light'}/>
-      <VerifyPassword />
-    </View>
-  );
+    StatusBar.setBarStyle('light-content');
+    StatusBar.setBackgroundColor(MyDarkTheme.colors.card);
+
+    return (
+        <NavigationContainer theme={MyDarkTheme}>
+            {/*<StatusBar backgroundColor={MyDarkTheme.colors.card} style={'dark'} />*/}
+            {/*<ListCourseStack/>*/}
+            <MainNavigation/>
+        </NavigationContainer>
+    );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop:24,
-  },
+    container: {
+        flex: 1,
+        marginTop: 24,
+        backgroundColor: bgColor
+    },
 });

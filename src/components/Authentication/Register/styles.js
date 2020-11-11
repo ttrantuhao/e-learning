@@ -1,5 +1,5 @@
 import {StyleSheet} from "react-native";
-import {bgColor, myDarkBlue, myLightWhite, myMediumBlue} from "../../../globals/styles";
+import {bgColor, myBlue, myLightWhite, myMediumBlue} from "../../../globals/styles";
 
 export const styles = StyleSheet.create({
     container: {
@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
         padding: 20
     },
     title: {
-        color: myDarkBlue,
+        color: myBlue,
         fontSize: 30,
         textAlign: 'center',
         marginBottom: 60,
@@ -19,7 +19,7 @@ export const styles = StyleSheet.create({
         paddingLeft: 8,
         borderRadius: 40,
         borderWidth: 1,
-        borderColor: myDarkBlue,
+        borderColor: myBlue,
         height: 45,
     },
     inputStyle: {
@@ -34,6 +34,6 @@ export const styles = StyleSheet.create({
     },
     loginText: {
         textAlign: 'center',
-        color: myDarkBlue
+        color: myBlue
     }
 });

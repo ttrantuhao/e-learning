@@ -1,59 +1,74 @@
 import React from 'react';
 import {Alert, Image, Share, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {mySilver, myWhite} from "../../../globals/styles";
+import {Icon} from "react-native-elements";
 
-const ListCoursesItem = (props) => {
+const ListCoursesItem = ({item, navigation}) => {
+    const handlePress = (item) => {
+        navigation.navigate('CourseDetail', {item});
+    }
     return (
-        <TouchableOpacity
-            style={styles.item}
-            onPress={() => {
-                Alert.alert('Info', 'course list item is press',
-                    [
-                        {
-                            text: 'Cancel',
-                            onPress: () => {
-                                console.log('press cancel')
-                            }
-                        },
-                        {
-                            text: 'OK',
-                            onPress: () => {
-                                Share.share({
-                                    message: 'React native with hook'
-                                })
-                            }
-                        }
-                    ])
-            }}
-        >
+        <TouchableOpacity style={styles.item} onPress={() => handlePress(item)}>
             <Image
                 source={require('../../../../assets/ic_course.png')}
                 style={styles.image}
             />
-            <View style={{margin: 5}}>
-                <Text>{props.item.title}</Text>
-                <Text style={styles.darkText}>{props.item.author}</Text>
+            <View style={styles.courseInfo}>
+                <Text style={styles.title}>{item.title}</Text>
+                <Text style={styles.content}>{item.author}</Text>
                 <Text
-                    style={styles.darkText}>{`${props.item.level} . ${props.item.released} . ${props.item.duration}`}</Text>
+                    style={styles.content}>{`${item.level} . ${item.released} . ${item.duration}`}</Text>
             </View>
+            <Icon name='more-vertical' type='feather' style={styles.icon} color={mySilver}/>
         </TouchableOpacity>
     );
 };
 
 const styles = StyleSheet.create({
     item: {
-        //dont define border this way
-        // borderBottomColor: 'gray',
-        // borderWidth: 1,
         flexDirection: 'row',
-        margin: 5
+        margin: 10,
+        minHeight: 60,
+        // justifyContent: 'space-between'
+        alignItems: 'center'
     },
     image: {
-        height: 50,
+        height: 60,
         width: 100
     },
-    darkText: {
-        color: 'darkgray'
+    courseInfo: {
+        marginLeft: 10,
+        flex: 1
+    },
+    title: {
+        color: myWhite,
+        fontSize: 16
+    },
+    content: {
+        color: mySilver,
+        fontSize: 12
+    },
+    icon: {
     }
 })
 
 export default ListCoursesItem;
+// onPress={() => {
+//     Alert.alert('Info', 'course list item is press',
+//         [
+//             {
+//                 text: 'Cancel',
+//                 onPress: () => {
+//                     console.log('press cancel')
+//                 }
+//             },
+//             {
+//                 text: 'OK',
+//                 onPress: () => {
+//                     Share.share({
+//                         message: 'React native with hook'
+//                     })
+//                 }
+//             }
+//         ])
+// }}

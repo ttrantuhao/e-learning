@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {View,Text} from 'react-native';
 import {Icon, Input} from "react-native-elements";
 import PrimaryButton from "../../Common/primary-button";
-import {myDarkBlue, myGray} from "../../../globals/styles";
+import {myBlue, myGray} from "../../../globals/styles";
 import {styles} from './styles'
 
 const ForgetPassword = () => {
@@ -18,7 +18,7 @@ const ForgetPassword = () => {
                 errorMessage={
                     emailValid ? null : 'Please enter a valid email address'
                 }
-                placeholderTextColor={myDarkBlue}
+                placeholderTextColor={myBlue}
                 placeholder='input your email'
             />
             <PrimaryButton title='reset password' onPress={() => {

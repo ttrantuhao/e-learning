@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
 import {Icon, Input} from "react-native-elements";
 import PrimaryButton from "../../Common/primary-button";
-import {myDarkBlue} from "../../../globals/styles";
+import {myBlue} from "../../../globals/styles";
 import {styles} from './styles'
 
 const Register = () => {
@@ -12,29 +12,29 @@ const Register = () => {
 
     return (
         <View style={styles.container}>
-            <Icon name='account-circle' type={'material-community'} color={myDarkBlue} size={70}/>
+            <Icon name='account-circle' type={'material-community'} color={myBlue} size={70}/>
             <Text style={styles.title}>Register</Text>
             <Input
                 inputContainerStyle={styles.inputContainer}
                 leftIcon={
-                    <Icon name='user' type={'simple-line-icon'} color={myDarkBlue} size={18}/>
+                    <Icon name='user' type={'simple-line-icon'} color={myBlue} size={18}/>
                 }
                 inputStyle={styles.inputStyle}
                 errorStyle={styles.errorInputStyle}
                 errorMessage={
                     emailValid ? null : 'Please enter a valid email address'
                 }
-                placeholderTextColor={myDarkBlue}
+                placeholderTextColor={myBlue}
                 placeholder='email'
             />
             <Input
                 inputContainerStyle={styles.inputContainer}
                 leftIcon={
-                    <Icon name='lock' type={'simple-line-icon'} color={myDarkBlue} size={18}/>
+                    <Icon name='lock' type={'simple-line-icon'} color={myBlue} size={18}/>
                 }
                 inputStyle={styles.inputStyle}
                 errorStyle={styles.errorInputStyle}
-                placeholderTextColor={myDarkBlue}
+                placeholderTextColor={myBlue}
                 placeholder='password'
                 secureTextEntry
                 errorMessage={
@@ -44,11 +44,11 @@ const Register = () => {
             <Input
                 inputContainerStyle={styles.inputContainer}
                 leftIcon={
-                    <Icon name='lock' type={'simple-line-icon'} color={myDarkBlue} size={18}/>
+                    <Icon name='lock' type={'simple-line-icon'} color={myBlue} size={18}/>
                 }
                 inputStyle={styles.inputStyle}
                 errorStyle={styles.errorInputStyle}
-                placeholderTextColor={myDarkBlue}
+                placeholderTextColor={myBlue}
                 placeholder='confirm password'
                 secureTextEntry
                 errorMessage={

@@ -3,7 +3,7 @@ import {Text, View} from 'react-native';
 import {Input} from "react-native-elements";
 import PrimaryButton from "../../Common/primary-button";
 import {styles} from './styles'
-import {myDarkBlue} from "../../../globals/styles";
+import {myBlue} from "../../../globals/styles";
 
 const VerifyPassword = () => {
     const [codeValid, setCodeValid] = useState(true);
@@ -18,7 +18,7 @@ const VerifyPassword = () => {
                 errorMessage={
                     codeValid ? null : 'Please enter a valid email address'
                 }
-                placeholderTextColor={myDarkBlue}
+                placeholderTextColor={myBlue}
                 placeholder='verify code'
             />
             <PrimaryButton title='Verify' onPress={() => {
