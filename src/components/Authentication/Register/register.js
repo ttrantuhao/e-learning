@@ -5,7 +5,7 @@ import PrimaryButton from "../../Common/primary-button";
 import {myBlue} from "../../../globals/styles";
 import {styles} from './styles'
 
-const Register = () => {
+const Register = ({navigation}) => {
     const [emailValid, setEmailValid] = useState(true);
     const [passwordValid, setPasswordValid] = useState(true);
     const [confirmPasswordValid, setConfirmPasswordValid] = useState(true);
@@ -55,9 +55,11 @@ const Register = () => {
                     passwordValid ? null : 'Please enter at least 8 characters'
                 }
             />
-            <PrimaryButton title='Register' onPress={() => {
-            }}/>
-            <TouchableOpacity>
+            <PrimaryButton
+                title='Register'
+                onPress={() => (navigation.navigate('VerifyPassword'))}
+            />
+            <TouchableOpacity onPress={() => (navigation.navigate('Login'))}>
                 <Text style={styles.loginText}>
                     Already have an account? Login here!
                 </Text>

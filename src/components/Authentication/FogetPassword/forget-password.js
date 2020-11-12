@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
-import {View,Text} from 'react-native';
-import {Icon, Input} from "react-native-elements";
+import {Text, View} from 'react-native';
+import {Input} from "react-native-elements";
 import PrimaryButton from "../../Common/primary-button";
-import {myBlue, myGray} from "../../../globals/styles";
+import {myBlue} from "../../../globals/styles";
 import {styles} from './styles'
 
-const ForgetPassword = () => {
+const ForgetPassword = ({navigation}) => {
     const [emailValid, setEmailValid] = useState(true);
 
     return (
@@ -21,8 +21,7 @@ const ForgetPassword = () => {
                 placeholderTextColor={myBlue}
                 placeholder='input your email'
             />
-            <PrimaryButton title='reset password' onPress={() => {
-            }}/>
+            <PrimaryButton title='reset password' onPress={() => (navigation.navigate('Login'))}/>
 
         </View>
     );

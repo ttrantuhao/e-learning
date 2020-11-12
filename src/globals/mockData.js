@@ -1,3 +1,21 @@
+export const lesson = [
+    {
+        title: 'Course Overview',
+        data: ['Course Overview']
+    },
+    {
+        title: 'Getting Started with Angular',
+        data: ['Introduction', 'Practice Exercises', 'Introduction to TypeScript', 'Comparing Angular to AngularJS',
+            'A Conceptual Overview of Angular', 'Here\'s What We\'ll Be Building', 'Installing Git and Node',
+            'Getting Started with the Angular CLI', 'Bootstrapping an Angular App', 'A Brief Look at the App Module',
+            'Accessing Static Files', 'Summary']
+    },
+];
+
+export const lessonDescription = 'Angular has become one of the most widely used web development frameworks.' +
+    'This course, Angular Fundamentals, will teach you the fundamentals of writing applications with Angular - ' +
+    'whether or not you\'ve had past experience with Angular 1.';
+
 export const courses = [
     {
         id: 1,

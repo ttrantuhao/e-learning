@@ -3,7 +3,7 @@ import {Alert, Image, Share, StyleSheet, Text, TouchableOpacity, View} from 'rea
 import {mySilver, myWhite} from "../../../globals/styles";
 import {Icon} from "react-native-elements";
 
-const ListCoursesItem = ({item, navigation}) => {
+const ListCourseItem = ({item, navigation}) => {
     const handlePress = (item) => {
         navigation.navigate('CourseDetail', {item});
     }
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     }
 })
 
-export default ListCoursesItem;
+export default ListCourseItem;
 // onPress={() => {
 //     Alert.alert('Info', 'course list item is press',
 //         [

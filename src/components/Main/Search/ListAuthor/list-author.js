@@ -1,25 +1,25 @@
 import React from 'react';
 import {FlatList, StyleSheet, Text, View} from 'react-native';
 import {topAuthor} from "../../../../globals/mockData";
-import SearchAuthorItem from "./SearchAuthorItem/search-author-item";
+import ListAuthorItem from "./ListAuthorItem/list-author-item";
 import {mySilver} from "../../../../globals/styles";
 
-const SearchAuthor = () => {
+const ListAuthor = ({header}) => {
     const renderSeparator = () => (<View style={styles.separator}/>);
-    const header = (resultNumber) => {
-        return (
-            <Text style={styles.header}>
-                {`${resultNumber} Results`}
-            </Text>
-        );
-    }
+    // const header = (resultNumber) => {
+    //     return (
+    //         <Text style={styles.header}>
+    //             {`${resultNumber} Results`}
+    //         </Text>
+    //     );
+    // }
     return (
         <View style={styles.container}>
             <FlatList
                 data={topAuthor}
-                renderItem={({item}) => (<SearchAuthorItem item={item}/>)}
+                renderItem={({item, index}) => (<ListAuthorItem item={item} key={index}/>)}
                 ItemSeparatorComponent={renderSeparator}
-                ListHeaderComponent={() => header(topAuthor.length)}
+                ListHeaderComponent={() => header()}
             />
         </View>
     );
@@ -33,7 +33,8 @@ const styles = StyleSheet.create({
         marginBottom: 20
     },
     container: {
-        margin: 10
+        marginTop: 10,
+        marginBottom: 10
     },
     separator: {
         height: 0.5,
@@ -42,4 +43,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default SearchAuthor;
+export default ListAuthor;

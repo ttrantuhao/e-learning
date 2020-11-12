@@ -5,7 +5,7 @@ import PrimaryButton from "../../Common/primary-button";
 import {styles} from './styles'
 import {myBlue} from "../../../globals/styles";
 
-const VerifyPassword = () => {
+const VerifyPassword = ({navigation}) => {
     const [codeValid, setCodeValid] = useState(true);
 
     return (
@@ -21,8 +21,7 @@ const VerifyPassword = () => {
                 placeholderTextColor={myBlue}
                 placeholder='verify code'
             />
-            <PrimaryButton title='Verify' onPress={() => {
-            }}/>
+            <PrimaryButton title='Verify' onPress={() => (navigation.navigate('Login'))}/>
 
         </View>
     );

@@ -1,5 +1,5 @@
 import {StyleSheet} from "react-native";
-import {bgColor, myBlue, myLightWhite, myMediumBlue} from "../../../globals/styles";
+import {bgColor, myBlue, myLightWhite} from "../../../globals/styles";
 
 export const styles = StyleSheet.create({
     container: {

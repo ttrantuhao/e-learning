@@ -2,24 +2,24 @@ import React from 'react';
 import {FlatList, StyleSheet, Text, View} from 'react-native';
 import { paths} from "../../../../globals/mockData";
 import {mySilver} from "../../../../globals/styles";
-import SearchPathItem from "./SearchPathItem/search-path-item";
+import ListPathItem from "./ListPathItem/list-path-item";
 
-const SearchPath = () => {
+const ListPath = ({header}) => {
     const renderSeparator = () => (<View style={styles.separator}/>);
-    const header = (resultNumber) => {
-        return (
-            <Text style={styles.header}>
-                {`${resultNumber} Results`}
-            </Text>
-        );
-    }
+    // const header = (resultNumber) => {
+    //     return (
+    //         <Text style={styles.header}>
+    //             {`${resultNumber} Results`}
+    //         </Text>
+    //     );
+    // }
     return (
         <View style={styles.container}>
             <FlatList
                 data={paths}
-                renderItem={({item}) => (<SearchPathItem item={item}/>)}
+                renderItem={({item, index}) => (<ListPathItem item={item} key={index}/>)}
                 ItemSeparatorComponent={renderSeparator}
-                ListHeaderComponent={() => header(10)}
+                ListHeaderComponent={() => header()}
             />
         </View>
     );
@@ -32,7 +32,8 @@ const styles = StyleSheet.create({
         marginBottom: 20
     },
     container: {
-        margin: 10
+        marginBottom: 10,
+        marginTop: 10
     },
     separator: {
         height: 0.5,
@@ -41,4 +42,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default SearchPath;
+export default ListPath;

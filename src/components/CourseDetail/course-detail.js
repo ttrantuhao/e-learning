@@ -1,23 +1,37 @@
 import React from 'react';
-import {Button, Text, View} from 'react-native';
-import {myWhite} from "../../globals/styles";
+import {ScrollView, StyleSheet, View} from 'react-native';
+import {bgColor, myWhite} from "../../globals/styles";
+import VideoPlayer from "./VideoPlayer/video-player";
+import DescriptionLesson from "./DescriptionLesson/description-lesson";
+import ListLesson from "./ListLesson/list-lesson";
 
-const CourseDetail = ({navigation, route}) => {
-    console.log(route.params.item);
-    const item = route.params.item;
+// const CourseDetail = ({navigation, route}) => {
+//     console.log(route.params.item);
+//     const item = route.params.item;
+const CourseDetail = ({item}) => {
+
 
     return (
-        <View>
-            <Text style={{color: myWhite}}>This is course detail</Text>
-            <Button title={'Go to revelant course'} onPress={() => {
-                navigation.push('CourseDetail')
-            }}/>
+        <View style={styles.container}>
+            <VideoPlayer/>
+            <ScrollView showsVerticalScrollIndicator={false}>
+                <DescriptionLesson item={item}/>
+                <ListLesson/>
+            </ScrollView>
 
-            <Button title={'Go to list of course'} onPress={() => {
-                navigation.navigate('ListCourse')
-            }}/>
         </View>
     );
 };
+
+const styles = StyleSheet.create({
+    container: {
+        backgroundColor: bgColor,
+        flex: 1,
+        marginTop: 20
+    },
+    text: {
+        color: myWhite
+    }
+})
 
 export default CourseDetail;

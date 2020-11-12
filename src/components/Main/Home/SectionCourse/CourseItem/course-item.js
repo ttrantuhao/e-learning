@@ -1,17 +1,17 @@
 import React from 'react';
-import {View, StyleSheet, Image, Text} from "react-native";
-import {cardColor, myBlue, myGrayBlue, myLightWhite, mySilver, myWhite} from "../../../../../globals/styles";
+import {Image, StyleSheet, Text, TouchableOpacity, View} from "react-native";
+import {cardColor, mySilver, myWhite} from "../../../../../globals/styles";
 
-const CourseItem = (props) => {
+const CourseItem = ({item, navigation}) => {
     return (
-        <View style={styles.container}>
+        <TouchableOpacity style={styles.container} onPress={() => navigation.push('CourseDetail', {item})}>
             <Image source={require('../../../../../../assets/ic_course.png')} style={styles.image}/>
             <View style={{margin: 5}}>
-                <Text style={styles.title}>{props.item.title}</Text>
-                <Text style={styles.content}>{props.item.author}</Text>
-                <Text style={styles.content}>{`${props.item.level} . ${props.item.released} . ${props.item.duration}`}</Text>
+                <Text style={styles.title}>{item.title}</Text>
+                <Text style={styles.content}>{item.author}</Text>
+                <Text style={styles.content}>{`${item.level} . ${item.released} . ${item.duration}`}</Text>
             </View>
-        </View>
+        </TouchableOpacity>
     );
 };
 

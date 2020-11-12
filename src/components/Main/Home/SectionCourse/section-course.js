@@ -1,18 +1,18 @@
 import React from 'react';
 import {View, StyleSheet, ScrollView, FlatList} from "react-native";
-import CourseItem from "./CoursesItem/course-item";
+import CourseItem from "./CourseItem/course-item";
 import {courses} from "../../../../globals/mockData";
 import ListHeader from "../../../Common/list-header";
 
-const SectionCourses = ({title}) => {
+const SectionCourse = ({title, navigation}) => {
     return (
         <View style={styles.container}>
-            <ListHeader title={title}/>
+            <ListHeader title={title} rightTitle='See all'/>
             <FlatList
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}
                 data={courses}
-                renderItem={({item}) => (<CourseItem item={item}/>)}
+                renderItem={({item, index}) => (<CourseItem item={item} key={index} navigation={navigation}/>)}
             />
         </View>
     );
@@ -25,4 +25,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default SectionCourses;
+export default SectionCourse;

@@ -2,7 +2,7 @@ import React from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {mySilver, myWhite} from "../../../../../globals/styles";
 
-const SearchPathItem = ({item}) => {
+const ListPathItem = ({item}) => {
     return (
         <TouchableOpacity style={styles.container}>
             <Image
@@ -42,4 +42,4 @@ const styles = StyleSheet.create({
     },
 })
 
-export default SearchPathItem;
+export default ListPathItem;

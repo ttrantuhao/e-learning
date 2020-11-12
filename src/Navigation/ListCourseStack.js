@@ -1,36 +1,21 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
-import {Avatar, Icon} from "react-native-elements";
-import {mySilver} from "../globals/styles";
-import ListCourses from "../components/Courses/ListCourses/list-courses";
+import ListCourse from "../components/Course/ListCourse/list-course";
 import CourseDetail from "../components/CourseDetail/course-detail";
 import {createStackNavigator} from "@react-navigation/stack";
+import RightHeader from "../components/Common/right-header";
 
 const Stack = createStackNavigator();
 
 const ListCourseStack = () => {
-    const renderHeaderRight = () => {
-        return (
-            <View style={styles.rightHeader}>
-                <Avatar
-                    rounded
-                    source={{uri: 'https://image.tmdb.org/t/p/w235_and_h235_face/nD2rqT1Z0veXgcti6d9E61OqOx6.jpg'}}
-                    size='small'
-                />
-                <Icon name='more-vertical' type='feather' style={styles.icon} color={mySilver}
-                      iconStyle={{marginLeft: 15}}/>
-            </View>
-        );
-    }
     return (
         <Stack.Navigator initialRouteName='ListCourse' mode='modal'>
             <Stack.Screen
                 name='ListCourse'
-                component={ListCourses}
+                component={ListCourse}
                 options={({route}) => (
                     {
-                        title: 'List Course',
-                        headerRight: renderHeaderRight
+                        title: 'Download',
+                        headerRight: RightHeader
                     }
                 )}
             />
@@ -40,19 +25,12 @@ const ListCourseStack = () => {
                 options={({route}) => (
                     {
                         title: route.params.item.title,
-                        headerShown: false
+                        //headerShown: false
                     }
                 )}
             />
         </Stack.Navigator>
     )
 };
-
-const styles = StyleSheet.create({
-    rightHeader:  {
-        flexDirection: 'row',
-        alignItems: 'center'
-    }
-})
 
 export default ListCourseStack;

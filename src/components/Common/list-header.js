@@ -3,13 +3,13 @@ import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {Icon} from "react-native-elements";
 import {myBlue, mySilver, myWhite} from "../../globals/styles";
 
-const ListHeader = ({title}) => {
+const ListHeader = ({title, rightTitle}) => {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>{title}</Text>
             <TouchableOpacity style={styles.seeAll}>
-                <Text style={styles.seeAllText}>See all</Text>
-                <Icon name={'chevron-small-right'} type={'entypo'} color={myBlue} size={20}/>
+                <Text style={styles.seeAllText}>{rightTitle}</Text>
+                <Icon name={'chevron-small-right'} type={'entypo'} color={mySilver} size={20}/>
             </TouchableOpacity>
         </View>
     );
@@ -18,7 +18,9 @@ const ListHeader = ({title}) => {
 const styles = StyleSheet.create ({
     container: {
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        paddingTop: 5,
+        paddingBottom: 5
     },
     title: {
         fontSize: 16,

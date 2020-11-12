@@ -3,7 +3,7 @@ import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {Avatar, Icon} from "react-native-elements";
 import {mySilver, myWhite} from "../../../../../globals/styles";
 
-const SearchAuthorItem = ({item}) => {
+const ListAuthorItem = ({item}) => {
     return (
         <TouchableOpacity style={styles.container}>
             <Avatar
@@ -40,4 +40,4 @@ const styles = StyleSheet.create({
     },
 })
 
-export default SearchAuthorItem;
+export default ListAuthorItem;

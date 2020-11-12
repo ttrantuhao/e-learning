@@ -8,12 +8,12 @@ import ListHeader from "../list-header";
 const SectionPaths = ({title}) => {
     return (
         <View style={styles.container}>
-            <ListHeader title={title}/>
+            <ListHeader title={title} rightTitle='See all'/>
             <FlatList
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}
                 data={paths}
-                renderItem={({item}) => (<PathItem item={item}/>)}
+                renderItem={({item, index}) => (<PathItem item={item} key={index}/>)}
             />
         </View>
 

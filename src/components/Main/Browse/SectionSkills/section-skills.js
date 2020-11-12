@@ -3,6 +3,7 @@ import {FlatList, StyleSheet, Text, View} from 'react-native';
 import {popularSkills} from "../../../../globals/mockData";
 import SkillItem from "./SkillItem/skill-item";
 import {myWhite} from "../../../../globals/styles";
+import SmallButton from "../../../Common/small-button";
 
 const SectionSkills = () => {
     return (
@@ -12,7 +13,7 @@ const SectionSkills = () => {
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}
                 data={popularSkills}
-                renderItem={({item}) => <SkillItem title={item}/>}
+                renderItem={({item}) => <SmallButton title={item}/>}
             />
         </View>
     );

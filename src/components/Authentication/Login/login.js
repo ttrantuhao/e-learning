@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {Text, TouchableOpacity, View} from 'react-native';
 import {Icon, Input} from "react-native-elements";
 import PrimaryButton from "../../Common/primary-button";
-import {myGray, mySilver, myLightWhite, myWhite, myBlue} from "../../../globals/styles";
+import {myBlue} from "../../../globals/styles";
 import {styles} from './styles'
 
-const Login = () => {
+const Login = ({navigation, route}) => {
     const [emailValid, setEmailValid] = useState(true);
     const [passwordValid, setPasswordValid] = useState(true);
 
@@ -41,14 +41,14 @@ const Login = () => {
                     passwordValid ? null : 'Please enter at least 8 characters'
                 }
             />
-            <PrimaryButton title='Login' onPress={() => {}}/>
+            <PrimaryButton title='Login' onPress={route.params.func}/>
             <View style={styles.textContainer}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => (navigation.navigate('ForgetPassword'))}>
                     <Text style={{color: myBlue}}>
                         Forget password
                     </Text>
                 </TouchableOpacity>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => (navigation.navigate('Register'))}>
                     <Text style={{color: myBlue}}>
                         Register
                     </Text>

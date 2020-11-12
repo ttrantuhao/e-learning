@@ -7,7 +7,8 @@ export const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'flex-start',
         backgroundColor: bgColor,
-        padding: 20
+        padding: 20,
+        marginTop: 30
     },
     title: {
         color: myBlue,
