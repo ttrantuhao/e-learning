@@ -7,6 +7,7 @@ import {DarkTheme, DefaultTheme} from "@react-navigation/native";
 
 export const myBlue='#0084BD';
 
+
 //my theme
 export const myWhite='#FEFEFE';
 export const myLightWhite = '#E4E5E7';

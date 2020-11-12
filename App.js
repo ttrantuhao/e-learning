@@ -6,6 +6,7 @@ import Profile from "./src/components/AccountManagement/Profile/profile";
 import Browse from "./src/components/Main/Browse/browse";
 import CourseDetail from "./src/components/CourseDetail/course-detail";
 import {courses} from "./src/globals/mockData";
+import Setting from "./src/components/AccountManagement/Setting/setting";
 
 
 export default function App() {
@@ -17,6 +18,6 @@ export default function App() {
         //    <RootStack/>
         // </NavigationContainer>
         // <CourseDetail item={courses[0]}/>
-        <Profile/>
+        <Setting/>
     );
 }
