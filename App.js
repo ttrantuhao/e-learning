@@ -16,7 +16,7 @@ export default function App() {
         // <NavigationContainer theme={MyDarkTheme}>
         //    <RootStack/>
         // </NavigationContainer>
-        <CourseDetail item={courses[0]}/>
-        // <CourseDetail/>
+        // <CourseDetail item={courses[0]}/>
+        <Profile/>
     );
 }
