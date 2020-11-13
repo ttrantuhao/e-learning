@@ -1,9 +1,8 @@
 import React from 'react';
-import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
-import {cardColor, myBlue, myLightWhite, mySilver, myWhite, skillBtnColor} from "../../../globals/styles";
-import {Avatar, Icon} from "react-native-elements";
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {cardColor, myLightWhite, mySilver, myWhite, skillBtnColor} from "../../../globals/styles";
+import {Icon} from "react-native-elements";
 import {lessonDescription} from "../../../globals/mockData";
-import ListLesson from "../ListLesson/list-lesson";
 import SmallButton from "../../Common/small-button";
 
 const DescriptionLesson = ({item}) => {

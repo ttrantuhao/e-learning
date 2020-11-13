@@ -4,10 +4,11 @@ import Home from "../components/Main/Home/home";
 import Browse from "../components/Main/Browse/browse";
 import Search from "../components/Main/Search/search";
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
-import ListCourseStack from "./ListCourseStack";
 import HomeStack from "./HomeStack";
 import BrowseStack from "./BrowseStack";
 import SearchStack from "./SearchStack";
+import DownloadStack from "./DownloadStack";
+import SearchTab from "./SearchTab";
 
 const Tab = createBottomTabNavigator();
 
@@ -42,9 +43,9 @@ const MainTab = () => {
             })}
         >
             <Tab.Screen name='HomeStack' component={HomeStack} options={{title: 'Home'}}/>
-            <Tab.Screen name='DownloadStack' component={ListCourseStack} options={{title: 'Download'}}/>
+            <Tab.Screen name='DownloadStack' component={DownloadStack} options={{title: 'Download'}}/>
             <Tab.Screen name='BrowseStack' component={BrowseStack} options={{title: 'Browse'}}/>
-            <Tab.Screen name='SearchStack' component={SearchStack} options={{title: 'Search'}}/>
+            <Tab.Screen name='SearchStack' component={SearchTab} options={{title: 'Search'}}/>
         </Tab.Navigator>
     );
 };

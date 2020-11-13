@@ -4,14 +4,17 @@ import {Avatar, Icon} from "react-native-elements";
 import {cardColor, mySilver, myWhite} from "../../globals/styles";
 // import Menu, {MenuItem} from 'react-native-material-menu';
 import {Menu, MenuOption, MenuOptions, MenuTrigger} from "react-native-popup-menu";
+import { useNavigation } from '@react-navigation/native';
 
-const RightHeader = () => {
+const RightHeader = ({navigation}) => {
+
     return (
         <View style={styles.rightHeader}>
             <Avatar
                 rounded
                 source={{uri: 'https://image.tmdb.org/t/p/w235_and_h235_face/nD2rqT1Z0veXgcti6d9E61OqOx6.jpg'}}
                 size='small'
+                onPress={() => (navigation.navigate('Profile'))}
             />
             <Menu>
                 <MenuTrigger>
@@ -28,14 +31,13 @@ const RightHeader = () => {
                         margin: 15
                     }
                 }}>
-                    <MenuOption onSelect={() => {}} text='Profile'/>
-                    <MenuOption onSelect={() => {}} text='Setting'/>
+                    <MenuOption onSelect={() => {navigation.navigate('Setting')}} text='Setting'/>
+                    <MenuOption onSelect={() => {}} text='Logout'/>
                 </MenuOptions>
             </Menu>
         </View>
 
-    )
-        ;
+    );
 };
 
 const styles = StyleSheet.create({

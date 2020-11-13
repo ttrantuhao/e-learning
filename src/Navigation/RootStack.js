@@ -7,6 +7,10 @@ import ForgetPassword from "../components/Authentication/FogetPassword/forget-pa
 import {createStackNavigator} from "@react-navigation/stack";
 import Home from "../components/Main/Home/home";
 import ListCourse from "../components/Course/ListCourse/list-course";
+import Setting from "../components/AccountManagement/Setting/setting";
+import Profile from "../components/AccountManagement/Profile/profile";
+import CourseDetail from "../components/CourseDetail/course-detail";
+import {SearchBar} from "react-native-elements";
 
 const Stack = createStackNavigator();
 
@@ -17,39 +21,38 @@ const RootStack = () => {
         setIsSignedIn(true);
     }
 
+    const handleLogout = () => {
+        setIsSignedIn(true);
+    }
+
     return (
-        <Stack.Navigator>
-            {isSignedIn ? (
-                <>
-                    <Stack.Screen name='Main' component={MainTab} options={{headerShown: false}}/>
-                </>
-            ) : (
-                <>
-                    <Stack.Screen
-                        name='Login'
-                        component={Login}
-                        options={{headerShown: false}}
-                        initialParams={{func: handleLogin}}
-                    />
-                    <Stack.Screen
-                        name='Register'
-                        component={Register}
-                        options={{headerShown: false}}
-                    />
-                    <Stack.Screen
-                        name='VerifyPassword'
-                        component={VerifyPassword}
-                        options={{headerShown: false}}
-                    />
-                    <Stack.Screen
-                        name='ForgetPassword'
-                        component={ForgetPassword}
-                        options={{headerShown: false}}/>
-                </>
-            )
-            }
-        </Stack.Navigator>
+        isSignedIn ? (
+            <MainTab/>
+        ) : (
+            <Stack.Navigator>
+                <Stack.Screen
+                    name='Login'
+                    component={Login}
+                    options={{headerShown: false}}
+                    initialParams={{loginFunc: handleLogin}}
+                />
+                <Stack.Screen
+                    name='Register'
+                    component={Register}
+                    options={{headerShown: false}}
+                />
+                <Stack.Screen
+                    name='VerifyPassword'
+                    component={VerifyPassword}
+                    options={{headerShown: false}}
+                />
+                <Stack.Screen
+                    name='ForgetPassword'
+                    component={ForgetPassword}
+                    options={{headerShown: false}}/>
+            </Stack.Navigator>
+        )
     );
-};
+}
 
 export default RootStack;

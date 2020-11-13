@@ -4,7 +4,7 @@ import {cardColor, mySilver, myWhite} from "../../../../../globals/styles";
 
 const CourseItem = ({item, navigation}) => {
     return (
-        <TouchableOpacity style={styles.container} onPress={() => navigation.push('CourseDetail', {item})}>
+        <TouchableOpacity style={styles.container} onPress={() => navigation.navigate('CourseDetail', {item})}>
             <Image source={require('../../../../../../assets/ic_course.png')} style={styles.image}/>
             <View style={{margin: 5}}>
                 <Text style={styles.title}>{item.title}</Text>

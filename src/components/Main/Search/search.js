@@ -7,7 +7,7 @@ import ListCourse from "../../Course/ListCourse/list-course";
 import ListPath from "./ListPath/list-path";
 import ListAuthor from "./ListAuthor/list-author";
 
-const Search = () => {
+const Search = ({navigation}) => {
     return (
         <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
             <ListCourse header={() => <ListHeader title='Courses' rightTitle='100 Results'/>}/>

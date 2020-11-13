@@ -5,18 +5,19 @@ import Home from "../components/Main/Home/home";
 import CourseDetail from "../components/CourseDetail/course-detail";
 import Setting from "../components/AccountManagement/Setting/setting";
 import Profile from "../components/AccountManagement/Profile/profile";
+import Download from "../components/Main/Download/download";
 
 const Stack = createStackNavigator();
 
-const HomeStack = ({navigation}) => {
+const DownloadStack = ({navigation}) => {
     return (
         <Stack.Navigator initialRouteName='Home'>
             <Stack.Screen
-                name='Home'
-                component={Home}
+                name='Download'
+                component={Download}
                 options={({route}) => (
                     {
-                        title: 'Home',
+                        title: 'Download',
                         headerRight: () => (<RightHeader navigation={navigation}/>)
                     }
                 )}
@@ -37,4 +38,4 @@ const HomeStack = ({navigation}) => {
     )
 };
 
-export default HomeStack;
+export default DownloadStack;

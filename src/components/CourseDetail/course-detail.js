@@ -8,9 +8,8 @@ import ListLesson from "./ListLesson/list-lesson";
 // const CourseDetail = ({navigation, route}) => {
 //     console.log(route.params.item);
 //     const item = route.params.item;
-const CourseDetail = ({item}) => {
-
-
+const CourseDetail = ({route}) => {
+    const item = route.params.item;
     return (
         <View style={styles.container}>
             <VideoPlayer/>

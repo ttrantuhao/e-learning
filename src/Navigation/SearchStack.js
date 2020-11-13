@@ -9,6 +9,7 @@ const Stack = createStackNavigator();
 const SearchStack = () => {
 
     return (
+
         <Stack.Navigator initialRouteName='SearchTab' mode='modal'>
             <Stack.Screen
                 name='SearchTab'
