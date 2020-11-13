@@ -19,7 +19,7 @@ const ListAuthor = ({header}) => {
                 data={topAuthor}
                 renderItem={({item, index}) => (<ListAuthorItem item={item} key={index}/>)}
                 ItemSeparatorComponent={renderSeparator}
-                ListHeaderComponent={() => header()}
+                // ListHeaderComponent={() => header()}
             />
         </View>
     );

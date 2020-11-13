@@ -18,7 +18,7 @@ const ListCourse = ({navigation, header}) => {
                 style={styles.container}
                 data={courses}
                 renderItem={({item, index}) => <ListCourseItem item={item} key={index} navigation={navigation}/>}
-                ListHeaderComponent={() => header()}
+                // ListHeaderComponent={() => header()}
                 ItemSeparatorComponent={renderSeparator}
             />
     );

@@ -11,7 +11,7 @@ import ListCourse from "../components/Course/ListCourse/list-course";
 const Stack = createStackNavigator();
 
 const RootStack = () => {
-    const [isSignedIn, setIsSignedIn] = useState(false);
+    const [isSignedIn, setIsSignedIn] = useState(true);
 
     const handleLogin = () => {
         setIsSignedIn(true);

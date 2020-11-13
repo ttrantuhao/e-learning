@@ -19,7 +19,7 @@ const ListPath = ({header}) => {
                 data={paths}
                 renderItem={({item, index}) => (<ListPathItem item={item} key={index}/>)}
                 ItemSeparatorComponent={renderSeparator}
-                ListHeaderComponent={() => header()}
+                // ListHeaderComponent={header}
             />
         </View>
     );
