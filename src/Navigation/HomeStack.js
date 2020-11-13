@@ -8,13 +8,13 @@ import Profile from "../components/AccountManagement/Profile/profile";
 
 const Stack = createStackNavigator();
 
-const HomeStack = ({navigation}) => {
+const HomeStack = () => {
     return (
-        <Stack.Navigator initialRouteName='Home'>
+        <Stack.Navigator initialRouteName='Home' mode='modal'>
             <Stack.Screen
                 name='Home'
                 component={Home}
-                options={({route}) => (
+                options={({navigation}) => (
                     {
                         title: 'Home',
                         headerRight: () => (<RightHeader navigation={navigation}/>)

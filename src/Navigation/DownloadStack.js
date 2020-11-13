@@ -9,13 +9,13 @@ import Download from "../components/Main/Download/download";
 
 const Stack = createStackNavigator();
 
-const DownloadStack = ({navigation}) => {
+const DownloadStack = () => {
     return (
         <Stack.Navigator initialRouteName='Home'>
             <Stack.Screen
                 name='Download'
                 component={Download}
-                options={({route}) => (
+                options={({navigation}) => (
                     {
                         title: 'Download',
                         headerRight: () => (<RightHeader navigation={navigation}/>)

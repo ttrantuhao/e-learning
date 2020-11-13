@@ -1,10 +1,10 @@
 import React from 'react';
 import {FlatList, StyleSheet, Text, View} from 'react-native';
-import {topAuthor} from "../../../../globals/mockData";
-import ListAuthorItem from "./ListAuthorItem/list-author-item";
+import {courses} from "../../../../globals/mockData";
 import {mySilver} from "../../../../globals/styles";
+import ListCourseItem from "../../../Course/ListCourseItem/list-course-item";
 
-const ListAuthor = ({header}) => {
+const ListCourse = ({navigation}) => {
     const renderSeparator = () => (<View style={styles.separator}/>);
 
     return (
@@ -13,11 +13,10 @@ const ListAuthor = ({header}) => {
                 100 Results
             </Text>
             <FlatList
-                data={topAuthor}
-                renderItem={({item, index}) => (<ListAuthorItem item={item}/>)}
+                data={courses}
+                renderItem={({item, index}) => (<ListCourseItem navigation={navigation} item={item} key={index}/>)}
                 ItemSeparatorComponent={renderSeparator}
                 keyExtractor={((item, index) => index.toString())}
-                // ListHeaderComponent={() => header()}
             />
         </View>
     );
@@ -26,13 +25,12 @@ const ListAuthor = ({header}) => {
 const styles = StyleSheet.create({
     header: {
         color: mySilver,
-        // padding: 10,
         fontSize: 13,
         margin: 10
     },
     container: {
-        marginTop: 10,
-        marginBottom: 10
+        marginBottom: 10,
+        marginTop: 10
     },
     separator: {
         height: 0.5,
@@ -41,4 +39,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default ListAuthor;
+export default ListCourse;

@@ -17,9 +17,12 @@ const ListCourse = ({navigation, header}) => {
             <FlatList
                 style={styles.container}
                 data={courses}
-                renderItem={({item, index}) => <ListCourseItem item={item} key={index} navigation={navigation}/>}
-                // ListHeaderComponent={() => header()}
+                renderItem={({item, index}) => <ListCourseItem item={item} navigation={navigation}/>}
+                ListHeaderComponent={() => (
+                    header ? header() : <></>
+                    )}
                 ItemSeparatorComponent={renderSeparator}
+                keyExtractor={((item, index) => index.toString())}
             />
     );
 };

@@ -4,22 +4,19 @@ import { paths} from "../../../../globals/mockData";
 import {mySilver} from "../../../../globals/styles";
 import ListPathItem from "./ListPathItem/list-path-item";
 
-const ListPath = ({header}) => {
+const ListPath = () => {
     const renderSeparator = () => (<View style={styles.separator}/>);
-    // const header = (resultNumber) => {
-    //     return (
-    //         <Text style={styles.header}>
-    //             {`${resultNumber} Results`}
-    //         </Text>
-    //     );
-    // }
+
     return (
         <View style={styles.container}>
+            <Text style={styles.header}>
+              100 Results
+            </Text>
             <FlatList
                 data={paths}
-                renderItem={({item, index}) => (<ListPathItem item={item} key={index}/>)}
+                renderItem={({item, index}) => (<ListPathItem item={item}/>)}
                 ItemSeparatorComponent={renderSeparator}
-                // ListHeaderComponent={header}
+                keyExtractor={((item, index) => index.toString())}
             />
         </View>
     );
@@ -29,7 +26,7 @@ const styles = StyleSheet.create({
     header: {
         color: mySilver,
         fontSize: 13,
-        marginBottom: 20
+        margin: 10
     },
     container: {
         marginBottom: 10,

@@ -4,6 +4,7 @@ import {bgColor, myWhite} from "../../globals/styles";
 import VideoPlayer from "./VideoPlayer/video-player";
 import DescriptionLesson from "./DescriptionLesson/description-lesson";
 import ListLesson from "./ListLesson/list-lesson";
+import {courses} from "../../globals/mockData";
 
 // const CourseDetail = ({navigation, route}) => {
 //     console.log(route.params.item);

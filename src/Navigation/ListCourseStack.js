@@ -5,7 +5,7 @@ import ListAll from "../components/Main/Search/ListAll/list-all";
 
 const Stack = createStackNavigator();
 
-const ListAllStack = () => {
+const ListCourseStack = () => {
     return (
         <Stack.Navigator initialRouteName='ListAll'>
             <Stack.Screen
@@ -27,4 +27,4 @@ const ListAllStack = () => {
     )
 };
 
-export default ListAllStack;
+export default ListCourseStack;

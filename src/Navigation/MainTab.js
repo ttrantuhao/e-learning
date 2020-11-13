@@ -2,11 +2,9 @@ import React from 'react';
 import {Icon} from "react-native-elements";
 import Home from "../components/Main/Home/home";
 import Browse from "../components/Main/Browse/browse";
-import Search from "../components/Main/Search/search";
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import HomeStack from "./HomeStack";
 import BrowseStack from "./BrowseStack";
-import SearchStack from "./SearchStack";
 import DownloadStack from "./DownloadStack";
 import SearchTab from "./SearchTab";
 

@@ -8,13 +8,13 @@ import CourseDetail from "../components/CourseDetail/course-detail";
 
 const Stack = createStackNavigator();
 
-const BrowseStack = ({navigation}) => {
+const BrowseStack = () => {
     return (
         <Stack.Navigator initialRouteName='Home' mode='modal'>
             <Stack.Screen
                 name='Home'
                 component={Browse}
-                options={({route}) => (
+                options={({navigation}) => (
                     {
                         title: 'Browse',
                         headerRight: () => (<RightHeader navigation={navigation}/>)
