@@ -1,19 +1,20 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import Home from "./src/components/Main/Home/home";
+import {StatusBar} from 'react-native';
+import {MyDarkTheme} from "./src/globals/styles";
+import 'react-native-gesture-handler'
+import RootStack from "./src/Navigation/RootStack";
+import {NavigationContainer} from '@react-navigation/native';
+import {MenuProvider} from 'react-native-popup-menu';
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Home/>
-    </View>
-  );
-}
+    StatusBar.setBarStyle('light-content');
+    StatusBar.setBackgroundColor(MyDarkTheme.colors.card);
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop:24,
-  },
-});
+    return (
+        <NavigationContainer theme={MyDarkTheme}>
+            <MenuProvider>
+                <RootStack/>
+            </MenuProvider>
+        </NavigationContainer>
+    );
+}
