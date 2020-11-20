@@ -5,14 +5,15 @@ import Browse from "../../Browse/browse";
 import Setting from "../../../AccountManagement/Setting/setting";
 import Profile from "../../../AccountManagement/Profile/profile";
 import CourseDetail from "../../../CourseDetail/course-detail";
+import {screenKey} from "../../../../globals/constants";
 
-const BrowseStackNavigtor = createStackNavigator();
+const BrowseStackNavigator = createStackNavigator();
 
 const BrowseStack = () => {
     return (
-        <BrowseStackNavigtor.Navigator initialRouteName='Home' mode='modal'>
-            <BrowseStackNavigtor.Screen
-                name='Home'
+        <BrowseStackNavigator.Navigator initialRouteName='Home' mode='modal'>
+            <BrowseStackNavigator.Screen
+                name={screenKey.BrowseScreen}
                 component={Browse}
                 options={({navigation}) => (
                     {
@@ -21,9 +22,9 @@ const BrowseStack = () => {
                     }
                 )}
             />
-            <BrowseStackNavigtor.Screen name='Setting' component={Setting}/>
-            <BrowseStackNavigtor.Screen name='Profile' component={Profile}/>
-        </BrowseStackNavigtor.Navigator>
+            <BrowseStackNavigator.Screen name={screenKey.SettingScreen} component={Setting}/>
+            <BrowseStackNavigator.Screen name={screenKey.ProfileScreen} component={Profile}/>
+        </BrowseStackNavigator.Navigator>
     )
 };
 

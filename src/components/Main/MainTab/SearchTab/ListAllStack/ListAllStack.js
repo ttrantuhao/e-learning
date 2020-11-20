@@ -10,7 +10,7 @@ const ListAllStack = () => {
     return (
         <ListAllStackNavigator.Navigator initialRouteName='ListAll'>
             <ListAllStackNavigator.Screen
-                name='ListAll'
+                name={screenKey.ListAllScreen}
                 component={ListAll}
                 options={{headerShown: false}}
             />

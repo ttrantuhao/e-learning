@@ -10,7 +10,7 @@ const ListCourseStack = () => {
     return (
         <ListCourseStackNavigator.Navigator initialRouteName='ListAll'>
             <ListCourseStackNavigator.Screen
-                name='ListAll'
+                name={screenKey.ListCourse}
                 component={ListCourse}
                 options={{headerShown: false}}
             />

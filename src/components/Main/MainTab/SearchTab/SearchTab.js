@@ -6,6 +6,7 @@ import ListAllStack from "./ListAllStack/ListAllStack";
 import {SearchBar} from "react-native-elements";
 import {mySilver, myWhite, navColor} from "../../../../globals/styles";
 import ListCourseStack from "./ListCourseStack/ListCourseStack";
+import {screenKey} from "../../../../globals/constants";
 
 const SearchTabNavigator = createMaterialTopTabNavigator();
 
@@ -37,10 +38,10 @@ const SearchTab = () => {
             <SearchTabNavigator.Navigator
                 tabBarOptions={{labelStyle: {fontWeight: 'bold', margin: 0, padding: 0}}}
             >
-                <SearchTabNavigator.Screen name='ListAllStack' component={ListAllStack} options={{title: 'ALL'}}/>
-                <SearchTabNavigator.Screen name='ListCourseStack' component={ListCourseStack} options={{title: 'COURSES'}}/>
-                <SearchTabNavigator.Screen name='ListPath' component={ListPath} options={{title: 'PATHS'}}/>
-                <SearchTabNavigator.Screen name='ListAuthor' component={ListAuthor} options={{title: 'AUTHORS'}}/>
+                <SearchTabNavigator.Screen name={screenKey.ListAllStack} component={ListAllStack} options={{title: 'ALL'}}/>
+                <SearchTabNavigator.Screen name={screenKey.ListCourseStack} component={ListCourseStack} options={{title: 'COURSES'}}/>
+                <SearchTabNavigator.Screen name={screenKey.ListPathScreen} component={ListPath} options={{title: 'PATHS'}}/>
+                <SearchTabNavigator.Screen name={screenKey.ListAuthorScreen} component={ListAuthor} options={{title: 'AUTHORS'}}/>
             </SearchTabNavigator.Navigator>
         </>
     );
