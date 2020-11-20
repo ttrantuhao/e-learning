@@ -13,7 +13,7 @@ const Tab = createMaterialTopTabNavigator();
 
 const SearchTab = () => {
     const [value, setValue] = useState('');
-    const [isHideSearchBar, setIsHideSearchBar] = useState(false);
+    const [isHideSearchBar, setIsHideSearchBar] = useState(true);
 
     return (
         <>
