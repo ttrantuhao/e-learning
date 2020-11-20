@@ -3,6 +3,7 @@ import {FlatList, StyleSheet, Text, View} from 'react-native';
 import ListCourseItem from "../ListCourseItem/list-course-item";
 import {courses} from '../../../globals/mockData'
 import {mySilver} from "../../../globals/styles";
+import {screenKey} from "../../../globals/constants";
 
 const ListCourse = ({navigation, header}) => {
     // const header = (resultNumber) => {
@@ -13,11 +14,19 @@ const ListCourse = ({navigation, header}) => {
     //     );
     // }
     const renderSeparator = () => (<View style={styles.separator}/>);
+    const onPressListCourseItem = (item) => {
+        navigation.navigate(screenKey.CourseDetailScreen, {item})
+    }
     return (
             <FlatList
                 style={styles.container}
                 data={courses}
-                renderItem={({item, index}) => <ListCourseItem item={item} navigation={navigation}/>}
+                renderItem={({item, index}) => (
+                    <ListCourseItem item={item}
+                                    navigation={navigation}
+                                    onPress={() => onPressListCourseItem(item)}
+                    />
+                    )}
                 ListHeaderComponent={() => (
                     header ? header() : <></>
                     )}

@@ -3,12 +3,12 @@ import {Alert, Image, Share, StyleSheet, Text, TouchableOpacity, View} from 'rea
 import {mySilver, myWhite} from "../../../globals/styles";
 import {Icon} from "react-native-elements";
 
-const ListCourseItem = ({item, navigation}) => {
-    const handlePress = (item) => {
-        navigation.navigate('CourseDetail', {item});
-    }
+const ListCourseItem = ({item, onPress}) => {
+    // const handlePress = (item) => {
+    //     navigation.navigate('CourseDetail', {item});
+    // }
     return (
-        <TouchableOpacity style={styles.item} onPress={() => handlePress(item)}>
+        <TouchableOpacity style={styles.item} onPress={onPress}>
             <Image
                 source={require('../../../../assets/ic_course.png')}
                 style={styles.image}

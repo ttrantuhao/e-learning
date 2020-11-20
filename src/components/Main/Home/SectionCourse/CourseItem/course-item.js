@@ -2,9 +2,9 @@ import React from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import {cardColor, mySilver, myWhite} from "../../../../../globals/styles";
 
-const CourseItem = ({item, navigation}) => {
+const CourseItem = ({item, onPress}) => {
     return (
-        <TouchableOpacity style={styles.container} onPress={() => navigation.navigate('CourseDetail', {item})}>
+        <TouchableOpacity style={styles.container} onPress={onPress}>
             <Image source={require('../../../../../../assets/ic_course.png')} style={styles.image}/>
             <View style={{margin: 5}}>
                 <Text style={styles.title}>{item.title}</Text>

@@ -41,7 +41,7 @@ const Login = ({navigation, route}) => {
                     passwordValid ? null : 'Please enter at least 8 characters'
                 }
             />
-            <PrimaryButton title='Login' onPress={route.params.func}/>
+            <PrimaryButton title='Login' onPress={route.params.loginFunc}/>
             <View style={styles.textContainer}>
                 <TouchableOpacity onPress={() => (navigation.navigate('ForgetPassword'))}>
                     <Text style={{color: myBlue}}>

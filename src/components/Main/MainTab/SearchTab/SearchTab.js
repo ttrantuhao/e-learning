@@ -1,14 +1,13 @@
 import React, {useState} from 'react';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
-import ListPath from "../components/Main/Search/ListPath/list-path";
-import ListAuthor from "../components/Main/Search/ListAuthor/list-author";
-import ListAllStack from "./ListAllStack";
+import ListPath from "../../Search/ListPath/list-path";
+import ListAuthor from "../../Search/ListAuthor/list-author";
+import ListAllStack from "./ListAllStack/ListAllStack";
 import {SearchBar} from "react-native-elements";
-import {mySilver, myWhite, navColor} from "../globals/styles";
-import ListCourse from "../components/Main/Search/ListCourse/list-course";
-import ListCourseStack from "./ListCourseStack";
+import {mySilver, myWhite, navColor} from "../../../../globals/styles";
+import ListCourseStack from "./ListCourseStack/ListCourseStack";
 
-const Tab = createMaterialTopTabNavigator();
+const SearchTabNavigator = createMaterialTopTabNavigator();
 
 
 const SearchTab = () => {
@@ -35,14 +34,14 @@ const SearchTab = () => {
                 placeholderTextColor={mySilver}
             /> : <></>}
 
-            <Tab.Navigator
+            <SearchTabNavigator.Navigator
                 tabBarOptions={{labelStyle: {fontWeight: 'bold', margin: 0, padding: 0}}}
             >
-                <Tab.Screen name='ListAll' component={ListAllStack} options={{title: 'ALL'}}/>
-                <Tab.Screen name='ListCourse' component={ListCourseStack} options={{title: 'COURSES'}}/>
-                <Tab.Screen name='ListPath' component={ListPath} options={{title: 'PATHS'}}/>
-                <Tab.Screen name='ListAuthor' component={ListAuthor} options={{title: 'AUTHORS'}}/>
-            </Tab.Navigator>
+                <SearchTabNavigator.Screen name='ListAllStack' component={ListAllStack} options={{title: 'ALL'}}/>
+                <SearchTabNavigator.Screen name='ListCourseStack' component={ListCourseStack} options={{title: 'COURSES'}}/>
+                <SearchTabNavigator.Screen name='ListPath' component={ListPath} options={{title: 'PATHS'}}/>
+                <SearchTabNavigator.Screen name='ListAuthor' component={ListAuthor} options={{title: 'AUTHORS'}}/>
+            </SearchTabNavigator.Navigator>
         </>
     );
 };

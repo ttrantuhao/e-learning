@@ -1,20 +1,21 @@
 import React from 'react';
 import {createStackNavigator} from "@react-navigation/stack";
-import CourseDetail from "../components/CourseDetail/course-detail";
-import ListAll from "../components/Main/Search/ListAll/list-all";
+import CourseDetail from "../../../../CourseDetail/course-detail";
+import ListAll from "../../../Search/ListAll/list-all";
+import {screenKey} from "../../../../../globals/constants";
 
-const Stack = createStackNavigator();
+const ListAllStackNavigator = createStackNavigator();
 
 const ListAllStack = () => {
     return (
-        <Stack.Navigator initialRouteName='ListAll'>
-            <Stack.Screen
+        <ListAllStackNavigator.Navigator initialRouteName='ListAll'>
+            <ListAllStackNavigator.Screen
                 name='ListAll'
                 component={ListAll}
                 options={{headerShown: false}}
             />
-            <Stack.Screen
-                name='CourseDetail'
+            <ListAllStackNavigator.Screen
+                name={screenKey.CourseDetailScreen}
                 component={CourseDetail}
                 options={({route}) => (
                     {
@@ -23,7 +24,7 @@ const ListAllStack = () => {
                     }
                 )}
             />
-        </Stack.Navigator>
+        </ListAllStackNavigator.Navigator>
     )
 };
 
