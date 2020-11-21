@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
         width: '100%',
         flex: 1,
         justifyContent: 'center',
-        backgroundColor: bgColor,
+        backgroundColor: "#FFFFFF",
         padding: 20
     },
     title: {
@@ -25,7 +25,7 @@ export const styles = StyleSheet.create({
     inputStyle: {
         flex: 1,
         marginLeft: 10,
-        color: myLightWhite,
+        color: 'black',
         fontSize: 16,
     },
     errorInputStyle: {

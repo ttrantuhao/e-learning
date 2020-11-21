@@ -1,13 +1,39 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
 import {Icon, Input} from "react-native-elements";
 import PrimaryButton from "../../Common/primary-button";
 import {myBlue} from "../../../globals/styles";
 import {styles} from './styles'
+import {login} from "../../../core/services/authentication-service";
+import {screenKey} from "../../../globals/constants";
 
 const Login = ({navigation, route}) => {
+    //handle input
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+
+    //handle valid input
     const [emailValid, setEmailValid] = useState(true);
     const [passwordValid, setPasswordValid] = useState(true);
+
+    //handle login
+    const [status, setStatus] = useState(null);
+
+    useEffect(() => {
+        if (status && status.status === 200) {
+            route.params.loginFunc();
+        }
+    })
+
+    const renderStatus = (status) => {
+        if(status) {
+            if(status.status === 404)
+                return <Text style={{color: 'red', textAlign: 'center'}}>{status.errorString}</Text>
+            else if(status.status === 200)
+                return <Text style={{color: 'red',textAlign: 'center'}}>Login successfully!</Text>
+        }
+
+    }
 
     return (
         <View style={styles.container}>
@@ -21,10 +47,15 @@ const Login = ({navigation, route}) => {
                 inputStyle={styles.inputStyle}
                 errorStyle={styles.errorInputStyle}
                 errorMessage={
-                    emailValid ? null : 'Please enter a valid email address'
+                    emailValid ? null : 'Please enter a valid username address'
                 }
                 placeholderTextColor={myBlue}
-                placeholder='email'
+                placeholder='username'
+                // value={username}
+                onChangeText={text => {
+                    setUsername(text);
+                    setStatus(null);
+                }}
             />
 
             <Input
@@ -40,15 +71,26 @@ const Login = ({navigation, route}) => {
                 errorMessage={
                     passwordValid ? null : 'Please enter at least 8 characters'
                 }
+                // value={password}
+                onChangeText={text => {
+                    setPassword(text);
+                    setStatus(null);
+                }}
             />
-            <PrimaryButton title='Login' onPress={route.params.loginFunc}/>
+            {renderStatus(status)}
+            <PrimaryButton title='Login'
+                           // onPress={route.params.loginFunc}
+                            onPress={() => {
+                                setStatus(login(username, password))
+                            }}
+            />
             <View style={styles.textContainer}>
-                <TouchableOpacity onPress={() => (navigation.navigate('ForgetPassword'))}>
+                <TouchableOpacity onPress={() => (navigation.navigate(screenKey.ForgetPasswordScreen))}>
                     <Text style={{color: myBlue}}>
                         Forget password
                     </Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => (navigation.navigate('Register'))}>
+                <TouchableOpacity onPress={() => (navigation.navigate(screenKey.RegisterScreen))}>
                     <Text style={{color: myBlue}}>
                         Register
                     </Text>

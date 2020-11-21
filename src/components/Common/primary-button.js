@@ -1,8 +1,27 @@
-import React from 'react';
-import {TouchableOpacity, StyleSheet, Text} from 'react-native';
-import {myBlue, myLightWhite, myMediumBlue} from "../../globals/styles";
+import React, {useContext} from 'react';
+import {StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {myBlue, myLightWhite, myWhite} from "../../globals/styles";
+import {ThemeContext} from "../../provider/theme-provider";
 
 const PrimaryButton = ({title, onPress}) => {
+    const {theme} = useContext(ThemeContext);
+    const styles = StyleSheet.create ({
+        button: {
+            backgroundColor:theme.colors.primary,
+            borderRadius: 40,
+            height: 45,
+            justifyContent: 'center',
+            margin: 10
+        },
+        text: {
+            fontSize: 20,
+            fontWeight: 'bold',
+            color: myWhite,
+            textAlign: 'center',
+            padding: 10
+        }
+    })
+
     return (
             <TouchableOpacity
                 style={styles.button}
@@ -15,20 +34,5 @@ const PrimaryButton = ({title, onPress}) => {
     );
 };
 
-const styles = StyleSheet.create ({
-    button: {
-        backgroundColor: myBlue,
-        borderRadius: 40,
-        height: 45,
-        justifyContent: 'center',
-        margin: 10
-    },
-    text: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        color: myLightWhite,
-        textAlign: 'center',
-        padding: 10
-    }
-})
+
 export default PrimaryButton;

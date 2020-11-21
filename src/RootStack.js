@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import MainTab from "./components/Main/MainTab/MainTab";
 import Login from "./components/Authentication/Login/login";
 import Register from "./components/Authentication/Register/register";
@@ -6,11 +6,14 @@ import VerifyPassword from "./components/Authentication/VerifyPassword/verify-pa
 import ForgetPassword from "./components/Authentication/FogetPassword/forget-password";
 import {createStackNavigator} from "@react-navigation/stack";
 import {screenKey} from "./globals/constants";
+import {ThemeContext} from "./provider/theme-provider";
 
 const Stack = createStackNavigator();
 
 const RootStack = () => {
+
     const [isSignedIn, setIsSignedIn] = useState(false);
+    const {theme} = useContext(ThemeContext);
 
     const handleLogin = () => {
         setIsSignedIn(true);
@@ -24,7 +27,7 @@ const RootStack = () => {
         isSignedIn ? (
             <MainTab/>
         ) : (
-            <Stack.Navigator>
+            <Stack.Navigator >
                 <Stack.Screen
                     name={screenKey.LoginScreen}
                     component={Login}

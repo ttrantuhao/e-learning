@@ -41,9 +41,7 @@ const ListAll = ({navigation}) => {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: bgColor,
         flex: 1,
-        padding: 10,
     },
 
 })

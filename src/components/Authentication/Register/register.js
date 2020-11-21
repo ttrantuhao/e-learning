@@ -4,6 +4,7 @@ import {Icon, Input} from "react-native-elements";
 import PrimaryButton from "../../Common/primary-button";
 import {myBlue} from "../../../globals/styles";
 import {styles} from './styles'
+import {screenKey} from "../../../globals/constants";
 
 const Register = ({navigation}) => {
     const [emailValid, setEmailValid] = useState(true);
@@ -57,9 +58,9 @@ const Register = ({navigation}) => {
             />
             <PrimaryButton
                 title='Register'
-                onPress={() => (navigation.navigate('VerifyPassword'))}
+                onPress={() => (navigation.navigate(screenKey.VerifyPasswordScreen))}
             />
-            <TouchableOpacity onPress={() => (navigation.navigate('Login'))}>
+            <TouchableOpacity onPress={() => (navigation.navigate(screenKey.LoginScreen))}>
                 <Text style={styles.loginText}>
                     Already have an account? Login here!
                 </Text>

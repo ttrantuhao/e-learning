@@ -1,8 +1,7 @@
 import React from 'react';
 import SectionCourse from "./SectionCourse/section-course";
-import {ScrollView} from "react-native";
+import {ScrollView, StyleSheet} from "react-native";
 import SectionPaths from "../../Common/SectionPaths/section-paths";
-import {styles} from "./styles";
 import WelcomeImage from "./WelcomeImage/welcome-image";
 
 const Home = ({navigation}) => {
@@ -19,5 +18,12 @@ const Home = ({navigation}) => {
     );
 };
 
+export const styles = StyleSheet.create({
+    container: {
+        // backgroundColor:  bgColor,
+        // paddingLeft: 10,
+        // paddingRight: 10,
+    }
+})
 
 export default Home;

@@ -4,6 +4,7 @@ import {Input} from "react-native-elements";
 import PrimaryButton from "../../Common/primary-button";
 import {myBlue} from "../../../globals/styles";
 import {styles} from './styles'
+import {screenKey} from "../../../globals/constants";
 
 const ForgetPassword = ({navigation}) => {
     const [emailValid, setEmailValid] = useState(true);
@@ -21,8 +22,7 @@ const ForgetPassword = ({navigation}) => {
                 placeholderTextColor={myBlue}
                 placeholder='input your email'
             />
-            <PrimaryButton title='reset password' onPress={() => (navigation.navigate('Login'))}/>
-
+            <PrimaryButton title='reset password' onPress={() => (navigation.navigate(screenKey.LoginScreen))}/>
         </View>
     );
 };

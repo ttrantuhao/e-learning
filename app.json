@@ -23,7 +23,7 @@
       "favicon": "./assets/favicon.png"
     },
     "androidNavigationBar": {
-      "backgroundColor": "#181B20"
+      "backgroundColor": "#000000"
     }
   }
 }

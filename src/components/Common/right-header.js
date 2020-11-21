@@ -1,37 +1,45 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {Avatar, Icon} from "react-native-elements";
 import {cardColor, mySilver, myWhite} from "../../globals/styles";
 // import Menu, {MenuItem} from 'react-native-material-menu';
 import {Menu, MenuOption, MenuOptions, MenuTrigger} from "react-native-popup-menu";
 import { useNavigation } from '@react-navigation/native';
+import {screenKey} from "../../globals/constants";
+import {ThemeContext} from "../../provider/theme-provider";
 
 const RightHeader = ({navigation}) => {
-
+    const {theme} = useContext(ThemeContext);
+    const styles = StyleSheet.create({
+        rightHeader: {
+            flexDirection: 'row',
+            alignItems: 'center'
+        },
+    })
     return (
         <View style={styles.rightHeader}>
             <Avatar
                 rounded
                 source={{uri: 'https://image.tmdb.org/t/p/w235_and_h235_face/nD2rqT1Z0veXgcti6d9E61OqOx6.jpg'}}
                 size='small'
-                onPress={() => (navigation.navigate('Profile'))}
+                onPress={() => (navigation.navigate(screenKey.ProfileScreen))}
             />
             <Menu>
                 <MenuTrigger>
-                    <Icon name='more-vertical' type='feather' color={mySilver}
+                    <Icon name='more-vertical' type='feather' color={theme.colors.text}
                           iconStyle={{marginLeft: 15, marginRight: 10}}/>
                 </MenuTrigger>
                 <MenuOptions customStyles={{
                     optionsWrapper: {
-                        backgroundColor: cardColor,
+                        backgroundColor: theme.colors.card,
                     },
                     optionText: {
-                        color: myWhite,
+                        color: theme.colors.text,
                         fontSize: 16,
                         margin: 15
                     }
                 }}>
-                    <MenuOption onSelect={() => {navigation.navigate('Setting')}} text='Setting'/>
+                    <MenuOption onSelect={() => {navigation.navigate(screenKey.SettingScreen)}} text='Setting'/>
                     <MenuOption onSelect={() => {}} text='Logout'/>
                 </MenuOptions>
             </Menu>
@@ -40,12 +48,7 @@ const RightHeader = ({navigation}) => {
     );
 };
 
-const styles = StyleSheet.create({
-    rightHeader: {
-        flexDirection: 'row',
-        alignItems: 'center'
-    },
-})
+
 export default RightHeader;
 
 

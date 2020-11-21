@@ -1,18 +1,29 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {FlatList, StyleSheet, Text, View} from 'react-native';
 import ListCourseItem from "../ListCourseItem/list-course-item";
 import {courses} from '../../../globals/mockData'
 import {mySilver} from "../../../globals/styles";
 import {screenKey} from "../../../globals/constants";
+import {ThemeContext} from "../../../provider/theme-provider";
 
 const ListCourse = ({navigation, header}) => {
-    // const header = (resultNumber) => {
-    //     return (
-    //         <Text style={styles.header}>
-    //             {`${resultNumber} Results`}
-    //         </Text>
-    //     );
-    // }
+    const {theme} = useContext(ThemeContext);
+    const styles = StyleSheet.create({
+        header: {
+            color: mySilver,
+            padding: 10,
+            fontSize: 13,
+            marginBottom: 5
+        },
+        container: {
+        },
+        separator: {
+            height: 1,
+            backgroundColor: theme.colors.border,
+            margin: 5
+        }
+    })
+
     const renderSeparator = () => (<View style={styles.separator}/>);
     const onPressListCourseItem = (item) => {
         navigation.navigate(screenKey.CourseDetailScreen, {item})
@@ -36,22 +47,5 @@ const ListCourse = ({navigation, header}) => {
     );
 };
 
-const styles = StyleSheet.create({
-    header: {
-        color: mySilver,
-        padding: 10,
-        fontSize: 13,
-        marginBottom: 5
-    },
-    container: {
-        marginBottom: 10,
-        marginTop: 10
-    },
-    separator: {
-        height: 0.5,
-        backgroundColor: mySilver,
-        margin: 5
-    }
-})
 
 export default ListCourse;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Icon} from "react-native-elements";
 import Home from "../Home/home";
 import Browse from "../Browse/browse";
@@ -8,10 +8,12 @@ import BrowseStack from "./BrowseStack/BrowseStack";
 import DownloadStack from "./DownloadStack/DownloadStack";
 import SearchTab from "./SearchTab/SearchTab";
 import {screenKey} from "../../../globals/constants";
+import {ThemeContext} from "../../../provider/theme-provider";
 
 const MainTabNavigator = createBottomTabNavigator();
 
 const MainTab = () => {
+    const {theme} = useContext(ThemeContext);
     const tabBarIconFunc = ({route, focused, color, size}) => {
         let iconName;
         let iconType;

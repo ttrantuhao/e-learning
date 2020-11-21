@@ -1,12 +1,12 @@
 import {StyleSheet} from "react-native";
-import {bgColor, myBlue, myLightWhite, mySilver} from "../../../globals/styles";
+import {bgColor, myBlue, myLightWhite} from "../../../globals/styles";
 
 export const styles = StyleSheet.create({
     container: {
         width: '100%',
         flex: 1,
         justifyContent: 'center',
-        backgroundColor: bgColor,
+        backgroundColor: "#FFFFFF",
         padding: 20
     },
     title: {
@@ -31,7 +31,7 @@ export const styles = StyleSheet.create({
     inputStyle: {
         flex: 1,
         marginLeft: 10,
-        color: myLightWhite,
+        color: 'black',
         fontSize: 16,
     },
     errorInputStyle: {
