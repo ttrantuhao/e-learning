@@ -1,12 +1,11 @@
 import React, {useContext} from 'react';
-import {FlatList, StyleSheet, Text, View} from 'react-native';
+import {FlatList, StyleSheet, View} from 'react-native';
 import ListCourseItem from "../ListCourseItem/list-course-item";
-import {courses} from '../../../globals/mockData'
 import {mySilver} from "../../../globals/styles";
 import {screenKey} from "../../../globals/constants";
 import {ThemeContext} from "../../../provider/theme-provider";
 
-const ListCourse = ({navigation, header}) => {
+const ListCourse = ({navigation, header, courses}) => {
     const {theme} = useContext(ThemeContext);
     const styles = StyleSheet.create({
         header: {
@@ -32,7 +31,7 @@ const ListCourse = ({navigation, header}) => {
             <FlatList
                 style={styles.container}
                 data={courses}
-                renderItem={({item, index}) => (
+                renderItem={({item}) => (
                     <ListCourseItem item={item}
                                     navigation={navigation}
                                     onPress={() => onPressListCourseItem(item)}

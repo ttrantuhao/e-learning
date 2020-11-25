@@ -21,9 +21,11 @@ const MainTab = () => {
             iconName = 'home';
             iconType = 'antdesign';
         } else if (route.name === screenKey.DownloadStack) {
-            iconName = 'file-download';
-            iconType = 'material';
-            size = size + 3;
+            // iconName = 'file-download';
+            // iconType = 'material';
+            iconName = 'heart'
+            iconType = 'fontisto'
+            size = size - 3;
         } else if (route.name === screenKey.BrowseStack) {
             iconName = 'nav-icon-grid';
             iconType = 'fontisto';
@@ -44,7 +46,7 @@ const MainTab = () => {
             })}
         >
             <MainTabNavigator.Screen name={screenKey.HomeStack} component={HomeStack} options={{title: 'Home'}}/>
-            <MainTabNavigator.Screen name={screenKey.DownloadStack} component={DownloadStack} options={{title: 'Download'}}/>
+            <MainTabNavigator.Screen name={screenKey.DownloadStack} component={DownloadStack} options={{title: 'Favorite'}}/>
             <MainTabNavigator.Screen name={screenKey.BrowseStack} component={BrowseStack} options={{title: 'Browse'}}/>
             <MainTabNavigator.Screen name={screenKey.SearchTab} component={SearchTab} options={{title: 'Search'}}/>
         </MainTabNavigator.Navigator>

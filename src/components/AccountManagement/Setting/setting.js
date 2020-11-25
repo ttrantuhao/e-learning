@@ -8,12 +8,13 @@ import SettingSwitchItem from "./SettingSwitchItem/setting-switch-item";
 import SettingTextItem from "./SettingTextItem/setting-text-item";
 
 const Setting = () => {
-    const {theme, setTheme} = useContext(ThemeContext);
+    const {theme, toggleTheme} = useContext(ThemeContext);
     const styles = StyleSheet.create({
         container: {
             flex: 1,
-            padding: 15,
-            paddingTop: 50
+            // marginBottom: 20
+            // padding: 15,
+            // paddingTop: 50
         },
         usernameContainer: {
             flexDirection: 'row',
@@ -36,14 +37,14 @@ const Setting = () => {
         }
     })
 
-    const onSwitchTheme = () => {
-        // setDarkThemeOn(!darkThemeOn);
-        setTheme(theme.dark ? MyTheme.light : MyTheme.dark);
-    }
+    // const onSwitchTheme = () => {
+    //     // setDarkThemeOn(!darkThemeOn);
+    //     setTheme(theme.dark ? MyTheme.light : MyTheme.dark);
+    // }
 
     return (
         <View style={styles.container}>
-            <ScrollView >
+            <ScrollView style={{padding: 15}}>
                 <View style={styles.usernameContainer}>
                     <Icon name='settings' type='material' color={theme.colors.text} size={60}/>
                     <View style={{marginLeft: 10}}>
@@ -60,7 +61,7 @@ const Setting = () => {
                 <SettingTextItem title='Communication Preference'/>
                 <View style={styles.line}/>
                 <SettingTextItem title='Default caption language' content='English'/>
-                <SettingSwitchItem title='Dark Theme' value={theme.dark} onChange={onSwitchTheme}/>
+                <SettingSwitchItem title='Dark Theme' value={theme.dark} onChange={toggleTheme}/>
                 <SettingSwitchItem title='Required Wifi for streaming' value={true}/>
                 <SettingSwitchItem title='Required Wifi for downloading' value={true}/>
                 <SettingSwitchItem title='Show quiz at the end of video' value={true}/>
@@ -73,10 +74,9 @@ const Setting = () => {
                 <SettingTextItem title='Advance option'/>
                 <View style={styles.line}/>
                 <SettingTextItem title='App version' content='2.39.0'/>
-                <PrimaryButton title='Logout'/>
+                <PrimaryButton title='Logout' style={{marginBottom:  20}}/>
             </ScrollView>
         </View>
-
     );
 };
 

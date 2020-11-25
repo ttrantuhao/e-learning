@@ -18,7 +18,8 @@ const BrowseStack = () => {
                 options={({navigation}) => (
                     {
                         title: 'Browse',
-                        headerRight: () => (<RightHeader navigation={navigation}/>)
+                        headerRight: () => (<RightHeader navigation={navigation}/>),
+                        headerLeft: null
                     }
                 )}
             />

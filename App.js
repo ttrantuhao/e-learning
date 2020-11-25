@@ -5,6 +5,8 @@ import RootStack from "./src/RootStack";
 import {NavigationContainer} from '@react-navigation/native';
 import {MenuProvider} from 'react-native-popup-menu';
 import {ThemeContext, ThemeProvider} from "./src/provider/theme-provider";
+import {AuthenticationProvider} from "./src/provider/authentication-provider";
+import {CourseProvider} from "./src/provider/course-provider";
 
 function MyNavigationContainer() {
     const {theme} = useContext(ThemeContext);
@@ -23,7 +25,11 @@ function MyNavigationContainer() {
 export default function App() {
     return (
         <ThemeProvider>
-            <MyNavigationContainer/>
+            <AuthenticationProvider>
+                <CourseProvider>
+                    <MyNavigationContainer/>
+                </CourseProvider>
+            </AuthenticationProvider>
         </ThemeProvider>
     );
 }

@@ -3,7 +3,7 @@ import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 import {myBlue, myLightWhite, myWhite} from "../../globals/styles";
 import {ThemeContext} from "../../provider/theme-provider";
 
-const PrimaryButton = ({title, onPress}) => {
+const PrimaryButton = ({title, onPress, style}) => {
     const {theme} = useContext(ThemeContext);
     const styles = StyleSheet.create ({
         button: {
@@ -11,7 +11,8 @@ const PrimaryButton = ({title, onPress}) => {
             borderRadius: 40,
             height: 45,
             justifyContent: 'center',
-            margin: 10
+            margin: 10,
+            // marginBottom: 20
         },
         text: {
             fontSize: 20,
@@ -24,7 +25,7 @@ const PrimaryButton = ({title, onPress}) => {
 
     return (
             <TouchableOpacity
-                style={styles.button}
+                style={{...styles.button, ...style}}
                 onPress={onPress}
             >
                 <Text style={styles.text}>

@@ -1,38 +1,44 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext} from 'react';
 import MainTab from "./components/Main/MainTab/MainTab";
 import Login from "./components/Authentication/Login/login";
 import Register from "./components/Authentication/Register/register";
-import VerifyPassword from "./components/Authentication/VerifyPassword/verify-password";
+import VerifyEmail from "./components/Authentication/VerifyEmail/verify-email";
 import ForgetPassword from "./components/Authentication/FogetPassword/forget-password";
 import {createStackNavigator} from "@react-navigation/stack";
 import {screenKey} from "./globals/constants";
-import {ThemeContext} from "./provider/theme-provider";
+import {AuthenticationContext} from "./provider/authentication-provider";
+import SplashScreen from "./components/Others/SplashScreen/splash-screen";
 
 const Stack = createStackNavigator();
 
 const RootStack = () => {
-
-    const [isSignedIn, setIsSignedIn] = useState(false);
-    const {theme} = useContext(ThemeContext);
-
-    const handleLogin = () => {
-        setIsSignedIn(true);
-    }
-
-    const handleLogout = () => {
-        setIsSignedIn(true);
-    }
+    const {isAuth} = useContext(AuthenticationContext);
 
     return (
-        isSignedIn ? (
-            <MainTab/>
+        isAuth ? (
+            <Stack.Navigator initialRouteName={screenKey.SlashScreen}
+                             headerMode={false}
+                             screenOptions={{
+                                 headerLeft: null
+                             }}
+            >
+                <Stack.Screen
+                    name={screenKey.MainTab}
+                    component={MainTab}
+                    options={{headerShown: false}}
+                />
+                <Stack.Screen
+                    name={screenKey.SlashScreen}
+                    component={SplashScreen}
+                    options={{headerShown: false}}
+                />
+            </Stack.Navigator>
         ) : (
-            <Stack.Navigator >
+            <Stack.Navigator initialRouteName={screenKey.LoginScreen}>
                 <Stack.Screen
                     name={screenKey.LoginScreen}
                     component={Login}
                     options={{headerShown: false}}
-                    initialParams={{loginFunc: handleLogin}}
                 />
                 <Stack.Screen
                     name={screenKey.RegisterScreen}
@@ -40,8 +46,8 @@ const RootStack = () => {
                     options={{headerShown: false}}
                 />
                 <Stack.Screen
-                    name={screenKey.VerifyPasswordScreen}
-                    component={VerifyPassword}
+                    name={screenKey.VerifyEmailScreen}
+                    component={VerifyEmail}
                     options={{headerShown: false}}
                 />
                 <Stack.Screen

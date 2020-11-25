@@ -1,56 +1,95 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {cardColor, myLightWhite, mySilver, myWhite, skillBtnColor} from "../../../globals/styles";
-import {Icon} from "react-native-elements";
+import {Icon, Rating} from "react-native-elements";
 import {lessonDescription} from "../../../globals/mockData";
-import SmallButton from "../../Common/small-button";
 import {ThemeContext} from "../../../provider/theme-provider";
 
-const DescriptionLesson = ({item}) => {
+const DescriptionLesson = ({item, addFavorite, removeFavorite}) => {
     const {theme} = useContext(ThemeContext);
+    const [isFavorite, setIsFavorite] = useState(item.isFavorite);
     const styles = StyleSheet.create({
         container: {
             padding: 20,
-            backgroundColor: theme.colors.card
+            backgroundColor: theme.colors.card,
+            justifyContent: 'flex-start'
         },
         title: {
-            color: myWhite,
+            color: theme.colors.text,
             fontSize: 23
         },
         author: {
-            flexDirection: 'row'
+            flexDirection: 'row',
+        },
+        price: {
+            alignSelf: 'flex-end',
+            color: 'red',
+            fontSize: 20
         }
     })
 
-    const renderButton = (title, name, type) => {
-        return  (
-            <TouchableOpacity>
-                <Icon name={name} type={type} color={theme.colors.text} size={23} />
+    const renderButton = (title, name, type, color, onPress) => {
+        return (
+            <TouchableOpacity onPress={onPress}>
+                <Icon name={name} type={type} color={color ? color : theme.colors.text} size={23}/>
                 <Text style={{color: theme.colors.text, fontSize: 13}}>{title}</Text>
             </TouchableOpacity>
         )
     }
 
+    const toggleFavorite = (item) => {
+        if (isFavorite) {
+            removeFavorite(item.id);
+        }
+        else {
+            item.isFavorite = true;
+            addFavorite(item);
+        }
+        setIsFavorite(!isFavorite);
+
+    }
+
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>React Native Introduction</Text>
-            <View style={styles.author}>
-                <SmallButton title={'Jim Cooper'}/>
-                <SmallButton title={'Joe Eames'}/>
+            {/*<Text style={styles.price}>Free</Text>*/}
+            <Text style={styles.title}>{item.title}</Text>
+            <View style={{flexDirection: 'row', alignItems: 'center', marginBottom: 10}}>
+                <Rating
+                    readonly={true}
+                    startingValue={item.rating}
+                    imageSize={18}
+                    ratingBackgroundColor={theme.colors.subtext}
+                    tintColor={theme.colors.card}
+                    type={'custom'}
+                />
+                <Text style={{fontSize: 13, color: theme.colors.subtext, marginHorizontal: 5}}>(200)</Text>
             </View>
+
+
+            {/*<View style={styles.author}>*/}
+            {/*    <SmallButton title={'Jim Cooper'}/>*/}
+            {/*    <SmallButton title={'Joe Eames'}/>*/}
+            {/*</View>*/}
             <Text style={{fontSize: 12, color: theme.colors.subtext, marginTop: 5}}>
                 {`${item.level} . ${item.released} . ${item.duration}`}
             </Text>
             <View style={{flexDirection: 'row', justifyContent: 'space-around', marginTop: 15}}>
-                {renderButton('Bookmarked', 'bookmark', 'ionicons')}
-                {renderButton('Add to channel', 'broadcast-tower', 'font-awesome-5')}
+                {isFavorite ?
+                    renderButton('Favorite', 'heart', 'antdesign', "#B22222", (() => toggleFavorite(item))) :
+                    renderButton('Favorite', 'hearto', 'antdesign', theme.colors.text, (() => toggleFavorite(item)))
+                }
                 {renderButton('Download', 'file-download', 'material')}
+                {renderButton('Share', 'share', 'entypo')}
+                {/*{renderButton('Bookmarked', 'bookmark', 'ionicons')}*/}
+                {/*{renderButton('Add to channel', 'broadcast-tower', 'font-awesome-5')}*/}
             </View>
-            <Text style={{color: theme.colors.text, textAlign: 'justify', marginTop: 20, fontSize: 14}}>{lessonDescription}</Text>
+            <Text style={{
+                color: theme.colors.text,
+                textAlign: 'justify',
+                marginTop: 20,
+                fontSize: 14
+            }}>{item.description}</Text>
         </View>
     );
 };
-
-
 
 export default DescriptionLesson;

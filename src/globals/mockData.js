@@ -4,7 +4,7 @@ export const lesson = [
         data: ['Course Overview']
     },
     {
-        title: 'Getting Started with Angular',
+        title: 'Getting Started',
         data: ['Introduction', 'Practice Exercises', 'Introduction to TypeScript', 'Comparing Angular to AngularJS',
             'A Conceptual Overview of Angular', 'Here\'s What We\'ll Be Building', 'Installing Git and Node',
             'Getting Started with the Angular CLI', 'Bootstrapping an Angular App', 'A Brief Look at the App Module',
@@ -23,15 +23,19 @@ export const courses = [
         author: "Hao Tran",
         level: "Advance",
         released: "Oct 21th, 2020",
-        duration: "20 hours"
+        duration: "20 hours",
+        description: "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
+        rating: 4
     },
     {
         id: 2,
-        title: "IOS Development",
+        title: "React",
         author: "Hao Tran",
         level: "Beginner",
         released: "Oct 26th, 2020",
-        duration: "25 hours"
+        duration: "25 hours",
+        description: "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
+        rating: 4
     },
     {
         id: 3,
@@ -39,7 +43,9 @@ export const courses = [
         author: "Hao Tran",
         level: "Beginner",
         released: "Oct 26th, 2020",
-        duration: "25 hours"
+        duration: "25 hours",
+        description: "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
+        rating: 4
     },
     {
         id: 4,
@@ -47,118 +53,313 @@ export const courses = [
         author: "Hao Tran",
         level: "Beginner",
         released: "Oct 26th, 2020",
-        duration: "25 hours"
+        duration: "25 hours",
+        description: "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
+        rating: 4
     },
     {
         id: 5,
-        title: "Android Development",
+        title: "Algorithm & Data structure",
         author: "Hao Tran",
         level: "Beginner",
         released: "Oct 26th, 2020",
-        duration: "25 hours"
+        duration: "25 hours",
+        description: "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
+        rating: 4
     },
     {
-        id: 6,
-        title: "IOS Development",
+        id: 11,
+        title: "C#/.NET fundamental",
         author: "Hao Tran",
-        level: "Beginner",
-        released: "Oct 26th, 2020",
-        duration: "25 hours"
+        level: "Advance",
+        released: "Oct 21th, 2020",
+        duration: "20 hours",
+        description: "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
+        rating: 4
     },
     {
-        id: 7,
-        title: "Android Development",
+        id: 12,
+        title: "Database fundamental",
         author: "Hao Tran",
         level: "Beginner",
         released: "Oct 26th, 2020",
-        duration: "25 hours"
+        duration: "25 hours",
+        description: "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
+        rating: 4
     },
     {
-        id: 8,
-        title: "IOS Development",
+        id: 13,
+        title: "Computer science",
         author: "Hao Tran",
         level: "Beginner",
         released: "Oct 26th, 2020",
-        duration: "25 hours"
+        duration: "25 hours",
+        description: "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
+        rating: 4
     },
     {
-        id: 9,
-        title: "Android Development",
+        id: 14,
+        title: "Firebase",
         author: "Hao Tran",
         level: "Beginner",
         released: "Oct 26th, 2020",
-        duration: "25 hours"
+        duration: "25 hours",
+        description: "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
+        rating: 4
     },
     {
-        id: 10,
-        title: "IOS Development",
+        id: 15,
+        title: "Golang fundamental",
         author: "Hao Tran",
         level: "Beginner",
         released: "Oct 26th, 2020",
-        duration: "25 hours"
+        duration: "25 hours",
+        description: "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
+        rating: 4
     },
 ];
 
-// export const listCourses = [
-//     {
-//         title: 'Mobile',
-//         data: [
-//             {
-//                 id: 1,
-//                 title: "React Native",
-//                 author: "Hao Tran",
-//                 level: "Advance",
-//                 released: "Oct 21th, 2020",
-//                 duration: "20 hours"
-//             },
-//             {
-//                 id: 2,
-//                 title: "IOS Development",
-//                 author: "Hao Tran",
-//                 level: "Beginner",
-//                 released: "Oct 26th, 2020",
-//                 duration: "25 hours"
-//             },
-//             {
-//                 id: 3,
-//                 title: "Android Development",
-//                 author: "Hao Tran",
-//                 level: "Beginner",
-//                 released: "Oct 26th, 2020",
-//                 duration: "25 hours"
-//             }
-//         ]
-//     },
-//     {
-//         title: 'Web',
-//         data: [
-//             {
-//                 id: 1,
-//                 title: "React",
-//                 author: "Hao Tran",
-//                 level: "Advance",
-//                 released: "Oct 21th, 2020",
-//                 duration: "20 hours"
-//             },
-//             {
-//                 id: 2,
-//                 title: "ASP.NET",
-//                 author: "Hao Tran",
-//                 level: "Beginner",
-//                 released: "Oct 26th, 2020",
-//                 duration: "25 hours"
-//             },
-//             {
-//                 id: 3,
-//                 title: "Java",
-//                 author: "Hao Tran",
-//                 level: "Beginner",
-//                 released: "Oct 26th, 2020",
-//                 duration: "25 hours"
-//             }
-//         ]
-//     }
-// ];
+export const myCourses = [
+    {
+        id: 1,
+        title: "React Native",
+        author: "Hao Tran",
+        level: "Advance",
+        released: "Oct 21th, 2020",
+        duration: "20 hours",
+        description: "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
+        rating: 4
+    },
+    {
+        id: 2,
+        title: "React",
+        author: "Hao Tran",
+        level: "Beginner",
+        released: "Oct 26th, 2020",
+        duration: "25 hours",
+        description: "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
+        rating: 4
+    },
+
+];
+export const favoriteCourses = [
+    {
+        id: 3,
+        title: "Android Development",
+        author: "Hao Tran",
+        level: "Beginner",
+        released: "Oct 26th, 2020",
+        duration: "25 hours",
+        description: "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
+        rating: 4
+    },
+];
+
+export const hotCourses = [
+    {
+        id: 1,
+        title: "React Native",
+        author: "Hao Tran",
+        level: "Advance",
+        released: "Oct 21th, 2020",
+        duration: "20 hours",
+        description: "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
+        rating: 4
+    },
+    {
+        id: 2,
+        title: "React",
+        author: "Hao Tran",
+        level: "Beginner",
+        released: "Oct 26th, 2020",
+        duration: "25 hours",
+        description: "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
+        rating: 4
+    },
+    {
+        id: 3,
+        title: "Android Development",
+        author: "Hao Tran",
+        level: "Beginner",
+        released: "Oct 26th, 2020",
+        duration: "25 hours",
+        description: "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
+        rating: 4
+    },
+    {
+        id: 4,
+        title: "IOS Development",
+        author: "Hao Tran",
+        level: "Beginner",
+        released: "Oct 26th, 2020",
+        duration: "25 hours",
+        description: "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
+        rating: 4
+    },
+    {
+        id: 5,
+        title: "Algorithm & Data structure",
+        author: "Hao Tran",
+        level: "Beginner",
+        released: "Oct 26th, 2020",
+        duration: "25 hours",
+        description: "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
+        rating: 4
+    },
+    {
+        id: 6,
+        title: "Networking",
+        author: "Hao Tran",
+        level: "Beginner",
+        released: "Oct 26th, 2020",
+        duration: "25 hours",
+        description: "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
+        rating: 4
+    },
+    {
+        id: 7,
+        title: "Python fundamental",
+        author: "Hao Tran",
+        level: "Beginner",
+        released: "Oct 26th, 2020",
+        duration: "25 hours",
+        description: "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
+        rating: 4
+    },
+    {
+        id: 8,
+        title: "Javascript fundamental",
+        author: "Hao Tran",
+        level: "Beginner",
+        released: "Oct 26th, 2020",
+        duration: "25 hours",
+        description: "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
+        rating: 4
+    },
+    {
+        id: 9,
+        title: "Java fundamental",
+        author: "Hao Tran",
+        level: "Beginner",
+        released: "Oct 26th, 2020",
+        duration: "25 hours",
+        description: "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
+        rating: 4
+    },
+    {
+        id: 10,
+        title: "C++ fundamental",
+        author: "Hao Tran",
+        level: "Beginner",
+        released: "Oct 26th, 2020",
+        duration: "25 hours",
+        description: "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
+        rating: 4
+    },
+];
+export const newCourses = [
+    {
+        id: 11,
+        title: "C#/.NET fundamental",
+        author: "Hao Tran",
+        level: "Advance",
+        released: "Oct 21th, 2020",
+        duration: "20 hours",
+        description: "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
+        rating: 4
+    },
+    {
+        id: 12,
+        title: "Database fundamental",
+        author: "Hao Tran",
+        level: "Beginner",
+        released: "Oct 26th, 2020",
+        duration: "25 hours",
+        description: "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
+        rating: 4
+    },
+    {
+        id: 13,
+        title: "Computer science",
+        author: "Hao Tran",
+        level: "Beginner",
+        released: "Oct 26th, 2020",
+        duration: "25 hours",
+        description: "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
+        rating: 4
+    },
+    {
+        id: 14,
+        title: "Firebase",
+        author: "Hao Tran",
+        level: "Beginner",
+        released: "Oct 26th, 2020",
+        duration: "25 hours",
+        description: "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
+        rating: 4
+    },
+    {
+        id: 15,
+        title: "Golang fundamental",
+        author: "Hao Tran",
+        level: "Beginner",
+        released: "Oct 26th, 2020",
+        duration: "25 hours",
+        description: "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
+        rating: 4
+    },
+    {
+        id: 16,
+        title: "Unity fundamental",
+        author: "Hao Tran",
+        level: "Beginner",
+        released: "Oct 26th, 2020",
+        duration: "25 hours",
+        description: "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
+        rating: 4
+    },
+    {
+        id: 17,
+        title: "Angular",
+        author: "Hao Tran",
+        level: "Beginner",
+        released: "Oct 26th, 2020",
+        duration: "25 hours",
+        description: "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
+        rating: 4
+    },
+    {
+        id: 18,
+        title: "Flutter",
+        author: "Hao Tran",
+        level: "Beginner",
+        released: "Oct 26th, 2020",
+        duration: "25 hours",
+        description: "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
+        rating: 4
+    },
+    {
+        id: 19,
+        title: "Testing",
+        author: "Hao Tran",
+        level: "Beginner",
+        released: "Oct 26th, 2020",
+        duration: "25 hours",
+        description: "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
+        rating: 4
+    },
+    {
+        id: 20,
+        title: "Agile",
+        author: "Hao Tran",
+        level: "Beginner",
+        released: "Oct 26th, 2020",
+        duration: "25 hours",
+        description: "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
+        rating: 4
+    },
+];
+
 
 export const popularSkills = ['Java', 'Angular', 'Javascript', 'C#', 'Data Analysis', 'ASP.NET',
     'Node.js', 'Design Pattern', 'Python', 'React', '.NET', 'SQL Server', "Data Administration",

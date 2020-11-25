@@ -2,53 +2,58 @@ import React, {useState} from 'react';
 import {Text, View} from 'react-native';
 import {Input} from "react-native-elements";
 import PrimaryButton from "../../Common/primary-button";
-import {myBlue} from "../../../globals/styles";
 import {styles} from './styles'
+import {myBlue} from "../../../globals/styles";
 import {screenKey} from "../../../globals/constants";
-import {resetPassword} from "../../../core/services/authentication-service";
+import {verifyAccount} from "../../../core/services/authentication-service";
 
-const ForgetPassword = ({navigation}) => {
-    const [emailValid, setEmailValid] = useState(true);
+const VerifyEmail = ({navigation, route}) => {
+    const [code, setCode] = useState('');
+    const [codeValid, setCodeValid] = useState(true);
     const [status, setStatus] = useState(null);
-    const [email, setEmail] = useState('');
-    const validateInput = (email) => {
-        if (email === '')
-            setEmailValid(false);
-        return (email !== '');
+    const email = route.params.email;
+    const validateInput = (code) => {
+        if (code === '')
+            setCodeValid(false);
+        return (code !== '');
     }
     const renderStatus = (status) => {
-        if (status && status.status === 404)
+        if (status && status.status === 400)
             return <Text style={{...styles.errorInputStyle, textAlign: 'center'}}>{status.errorString}</Text>
     }
+
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Forget password</Text>
+            <Text style={styles.title}>Verify email</Text>
             <Input
                 inputContainerStyle={styles.inputContainer}
                 inputStyle={styles.inputStyle}
                 errorStyle={styles.errorInputStyle}
                 errorMessage={
-                    emailValid ? null : 'Please enter email address'
+                    codeValid ? null : 'Please enter code'
                 }
                 placeholderTextColor={myBlue}
-                placeholder='input your email'
+                placeholder='verification code'
                 onChangeText={text => {
-                    setEmail(text);
+                    setCodeValid(true);
                     setStatus(null);
-                    setEmailValid(true);
+                    setCode(text);
                 }}
             />
             {renderStatus(status)}
-            <PrimaryButton title='reset password' onPress={() => {
-                if(validateInput(email)) {
-                    setStatus(resetPassword(email));
-                    if(status && status.status === 200)
+            <PrimaryButton title='Verify' onPress={() => {
+                if(validateInput(code)) {
+                    setStatus(verifyAccount(email, code))
+                    if(status && status.status === 200) {
+                        // console.log(status);
                         navigation.navigate(screenKey.LoginScreen);
+                    }
                 }
             }}/>
+
         </View>
     );
 };
 
-export default ForgetPassword;
+export default VerifyEmail;
 

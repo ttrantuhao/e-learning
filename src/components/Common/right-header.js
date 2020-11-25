@@ -1,15 +1,14 @@
 import React, {useContext} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {Avatar, Icon} from "react-native-elements";
-import {cardColor, mySilver, myWhite} from "../../globals/styles";
-// import Menu, {MenuItem} from 'react-native-material-menu';
 import {Menu, MenuOption, MenuOptions, MenuTrigger} from "react-native-popup-menu";
-import { useNavigation } from '@react-navigation/native';
 import {screenKey} from "../../globals/constants";
 import {ThemeContext} from "../../provider/theme-provider";
+import {AuthenticationContext} from "../../provider/authentication-provider";
 
 const RightHeader = ({navigation}) => {
     const {theme} = useContext(ThemeContext);
+    const {setIsAuth} = useContext(AuthenticationContext);
     const styles = StyleSheet.create({
         rightHeader: {
             flexDirection: 'row',
@@ -40,7 +39,7 @@ const RightHeader = ({navigation}) => {
                     }
                 }}>
                     <MenuOption onSelect={() => {navigation.navigate(screenKey.SettingScreen)}} text='Setting'/>
-                    <MenuOption onSelect={() => {}} text='Logout'/>
+                    <MenuOption onSelect={() => {setIsAuth(false)}} text='Logout'/>
                 </MenuOptions>
             </Menu>
         </View>

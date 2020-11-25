@@ -7,7 +7,7 @@ export const screenKey = {
     //screen
     LoginScreen: 'login',
     RegisterScreen: 'register',
-    VerifyPasswordScreen: 'verifyPassword',
+    VerifyEmailScreen: 'verifyEmail',
     ForgetPasswordScreen: 'forgetPassword',
     HomeScreen: 'home',
     BrowseScreen: 'browse',
@@ -28,5 +28,6 @@ export const screenKey = {
     SearchTab: 'searchTab',
     ListAllStack: 'listAllStack',
     ListCourseStack: 'listCourseStack',
+    MainTab: 'mainTab'
 
 }

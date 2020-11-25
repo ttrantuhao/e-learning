@@ -31,6 +31,6 @@ export const styles = StyleSheet.create({
     },
     errorInputStyle: {
         marginTop: 0,
-        color: myBlue,
+        color: 'red',
     },
 });

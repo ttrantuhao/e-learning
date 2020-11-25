@@ -18,7 +18,8 @@ const HomeStack = () => {
                 options={({navigation}) => (
                     {
                         title: 'Home',
-                        headerRight: () => (<RightHeader navigation={navigation}/>)
+                        headerRight: () => (<RightHeader navigation={navigation}/>),
+                        headerLeft: null
                     }
                 )}
             />

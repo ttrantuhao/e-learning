@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
 import {Icon, Input} from "react-native-elements";
 import PrimaryButton from "../../Common/primary-button";
@@ -6,10 +6,12 @@ import {myBlue} from "../../../globals/styles";
 import {styles} from './styles'
 import {login} from "../../../core/services/authentication-service";
 import {screenKey} from "../../../globals/constants";
+import {AuthenticationContext} from "../../../provider/authentication-provider";
 
-const Login = ({navigation, route}) => {
+const Login = ({navigation}) => {
+    const {setIsAuth, setAuthUser, authUser} = useContext(AuthenticationContext);
     //handle input
-    const [username, setUsername] = useState('');
+    const [email, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
     //handle valid input
@@ -19,20 +21,25 @@ const Login = ({navigation, route}) => {
     //handle login
     const [status, setStatus] = useState(null);
 
+    const validateInput = (email, password) => {
+        if (email === '')
+            setEmailValid(false);
+        if (password === '')
+            setPasswordValid(false);
+        return (email !== '' && password !== '');
+    }
+
     useEffect(() => {
         if (status && status.status === 200) {
-            route.params.loginFunc();
+            setIsAuth(true);
+            setAuthUser(status.user);
+            console.log(authUser)
         }
-    })
+    }, [status])
 
     const renderStatus = (status) => {
-        if(status) {
-            if(status.status === 404)
-                return <Text style={{color: 'red', textAlign: 'center'}}>{status.errorString}</Text>
-            else if(status.status === 200)
-                return <Text style={{color: 'red',textAlign: 'center'}}>Login successfully!</Text>
-        }
-
+        if (status && status.status === 404)
+            return <Text style={{...styles.errorInputStyle, textAlign: 'center'}}>{status.errorString}</Text>
     }
 
     return (
@@ -47,13 +54,13 @@ const Login = ({navigation, route}) => {
                 inputStyle={styles.inputStyle}
                 errorStyle={styles.errorInputStyle}
                 errorMessage={
-                    emailValid ? null : 'Please enter a valid username address'
+                    emailValid ? null : 'Please enter email address'
                 }
                 placeholderTextColor={myBlue}
                 placeholder='username'
-                // value={username}
                 onChangeText={text => {
                     setUsername(text);
+                    setEmailValid(true);
                     setStatus(null);
                 }}
             />
@@ -69,21 +76,23 @@ const Login = ({navigation, route}) => {
                 placeholder='password'
                 secureTextEntry
                 errorMessage={
-                    passwordValid ? null : 'Please enter at least 8 characters'
+                    passwordValid ? null : 'Please enter password'
                 }
-                // value={password}
                 onChangeText={text => {
                     setPassword(text);
+                    setPasswordValid(true);
                     setStatus(null);
                 }}
             />
             {renderStatus(status)}
             <PrimaryButton title='Login'
-                           // onPress={route.params.loginFunc}
-                            onPress={() => {
-                                setStatus(login(username, password))
-                            }}
+                // onPress={route.params.loginFunc}
+                           onPress={() => {
+                               if (validateInput(email, password))
+                                   setStatus(login(email, password))
+                           }}
             />
+
             <View style={styles.textContainer}>
                 <TouchableOpacity onPress={() => (navigation.navigate(screenKey.ForgetPasswordScreen))}>
                     <Text style={{color: myBlue}}>

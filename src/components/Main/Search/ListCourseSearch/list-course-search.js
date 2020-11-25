@@ -22,7 +22,7 @@ const ListCourseSearch = ({navigation}) => {
             <Text style={styles.header}>
                 100 Results
             </Text>
-            <ListCourse navigation={navigation}/>
+            <ListCourse navigation={navigation} courses={[]}/>
         </View>
     );
 };
