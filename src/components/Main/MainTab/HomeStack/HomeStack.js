@@ -6,6 +6,7 @@ import CourseDetail from "../../../CourseDetail/course-detail";
 import Setting from "../../../AccountManagement/Setting/setting";
 import Profile from "../../../AccountManagement/Profile/profile";
 import {screenKey} from "../../../../globals/constants";
+import ListCourse from "../../../Course/ListCourse/list-course";
 
 const HomeStackNavigator = createStackNavigator();
 
@@ -25,6 +26,13 @@ const HomeStack = () => {
             />
             <HomeStackNavigator.Screen name={screenKey.SettingScreen} component={Setting}/>
             <HomeStackNavigator.Screen name={screenKey.ProfileScreen} component={Profile}/>
+            <HomeStackNavigator.Screen
+                name={screenKey.ListCourse}
+                component={ListCourse}
+                options={({ route }) => ({
+                    title: route.params.title
+                })}
+            />
             <HomeStackNavigator.Screen
                 name={screenKey.CourseDetailScreen}
                 component={CourseDetail}

@@ -1,12 +1,12 @@
 import React, {useContext, useState} from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View, Share} from 'react-native';
 import {Icon, Rating} from "react-native-elements";
 import {lessonDescription} from "../../../globals/mockData";
 import {ThemeContext} from "../../../provider/theme-provider";
 
-const DescriptionLesson = ({item, addFavorite, removeFavorite}) => {
+const DescriptionLesson = ({item, toggleFavorite, isFavorite, onShare}) => {
     const {theme} = useContext(ThemeContext);
-    const [isFavorite, setIsFavorite] = useState(item.isFavorite);
+
     const styles = StyleSheet.create({
         container: {
             padding: 20,
@@ -36,17 +36,7 @@ const DescriptionLesson = ({item, addFavorite, removeFavorite}) => {
         )
     }
 
-    const toggleFavorite = (item) => {
-        if (isFavorite) {
-            removeFavorite(item.id);
-        }
-        else {
-            item.isFavorite = true;
-            addFavorite(item);
-        }
-        setIsFavorite(!isFavorite);
 
-    }
 
     return (
         <View style={styles.container}>
@@ -78,7 +68,7 @@ const DescriptionLesson = ({item, addFavorite, removeFavorite}) => {
                     renderButton('Favorite', 'hearto', 'antdesign', theme.colors.text, (() => toggleFavorite(item)))
                 }
                 {renderButton('Download', 'file-download', 'material')}
-                {renderButton('Share', 'share', 'entypo')}
+                {renderButton('Share', 'share', 'entypo', theme.colors.text, (() => onShare(item)))}
                 {/*{renderButton('Bookmarked', 'bookmark', 'ionicons')}*/}
                 {/*{renderButton('Add to channel', 'broadcast-tower', 'font-awesome-5')}*/}
             </View>

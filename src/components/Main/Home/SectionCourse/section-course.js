@@ -4,13 +4,14 @@ import CourseItem from "./CourseItem/course-item";
 import ListHeader from "../../../Common/list-header";
 import {screenKey} from "../../../../globals/constants";
 
-const SectionCourse = ({title, navigation, style, courses}) => {
+const SectionCourse = ({title, navigation, style, courses, onPressSeeAll}) => {
     const onPressCourseItem = (item) => {
         navigation.push(screenKey.CourseDetailScreen, {item});
     }
+
     return (
         <View style={{...styles.container, ...style}}>
-            <ListHeader title={title} rightTitle='See all'/>
+            <ListHeader title={title} rightTitle='See all' onPress={onPressSeeAll}/>
             <FlatList
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}

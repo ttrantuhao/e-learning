@@ -2,6 +2,7 @@ import React, {useContext} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import ListCourse from "../../../Course/ListCourse/list-course";
 import {ThemeContext} from "../../../../provider/theme-provider";
+import {courses} from "../../../../globals/mockData";
 
 const ListCourseSearch = ({navigation}) => {
     const {theme} = useContext(ThemeContext);
@@ -22,7 +23,7 @@ const ListCourseSearch = ({navigation}) => {
             <Text style={styles.header}>
                 100 Results
             </Text>
-            <ListCourse navigation={navigation} courses={[]}/>
+            <ListCourse navigation={navigation} courses={courses}/>
         </View>
     );
 };

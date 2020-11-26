@@ -53,8 +53,8 @@ const SearchTab = () => {
                                            options={{title: 'ALL'}}/>
                 <SearchTabNavigator.Screen name={screenKey.ListCourseStack} component={ListCourseStack}
                                            options={{title: 'COURSES'}}/>
-                <SearchTabNavigator.Screen name={screenKey.ListPathScreen} component={ListPath}
-                                           options={{title: 'PATHS'}}/>
+                {/*<SearchTabNavigator.Screen name={screenKey.ListPathScreen} component={ListPath}*/}
+                {/*                           options={{title: 'PATHS'}}/>*/}
                 <SearchTabNavigator.Screen name={screenKey.ListAuthorScreen} component={ListAuthor}
                                            options={{title: 'AUTHORS'}}/>
             </SearchTabNavigator.Navigator>

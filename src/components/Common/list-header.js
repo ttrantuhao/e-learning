@@ -6,7 +6,7 @@ import {ThemeContext} from "../../provider/theme-provider";
 
 
 
-const ListHeader = ({title, rightTitle}) => {
+const ListHeader = ({title, rightTitle, onPress}) => {
     const {theme} = useContext(ThemeContext);
     const styles = StyleSheet.create ({
         container: {
@@ -33,7 +33,7 @@ const ListHeader = ({title, rightTitle}) => {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>{title}</Text>
-            <TouchableOpacity style={styles.seeAll}>
+            <TouchableOpacity style={styles.seeAll} onPress={onPress}>
                 <Text style={styles.seeAllText}>{rightTitle}</Text>
                 <Icon name={'chevron-small-right'} type={'entypo'} color={theme.colors.subtext} size={20}/>
             </TouchableOpacity>

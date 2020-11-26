@@ -30,8 +30,8 @@ const ListAll = ({navigation}) => {
                 />
             ))}
 
-            <ListHeader title='Paths' rightTitle='100 Results'/>
-            {path.map((item, index) => (<ListPathItem navigation={navigation} item={item} key={index}/>))}
+            {/*<ListHeader title='Paths' rightTitle='100 Results'/>*/}
+            {/*{path.map((item, index) => (<ListPathItem navigation={navigation} item={item} key={index}/>))}*/}
 
             <ListHeader title='Authors' rightTitle='100 Results'/>
             {author.map((item, index) => (<ListAuthorItem navigation={navigation} item={item} key={index}/>))}

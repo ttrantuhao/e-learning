@@ -8,7 +8,7 @@ export const login = (email, password) => {
     return {status: 404, errorString: 'Username is not exist!'}
 }
 
-export const registerAccount = (email, password) => {
+export const registerAccount = (username, email, phoneNumber, password, confirmPassword) => {
     // if(email === 'tuhao99@gmail.com') {
     //     return {status: 409, errorString: 'Email is exist!'}
     // }

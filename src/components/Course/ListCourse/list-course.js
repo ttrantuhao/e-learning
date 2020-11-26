@@ -5,7 +5,7 @@ import {mySilver} from "../../../globals/styles";
 import {screenKey} from "../../../globals/constants";
 import {ThemeContext} from "../../../provider/theme-provider";
 
-const ListCourse = ({navigation, header, courses}) => {
+const ListCourse = ({navigation, header, courses, route}) => {
     const {theme} = useContext(ThemeContext);
     const styles = StyleSheet.create({
         header: {
@@ -30,7 +30,7 @@ const ListCourse = ({navigation, header, courses}) => {
     return (
             <FlatList
                 style={styles.container}
-                data={courses}
+                data={courses ? courses : route.params.courses}
                 renderItem={({item}) => (
                     <ListCourseItem item={item}
                                     navigation={navigation}
