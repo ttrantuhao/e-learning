@@ -37,7 +37,6 @@ const Home = ({navigation}) => {
                 courses={hotCourses}
                 onPressSeeAll={() => onPressSeeAll(hotCourses, 'Recommended courses')}
             />
-            {/*<SectionPaths title='My paths'/>*/}
         </ScrollView>
 
     );

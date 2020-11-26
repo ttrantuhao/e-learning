@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import {StyleSheet, Text, TouchableOpacity} from 'react-native';
-import {myBlue, myLightWhite, myWhite} from "../../globals/styles";
+import {myWhite} from "../../globals/styles";
 import {ThemeContext} from "../../provider/theme-provider";
 
 const PrimaryButton = ({title, onPress, style}) => {

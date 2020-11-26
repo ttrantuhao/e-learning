@@ -1,6 +1,5 @@
 import React, {useContext} from 'react';
-import {Alert, Image, Share, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {mySilver, myWhite} from "../../../globals/styles";
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {Icon} from "react-native-elements";
 import {ThemeContext} from "../../../provider/theme-provider";
 
@@ -53,22 +52,4 @@ const ListCourseItem = ({item, onPress}) => {
 
 
 export default ListCourseItem;
-// onPress={() => {
-//     Alert.alert('Info', 'course list item is press',
-//         [
-//             {
-//                 text: 'Cancel',
-//                 onPress: () => {
-//                     console.log('press cancel')
-//                 }
-//             },
-//             {
-//                 text: 'OK',
-//                 onPress: () => {
-//                     Share.share({
-//                         message: 'React native with hook'
-//                     })
-//                 }
-//             }
-//         ])
-// }}
+

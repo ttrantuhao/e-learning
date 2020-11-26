@@ -9,7 +9,7 @@ import {screenKey} from "../../../globals/constants";
 import {AuthenticationContext} from "../../../provider/authentication-provider";
 
 const Login = ({navigation}) => {
-    const {setIsAuth, setAuthUser, authUser} = useContext(AuthenticationContext);
+    const {setIsAuth, setAuthUser, setToken} = useContext(AuthenticationContext);
     //handle input
     const [email, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -31,9 +31,10 @@ const Login = ({navigation}) => {
 
     useEffect(() => {
         if (status && status.status === 200) {
+            setAuthUser(status.userInfo);
+            setToken(status.token);
             setIsAuth(true);
-            setAuthUser(status.user);
-            console.log(authUser)
+            console.log(status)
         }
     }, [status])
 
@@ -49,7 +50,7 @@ const Login = ({navigation}) => {
             <Input
                 inputContainerStyle={styles.inputContainer}
                 leftIcon={
-                    <Icon name='user' type={'simple-line-icon'} color={myBlue} size={18}/>
+                    <Icon name='email' type='fontisto' color={myBlue} size={18}/>
                 }
                 inputStyle={styles.inputStyle}
                 errorStyle={styles.errorInputStyle}
@@ -57,7 +58,7 @@ const Login = ({navigation}) => {
                     emailValid ? null : 'Please enter email address'
                 }
                 placeholderTextColor={myBlue}
-                placeholder='username'
+                placeholder='email'
                 onChangeText={text => {
                     setUsername(text);
                     setEmailValid(true);
@@ -85,12 +86,12 @@ const Login = ({navigation}) => {
                 }}
             />
             {renderStatus(status)}
-            <PrimaryButton title='Login'
-                // onPress={route.params.loginFunc}
-                           onPress={() => {
-                               if (validateInput(email, password))
-                                   setStatus(login(email, password))
-                           }}
+            <PrimaryButton
+                title='Login'
+                onPress={() => {
+                    if (validateInput(email, password))
+                        setStatus(login(email, password))
+                }}
             />
 
             <View style={styles.textContainer}>

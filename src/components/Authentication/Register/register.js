@@ -80,7 +80,7 @@ const Register = ({navigation}) => {
             <Input
                 inputContainerStyle={styles.inputContainer}
                 leftIcon={
-                    <Icon name='user' type={'simple-line-icon'} color={myBlue} size={18}/>
+                    <Icon name='email' type='fontisto' color={myBlue} size={18}/>
                 }
                 inputStyle={styles.inputStyle}
                 errorStyle={styles.errorInputStyle}
@@ -98,7 +98,7 @@ const Register = ({navigation}) => {
             <Input
                 inputContainerStyle={styles.inputContainer}
                 leftIcon={
-                    <Icon name='user' type={'simple-line-icon'} color={myBlue} size={18}/>
+                    <Icon name='phone' type='antdesign' color={myBlue} size={18}/>
                 }
                 inputStyle={styles.inputStyle}
                 errorStyle={styles.errorInputStyle}

@@ -18,18 +18,15 @@ const RootStack = () => {
         isAuth ? (
             <Stack.Navigator initialRouteName={screenKey.SlashScreen}
                              headerMode={false}
-                             screenOptions={{
-                                 headerLeft: null
-                             }}
             >
-                <Stack.Screen
-                    name={screenKey.MainTab}
-                    component={MainTab}
-                    options={{headerShown: false}}
-                />
                 <Stack.Screen
                     name={screenKey.SlashScreen}
                     component={SplashScreen}
+                    options={{headerShown: false}}
+                />
+                <Stack.Screen
+                    name={screenKey.MainTab}
+                    component={MainTab}
                     options={{headerShown: false}}
                 />
             </Stack.Navigator>
