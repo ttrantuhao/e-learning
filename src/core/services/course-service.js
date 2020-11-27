@@ -1,4 +1,4 @@
-import {favoriteCourses, hotCourses, myCourses, newCourses} from "../../globals/mockData";
+import {favoriteCourses, hotCourses, myCourses, newCourses, popularSkills} from "../../globals/mockData";
 
 export const getMyCourses = (token) => {
     if(token !== 'abc')
@@ -18,4 +18,8 @@ export const getHotCourses = () => {
 
 export const getNewCourses = () => {
     return {status: 200, courses: newCourses}
+}
+
+export const getSearchHistory = () => {
+    return popularSkills.slice(0, 10);
 }

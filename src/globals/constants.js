@@ -20,6 +20,7 @@ export const screenKey = {
     ListAuthorScreen: 'listAuthor',
     ListCourse: 'listCourse',
     ListAllScreen: 'listAllScreen',
+    SearchScreen: 'searchScreen',
 
     //navigation
     HomeStack: 'homeStack',

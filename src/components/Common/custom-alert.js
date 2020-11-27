@@ -27,8 +27,8 @@ const CustomAlert = ({visible, title, message, onOk, onCancel}) => {
     })
     return (
         <Modal isVisible={visible}
-               backdropColor={theme.colors.text}
-               backdropOpacity={0.5}
+               backdropColor={theme.colors.subtext}
+               backdropOpacity={0.3}
         >
             <View style={styles.container}>
                 <Text style={styles.title}>{title}</Text>

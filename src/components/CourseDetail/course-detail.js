@@ -21,7 +21,8 @@ const CourseDetail = ({route, navigation}) => {
 
     const toggleFavorite = (item) => {
         if (item.isFavorite) {
-            setFavoriteCourses(favoriteCourses.filter((item) => item.id !== id));
+            item.isFavorite = false
+            setFavoriteCourses(favoriteCourses.filter((fItem) => fItem.id !== item.id));
         } else {
             item.isFavorite = true;
             setFavoriteCourses([...favoriteCourses, item]);
