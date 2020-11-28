@@ -1,5 +1,5 @@
 import React, {useContext, useState} from 'react';
-import {ScrollView, StyleSheet, View, Share} from 'react-native';
+import {ScrollView, StyleSheet, View, Share, ActivityIndicator, Box} from 'react-native';
 import VideoPlayer from "./VideoPlayer/video-player";
 import DescriptionLesson from "./DescriptionLesson/description-lesson";
 import ListLesson from "./ListLesson/list-lesson";
@@ -8,6 +8,7 @@ import SectionCourse from "../Main/Home/SectionCourse/section-course";
 import {CourseContext} from "../../provider/course-provider";
 import CustomAlert from "../Common/custom-alert";
 import CourseDetailTab from "./CourseDetailTab/course-detail-tab";
+import {screenKey} from "../../globals/constants";
 
 const CourseDetail = ({route, navigation}) => {
     const styles = StyleSheet.create({
@@ -21,6 +22,7 @@ const CourseDetail = ({route, navigation}) => {
     const item = route.params.item;
     const [isFavorite, setIsFavorite] = useState(item.isFavorite);
     const [visible, setVisible] = useState(false);
+    const [activeTab, setActiveTab] = useState(screenKey.ListLesson) //your default (first) tab
 
     const toggleFavorite = (item) => {
         if (item.isFavorite) {
@@ -71,7 +73,7 @@ const CourseDetail = ({route, navigation}) => {
                              visible={visible}
                              onOk={() => setVisible(false)}
                 />
-                <CourseDetailTab/>
+                <CourseDetailTab activeTab={activeTab} onChange={(tab) => setActiveTab(tab)}/>
                 <SectionCourse title={'Related courses'} style={{margin: 10}} courses={courses}
                                navigation={navigation}/>
             </ScrollView>

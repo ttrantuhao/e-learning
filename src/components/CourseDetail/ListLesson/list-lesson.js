@@ -9,7 +9,8 @@ const ListLesson = () => {
     const {theme} = useContext(ThemeContext);
     const styles = StyleSheet.create({
         container: {
-            margin: 20
+            margin: 20,
+            flex: 1
         },
         sectionContainer: {
             flexDirection: 'row',

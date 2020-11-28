@@ -91,15 +91,17 @@ const ListComment = () => {
     }
 
     return (
-        <FlatList
-            data={comments}
-            renderItem={({item}) => (<ListCommentItem item={item}/>)}
-            ItemSeparatorComponent={() => (
-                <View style={{height: 1, backgroundColor: theme.colors.border, margin: 5}}/>
-            )}
-            keyExtractor={(item) => item.id.toString()}
-            ListHeaderComponent={renderCommentSection()}
-        />
+        <View style={{flex: 1}}>
+            <FlatList
+                data={comments}
+                renderItem={({item}) => (<ListCommentItem item={item}/>)}
+                ItemSeparatorComponent={() => (
+                    <View style={{height: 1, backgroundColor: theme.colors.border, margin: 5}}/>
+                )}
+                keyExtractor={(item) => item.id.toString()}
+                ListHeaderComponent={renderCommentSection()}
+            />
+        </View>
     );
 };
 
