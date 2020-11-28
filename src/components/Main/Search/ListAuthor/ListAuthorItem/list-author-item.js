@@ -1,9 +1,32 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {Avatar, Icon} from "react-native-elements";
 import {mySilver, myWhite} from "../../../../../globals/styles";
+import {ThemeContext} from "../../../../../provider/theme-provider";
 
 const ListAuthorItem = ({item}) => {
+    const {theme} = useContext(ThemeContext);
+    const styles = StyleSheet.create({
+        container: {
+            flexDirection: 'row',
+            padding: 10,
+            minHeight: 70,
+            // justifyContent: 'space-between'
+            alignItems: 'center'
+        },
+        authorInfo: {
+            marginLeft: 20,
+        },
+        title: {
+            color: theme.colors.text,
+            fontSize: 16
+        },
+        content: {
+            color: theme.colors.subtext,
+            fontSize: 12
+        },
+    })
+
     return (
         <TouchableOpacity style={styles.container}>
             <Avatar
@@ -19,25 +42,6 @@ const ListAuthorItem = ({item}) => {
     );
 };
 
-const styles = StyleSheet.create({
-    container: {
-        flexDirection: 'row',
-        padding: 10,
-        minHeight: 70,
-        // justifyContent: 'space-between'
-        alignItems: 'center'
-    },
-    authorInfo: {
-        marginLeft: 20,
-    },
-    title: {
-        color: myWhite,
-        fontSize: 16
-    },
-    content: {
-        color: mySilver,
-        fontSize: 12
-    },
-})
+
 
 export default ListAuthorItem;

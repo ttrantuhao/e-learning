@@ -1,78 +1,87 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {cardColor, myLightWhite, mySilver, myWhite, skillBtnColor} from "../../../globals/styles";
-import {Icon} from "react-native-elements";
-import {lessonDescription} from "../../../globals/mockData";
-import SmallButton from "../../Common/small-button";
+import {Icon, Rating} from "react-native-elements";
+import {ThemeContext} from "../../../provider/theme-provider";
 
-const DescriptionLesson = ({item}) => {
-    const renderButton = (title, name, type) => {
-        return  (
-            <TouchableOpacity>
-                <Icon name={name} type={type} color={myWhite} size={23} />
-                <Text style={{color: myWhite, fontSize: 13}}>{title}</Text>
-            </TouchableOpacity>
-        )
-    }
-    const renderAuthor = (name) => {
+const DescriptionLesson = ({item, toggleFavorite, isFavorite, onShare, onRegister}) => {
+    const {theme} = useContext(ThemeContext);
+    const styles = StyleSheet.create({
+        container: {
+            padding: 15,
+            backgroundColor: theme.colors.card,
+            justifyContent: 'flex-start'
+        },
+        title: {
+            color: theme.colors.text,
+            fontSize: 23,
+            flex: 1
+        },
+        author: {
+            flexDirection: 'row',
+        },
+    })
+
+    const renderButton = (title, name, type, color, onPress) => {
         return (
-            <TouchableOpacity
-                style={styles.buttonAuthor}
-            >
-                <Text style={styles.textAuthor}>
-                    {name}
-                </Text>
+            <TouchableOpacity onPress={onPress}>
+                <Icon name={name} type={type} color={color ? color : theme.colors.text} size={23}/>
+                <Text style={{color: theme.colors.text, fontSize: 13}}>{title}</Text>
             </TouchableOpacity>
         )
     }
+
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>React Native Introduction</Text>
-            <View style={styles.author}>
-                <SmallButton title={'Jim Cooper'}/>
-                <SmallButton title={'Joe Eames'}/>
-                {/*{renderAuthor('Jim Cooper')}*/}
-                {/*{renderAuthor('Joe Eames')}*/}
+            <View style={{flexDirection: 'row', marginBottom: 10, alignItems: 'center'}}>
+                <Text style={styles.title}>{item.title}</Text>
+                {
+                    item.isMine ?
+                        <Text style={{ color: theme.colors.subtext, fontSize: 16, marginLeft: 5}}>Đã đăng ký</Text> :
+                        <TouchableOpacity onPress={() => onRegister(item)}>
+                            <Text style={{ color: theme.colors.primary, fontSize: 16}}>Đăng ký</Text>
+                        </TouchableOpacity>
+                }
+
             </View>
-            <Text style={{fontSize: 12, color: mySilver, marginTop: 5}}>
+
+            <View style={{flexDirection: 'row', alignItems: 'center', marginBottom: 10}}>
+                <Rating
+                    readonly={true}
+                    startingValue={item.rating}
+                    imageSize={18}
+                    ratingBackgroundColor={theme.colors.subtext}
+                    tintColor={theme.colors.card}
+                    type={'custom'}
+                />
+                <Text style={{fontSize: 13, color: theme.colors.subtext, marginHorizontal: 5}}>(200)</Text>
+            </View>
+
+
+            {/*<View style={styles.author}>*/}
+            {/*    <SmallButton title={'Jim Cooper'}/>*/}
+            {/*    <SmallButton title={'Joe Eames'}/>*/}
+            {/*</View>*/}
+            <Text style={{fontSize: 12, color: theme.colors.subtext, marginTop: 5}}>
                 {`${item.level} . ${item.released} . ${item.duration}`}
             </Text>
             <View style={{flexDirection: 'row', justifyContent: 'space-around', marginTop: 15}}>
-                {renderButton('Bookmarked', 'bookmark', 'ionicons')}
-                {renderButton('Add to channel', 'broadcast-tower', 'font-awesome-5')}
+                {isFavorite ?
+                    renderButton('Favorite', 'heart', 'antdesign', "#B22222", (() => toggleFavorite(item))) :
+                    renderButton('Favorite', 'hearto', 'antdesign', theme.colors.text, (() => toggleFavorite(item)))
+                }
                 {renderButton('Download', 'file-download', 'material')}
+                {renderButton('Share', 'share', 'entypo', theme.colors.text, (() => onShare(item)))}
+                {/*{renderButton('Bookmarked', 'bookmark', 'ionicons')}*/}
+                {/*{renderButton('Add to channel', 'broadcast-tower', 'font-awesome-5')}*/}
             </View>
-            <Text style={{color: myWhite, textAlign: 'justify', marginTop: 20, fontSize: 14}}>{lessonDescription}</Text>
+            <Text style={{
+                color: theme.colors.text,
+                textAlign: 'justify',
+                marginTop: 20,
+                fontSize: 14
+            }}>{item.description}</Text>
         </View>
     );
 };
-
-const styles = StyleSheet.create({
-    container: {
-        padding: 20,
-        backgroundColor: cardColor
-    },
-    title: {
-        color: myWhite,
-        fontSize: 23
-    },
-    buttonAuthor: {
-        backgroundColor: skillBtnColor,
-        borderRadius: 40,
-        height: 25,
-        justifyContent: 'center',
-        marginTop: 10,
-        marginRight: 5
-    },
-    textAuthor: {
-        fontSize: 12,
-        color: myLightWhite,
-        textAlign: 'center',
-        padding: 12
-    },
-    author: {
-        flexDirection: 'row'
-    }
-})
 
 export default DescriptionLesson;

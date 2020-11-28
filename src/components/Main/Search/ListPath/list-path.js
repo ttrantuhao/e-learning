@@ -1,10 +1,29 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {FlatList, StyleSheet, Text, View} from 'react-native';
 import { paths} from "../../../../globals/mockData";
 import {mySilver} from "../../../../globals/styles";
 import ListPathItem from "./ListPathItem/list-path-item";
+import {ThemeContext} from "../../../../provider/theme-provider";
 
 const ListPath = () => {
+    const {theme} = useContext(ThemeContext);
+    const styles = StyleSheet.create({
+        header: {
+            color: theme.colors.text,
+            fontSize: 13,
+            margin: 10,
+            fontWeight: 'bold'
+        },
+        container: {
+            flex: 1,
+
+        },
+        separator: {
+            height: 1,
+            backgroundColor: theme.colors.border,
+            margin: 5
+        }
+    })
     const renderSeparator = () => (<View style={styles.separator}/>);
 
     return (
@@ -22,21 +41,6 @@ const ListPath = () => {
     );
 };
 
-const styles = StyleSheet.create({
-    header: {
-        color: mySilver,
-        fontSize: 13,
-        margin: 10
-    },
-    container: {
-        marginBottom: 10,
-        marginTop: 10
-    },
-    separator: {
-        height: 0.5,
-        backgroundColor: mySilver,
-        margin: 5
-    }
-})
+
 
 export default ListPath;

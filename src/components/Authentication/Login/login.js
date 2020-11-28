@@ -1,13 +1,47 @@
-import React, {useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
 import {Icon, Input} from "react-native-elements";
 import PrimaryButton from "../../Common/primary-button";
 import {myBlue} from "../../../globals/styles";
 import {styles} from './styles'
+import {login} from "../../../core/services/authentication-service";
+import {screenKey} from "../../../globals/constants";
+import {AuthenticationContext} from "../../../provider/authentication-provider";
 
-const Login = ({navigation, route}) => {
+const Login = ({navigation}) => {
+    const {setIsAuth, setAuthUser, setToken} = useContext(AuthenticationContext);
+    //handle input
+    const [email, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+
+    //handle valid input
     const [emailValid, setEmailValid] = useState(true);
     const [passwordValid, setPasswordValid] = useState(true);
+
+    //handle login
+    const [status, setStatus] = useState(null);
+
+    const validateInput = (email, password) => {
+        if (email === '')
+            setEmailValid(false);
+        if (password === '')
+            setPasswordValid(false);
+        return (email !== '' && password !== '');
+    }
+
+    useEffect(() => {
+        if (status && status.status === 200) {
+            setAuthUser(status.userInfo);
+            setToken(status.token);
+            setIsAuth(true);
+            console.log(status)
+        }
+    }, [status])
+
+    const renderStatus = (status) => {
+        if (status && status.status === 404)
+            return <Text style={{...styles.errorInputStyle, textAlign: 'center'}}>{status.errorString}</Text>
+    }
 
     return (
         <View style={styles.container}>
@@ -16,15 +50,20 @@ const Login = ({navigation, route}) => {
             <Input
                 inputContainerStyle={styles.inputContainer}
                 leftIcon={
-                    <Icon name='user' type={'simple-line-icon'} color={myBlue} size={18}/>
+                    <Icon name='email' type='fontisto' color={myBlue} size={18}/>
                 }
                 inputStyle={styles.inputStyle}
                 errorStyle={styles.errorInputStyle}
                 errorMessage={
-                    emailValid ? null : 'Please enter a valid email address'
+                    emailValid ? null : 'Please enter email address'
                 }
                 placeholderTextColor={myBlue}
                 placeholder='email'
+                onChangeText={text => {
+                    setUsername(text);
+                    setEmailValid(true);
+                    setStatus(null);
+                }}
             />
 
             <Input
@@ -38,17 +77,30 @@ const Login = ({navigation, route}) => {
                 placeholder='password'
                 secureTextEntry
                 errorMessage={
-                    passwordValid ? null : 'Please enter at least 8 characters'
+                    passwordValid ? null : 'Please enter password'
                 }
+                onChangeText={text => {
+                    setPassword(text);
+                    setPasswordValid(true);
+                    setStatus(null);
+                }}
             />
-            <PrimaryButton title='Login' onPress={route.params.func}/>
+            {renderStatus(status)}
+            <PrimaryButton
+                title='Login'
+                onPress={() => {
+                    if (validateInput(email, password))
+                        setStatus(login(email, password))
+                }}
+            />
+
             <View style={styles.textContainer}>
-                <TouchableOpacity onPress={() => (navigation.navigate('ForgetPassword'))}>
+                <TouchableOpacity onPress={() => (navigation.navigate(screenKey.ForgetPasswordScreen))}>
                     <Text style={{color: myBlue}}>
                         Forget password
                     </Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => (navigation.navigate('Register'))}>
+                <TouchableOpacity onPress={() => (navigation.navigate(screenKey.RegisterScreen))}>
                     <Text style={{color: myBlue}}>
                         Register
                     </Text>

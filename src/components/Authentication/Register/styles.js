@@ -5,9 +5,10 @@ export const styles = StyleSheet.create({
     container: {
         width: '100%',
         flex: 1,
-        justifyContent: 'center',
-        backgroundColor: bgColor,
-        padding: 20
+        // justifyContent: 'center',
+        backgroundColor: "#FFFFFF",
+        padding: 20,
+        paddingVertical: 50
     },
     title: {
         color: myBlue,
@@ -25,7 +26,7 @@ export const styles = StyleSheet.create({
     inputStyle: {
         flex: 1,
         marginLeft: 10,
-        color: myLightWhite,
+        color: 'black',
         fontSize: 16,
     },
     errorInputStyle: {

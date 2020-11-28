@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
         width: '100%',
         flex: 1,
         justifyContent: 'flex-start',
-        backgroundColor: bgColor,
+        backgroundColor: "#FFFFFF",
         padding: 20,
         marginTop: 30
     },
@@ -26,7 +26,7 @@ export const styles = StyleSheet.create({
     inputStyle: {
         flex: 1,
         marginLeft: 10,
-        color: myLightWhite,
+        color: 'black',
         fontSize: 16,
     },
     errorInputStyle: {
