@@ -1,3 +1,37 @@
+export const comments = [
+    {
+        id: 1,
+        score: 4,
+        content: 'easy to understand',
+        author: 'hao'
+    },
+    {
+        id: 2,
+        score: 3,
+        content: 'not bad',
+        author: 'duyen'
+    },
+    {
+        id: 3,
+        score: 5,
+        content: 'The program has been excellent so far. The first project allows me to implement the knowledge that I have gained into a process/product that has practical value. The software engineering skills that are implicitly taught in the project have been valuable as I get to understand how the entire ETL pipeline is constructed using multiple files. In addition, the workspace feature provided by Udacity removes the complexity of having to set up the environments in our personal computers and allow us to focus on the materials taught in the lesson. Overall, I am a happy student and am eager to continue my journey with E-learning.',
+        author: 'duy'
+    },
+    {
+        id: 4,
+        score: 3,
+        content: 'good',
+        author: 'hang'
+    },
+    {
+        id: 5,
+        score: 1,
+        content: 'low quantity',
+        author: 'han'
+    },
+];
+
+
 export const lesson = [
     {
         title: 'Course Overview',

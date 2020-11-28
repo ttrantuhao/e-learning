@@ -1,30 +1,24 @@
-import React, {useContext, useState} from 'react';
-import {StyleSheet, Text, TouchableOpacity, View, Share} from 'react-native';
+import React, {useContext} from 'react';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {Icon, Rating} from "react-native-elements";
-import {lessonDescription} from "../../../globals/mockData";
 import {ThemeContext} from "../../../provider/theme-provider";
 
-const DescriptionLesson = ({item, toggleFavorite, isFavorite, onShare}) => {
+const DescriptionLesson = ({item, toggleFavorite, isFavorite, onShare, onRegister}) => {
     const {theme} = useContext(ThemeContext);
-
     const styles = StyleSheet.create({
         container: {
-            padding: 20,
+            padding: 15,
             backgroundColor: theme.colors.card,
             justifyContent: 'flex-start'
         },
         title: {
             color: theme.colors.text,
-            fontSize: 23
+            fontSize: 23,
+            flex: 1
         },
         author: {
             flexDirection: 'row',
         },
-        price: {
-            alignSelf: 'flex-end',
-            color: 'red',
-            fontSize: 20
-        }
     })
 
     const renderButton = (title, name, type, color, onPress) => {
@@ -36,12 +30,20 @@ const DescriptionLesson = ({item, toggleFavorite, isFavorite, onShare}) => {
         )
     }
 
-
-
     return (
         <View style={styles.container}>
-            {/*<Text style={styles.price}>Free</Text>*/}
-            <Text style={styles.title}>{item.title}</Text>
+            <View style={{flexDirection: 'row', marginBottom: 10, alignItems: 'center'}}>
+                <Text style={styles.title}>{item.title}</Text>
+                {
+                    item.isMine ?
+                        <Text style={{ color: theme.colors.subtext, fontSize: 16, marginLeft: 5}}>Đã đăng ký</Text> :
+                        <TouchableOpacity onPress={() => onRegister(item)}>
+                            <Text style={{ color: theme.colors.primary, fontSize: 16}}>Đăng ký</Text>
+                        </TouchableOpacity>
+                }
+
+            </View>
+
             <View style={{flexDirection: 'row', alignItems: 'center', marginBottom: 10}}>
                 <Rating
                     readonly={true}

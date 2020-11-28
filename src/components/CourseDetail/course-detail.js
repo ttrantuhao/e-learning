@@ -6,6 +6,8 @@ import ListLesson from "./ListLesson/list-lesson";
 import {courses} from "../../globals/mockData";
 import SectionCourse from "../Main/Home/SectionCourse/section-course";
 import {CourseContext} from "../../provider/course-provider";
+import CustomAlert from "../Common/custom-alert";
+import CourseDetailTab from "./CourseDetailTab/course-detail-tab";
 
 const CourseDetail = ({route, navigation}) => {
     const styles = StyleSheet.create({
@@ -15,9 +17,10 @@ const CourseDetail = ({route, navigation}) => {
         }
     })
 
-    const {favoriteCourses, setFavoriteCourses} = useContext(CourseContext);
+    const {favoriteCourses, setFavoriteCourses, myCourses, setMyCourses} = useContext(CourseContext);
     const item = route.params.item;
     const [isFavorite, setIsFavorite] = useState(item.isFavorite);
+    const [visible, setVisible] = useState(false);
 
     const toggleFavorite = (item) => {
         if (item.isFavorite) {
@@ -28,6 +31,12 @@ const CourseDetail = ({route, navigation}) => {
             setFavoriteCourses([...favoriteCourses, item]);
         }
         setIsFavorite(!isFavorite);
+    }
+
+    const onRegister = (item) => {
+        item.isMine = true;
+        setMyCourses([...myCourses, item]);
+        setVisible(true);
     }
 
     const onPressShareBtn = async (item) => {
@@ -53,8 +62,16 @@ const CourseDetail = ({route, navigation}) => {
         <View style={styles.container}>
             <VideoPlayer/>
             <ScrollView showsVerticalScrollIndicator={false}>
-                <DescriptionLesson item={item} toggleFavorite={toggleFavorite} isFavorite={isFavorite} onShare={onPressShareBtn}/>
-                <ListLesson/>
+                <DescriptionLesson item={item} toggleFavorite={toggleFavorite} isFavorite={isFavorite}
+                                   onShare={onPressShareBtn}
+                                   onRegister={onRegister}
+                />
+                <CustomAlert title='Enroll course successfully!'
+                             message='This course is added to "my course" list'
+                             visible={visible}
+                             onOk={() => setVisible(false)}
+                />
+                <CourseDetailTab/>
                 <SectionCourse title={'Related courses'} style={{margin: 10}} courses={courses}
                                navigation={navigation}/>
             </ScrollView>

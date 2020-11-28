@@ -21,6 +21,8 @@ export const screenKey = {
     ListCourse: 'listCourse',
     ListAllScreen: 'listAllScreen',
     SearchScreen: 'searchScreen',
+    ListLesson: 'ListLesson',
+    ListComment: 'listComment',
 
     //navigation
     HomeStack: 'homeStack',

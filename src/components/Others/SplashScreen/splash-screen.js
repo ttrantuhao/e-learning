@@ -20,7 +20,7 @@ const SplashScreen = ({navigation}) => {
             const newCourses = getNewCourses().courses;
             if (initCourseContext(myCourses, favoriteCourses, hotCourses, newCourses)) {
                 favoriteCourses = favoriteCourses.filter(item => item.isFavorite = true);
-                // myCourses = myCourses.filter(item => item.isMine = true);
+                myCourses = myCourses.filter(item => item.isMine = true);
                 navigation.navigate(screenKey.MainTab);
             }
 
