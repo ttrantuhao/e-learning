@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {ScrollView, Text, TouchableOpacity} from 'react-native';
 import {Icon, Input} from "react-native-elements";
 import PrimaryButton from "../../Common/primary-button";
@@ -23,6 +23,12 @@ const Register = ({navigation}) => {
     const [passwordValid, setPasswordValid] = useState(true);
     const [confirmPasswordValid, setConfirmPasswordValid] = useState(true);
     const [matchPassword, setMatchPassword] = useState(true);
+
+    useEffect(() => {
+        if(status && status.status === 200) {
+            navigation.navigate(screenKey.VerifyEmailScreen, {email});
+        }
+    }, [status])
 
     const validateInput = (username, email, phoneNumber, password, confirmPassword) => {
         if (username === '')
@@ -156,9 +162,7 @@ const Register = ({navigation}) => {
                 onPress={() => {
                     if (validateInput(username, email, phoneNumber, password, confirmPassword)) {
                         setStatus(registerAccount(email, password));
-                        if(status && status.status === 200) {
-                            navigation.navigate(screenKey.VerifyEmailScreen, {email});
-                        }
+
                     }
                 }}
             />

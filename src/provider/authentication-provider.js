@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 const AuthenticationContext = React.createContext();
 
 const AuthenticationProvider = ({children}) => {
-    const [isAuth, setIsAuth] = useState(true);
+    const [isAuth, setIsAuth] = useState(false);
     const [authUser, setAuthUser] = useState({
         id: '123',
         email: 'tuhao99@gmail.com',

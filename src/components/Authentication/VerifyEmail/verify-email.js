@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Text, View} from 'react-native';
 import {Input} from "react-native-elements";
 import PrimaryButton from "../../Common/primary-button";
@@ -12,6 +12,13 @@ const VerifyEmail = ({navigation, route}) => {
     const [codeValid, setCodeValid] = useState(true);
     const [status, setStatus] = useState(null);
     const email = route.params.email;
+
+    useEffect(() => {
+        if(status && status.status === 200) {
+            navigation.navigate(screenKey.LoginScreen);
+        }
+    }, [status])
+
     const validateInput = (code) => {
         if (code === '')
             setCodeValid(false);
@@ -44,10 +51,7 @@ const VerifyEmail = ({navigation, route}) => {
             <PrimaryButton title='Verify' onPress={() => {
                 if(validateInput(code)) {
                     setStatus(verifyAccount(email, code))
-                    if(status && status.status === 200) {
-                        // console.log(status);
-                        navigation.navigate(screenKey.LoginScreen);
-                    }
+
                 }
             }}/>
 
