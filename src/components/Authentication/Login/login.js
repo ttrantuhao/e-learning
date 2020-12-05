@@ -7,9 +7,9 @@ import {styles} from './styles'
 import {screenKey} from "../../../globals/constants";
 import {AuthenticationContext} from "../../../provider/authentication-provider";
 import MyActivityIndicator from "../../Common/my-activity-indicator";
+import Error from "../../Common/error";
 
 const Login = ({navigation}) => {
-    // const {setIsAuth, setAuthUser, setToken} = useContext(AuthenticationContext);
     //handle input
     const [email, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -17,8 +17,6 @@ const Login = ({navigation}) => {
     const [emailValid, setEmailValid] = useState(true);
     const [passwordValid, setPasswordValid] = useState(true);
 
-    //handle login
-    // const [status, setStatus] = useState(null);
     const authContext = useContext(AuthenticationContext)
 
     const validateInput = (email, password) => {
@@ -27,20 +25,6 @@ const Login = ({navigation}) => {
         if (password === '')
             setPasswordValid(false);
         return (email !== '' && password !== '');
-    }
-
-    // useEffect(() => {
-    //     if (status && status.status === 200) {
-    //         setAuthUser(status.userInfo);
-    //         setToken(status.token);
-    //         setIsAuth(true);
-    //         console.log(status)
-    //     }
-    // }, [status])
-
-    const renderStatus = (errMessage) => {
-        if (errMessage)
-            return <Text style={{...styles.errorInputStyle, textAlign: 'center'}}>{errMessage}</Text>
     }
 
     return (
@@ -63,7 +47,6 @@ const Login = ({navigation}) => {
                 onChangeText={text => {
                     setUsername(text);
                     setEmailValid(true);
-                    // setStatus(null);
                 }}
             />
 
@@ -86,7 +69,7 @@ const Login = ({navigation}) => {
                     // setStatus(null);
                 }}
             />
-            {renderStatus(authContext.state.errMessage)}
+            {authContext.state.errMessage && <Error message={authContext.state.errMessage}/>}
             <PrimaryButton
                 title='Login'
                 onPress={() => {

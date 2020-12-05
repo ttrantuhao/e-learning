@@ -14,7 +14,7 @@ export const styles = StyleSheet.create({
         color: myBlue,
         fontSize: 30,
         textAlign: 'center',
-        marginBottom: 60,
+        marginBottom: 40,
     },
     inputContainer: {
         paddingLeft: 8,
@@ -35,6 +35,7 @@ export const styles = StyleSheet.create({
     },
     loginText: {
         textAlign: 'center',
-        color: myBlue
+        color: myBlue,
+        marginBottom: 20
     }
 });

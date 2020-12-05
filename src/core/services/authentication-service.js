@@ -7,11 +7,13 @@ export const apiLogin = (email, password) => {
     })
 }
 
-export const registerAccount = (username, email, phoneNumber, password, confirmPassword) => {
-    if(email === 'tuhao99@gmail.com' || phoneNumber === '0932648392') {
-        return {status: 400, errorString: 'Email or phone number is exist!'}
-    }
-    return {status: 200}
+export const api_register = (username, email, phoneNumber, password,) => {
+    return axios.post("http://api.dev.letstudy.org/user/register", {
+        username,
+        email,
+        phone: phoneNumber,
+        password
+    })
 }
 
 export const sendActivateEmail = (email) => {
