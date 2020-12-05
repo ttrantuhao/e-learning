@@ -1,3 +1,12 @@
+import axios from "axios";
+
+export const apiLogin = (email, password) => {
+    return axios.post("http://api.dev.letstudy.org/user/login", {
+        email,
+        password
+    })
+}
+
 export const registerAccount = (username, email, phoneNumber, password, confirmPassword) => {
     if(email === 'tuhao99@gmail.com' || phoneNumber === '0932648392') {
         return {status: 400, errorString: 'Email or phone number is exist!'}

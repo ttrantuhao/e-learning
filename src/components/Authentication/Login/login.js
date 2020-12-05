@@ -6,6 +6,7 @@ import {myBlue} from "../../../globals/styles";
 import {styles} from './styles'
 import {screenKey} from "../../../globals/constants";
 import {AuthenticationContext} from "../../../provider/authentication-provider";
+import MyActivityIndicator from "../../Common/my-activity-indicator";
 
 const Login = ({navigation}) => {
     // const {setIsAuth, setAuthUser, setToken} = useContext(AuthenticationContext);
@@ -46,6 +47,7 @@ const Login = ({navigation}) => {
         <View style={styles.container}>
             <Icon name='account-circle' type={'material-community'} color={myBlue} size={70}/>
             <Text style={styles.title}>Login</Text>
+            {authContext.state.isAuthenticating && <MyActivityIndicator/>}
             <Input
                 inputContainerStyle={styles.inputContainer}
                 leftIcon={

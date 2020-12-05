@@ -9,7 +9,8 @@ const MyActivityIndicator = () => {
             color={myBlue}
             style={{
                 justifyContent: 'center',
-                alignItems: 'center'
+                alignItems: 'center',
+                marginVertical: 10
             }}
         />
     );
