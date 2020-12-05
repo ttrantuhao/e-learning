@@ -17,13 +17,19 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.trantuhao.elearning",
+      "buildNumber": "1.0.0"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "androidNavigationBar": {
       "backgroundColor": "#000000"
+    },
+    "android": {
+      "package": "com.trantuhao.elearning",
+      "versionCode": 1
     }
   }
 }

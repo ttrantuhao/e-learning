@@ -43,11 +43,6 @@ const RootStack = () => {
                     options={{headerShown: false}}
                 />
                 <Stack.Screen
-                    name={screenKey.VerifyEmailScreen}
-                    component={VerifyEmail}
-                    options={{headerShown: false}}
-                />
-                <Stack.Screen
                     name={screenKey.ForgetPasswordScreen}
                     component={ForgetPassword}
                     options={{headerShown: false}}/>

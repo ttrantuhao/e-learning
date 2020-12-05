@@ -8,6 +8,7 @@ import {screenKey} from "../../../globals/constants";
 import {AuthenticationContext} from "../../../provider/authentication-provider";
 import MyActivityIndicator from "../../Common/my-activity-indicator";
 import Error from "../../Common/error";
+import * as Application from 'expo-application';
 
 const Login = ({navigation}) => {
     //handle input
@@ -29,6 +30,7 @@ const Login = ({navigation}) => {
 
     return (
         <View style={styles.container}>
+            {console.log(Application.applicationId)}
             <Icon name='account-circle' type={'material-community'} color={myBlue} size={70}/>
             <Text style={styles.title}>Login</Text>
             {authContext.state.isAuthenticating && <MyActivityIndicator/>}
