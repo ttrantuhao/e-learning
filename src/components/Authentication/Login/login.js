@@ -4,11 +4,13 @@ import {Icon, Input} from "react-native-elements";
 import PrimaryButton from "../../Common/primary-button";
 import {myBlue} from "../../../globals/styles";
 import {styles} from './styles'
-import {screenKey} from "../../../globals/constants";
+import {ANDROID_CLIENT_ID, screenKey} from "../../../globals/constants";
 import {AuthenticationContext} from "../../../provider/authentication-provider";
 import MyActivityIndicator from "../../Common/my-activity-indicator";
 import Error from "../../Common/error";
 import * as Application from 'expo-application';
+import * as Google from 'expo-google-app-auth';
+import {loginGoogle} from "../../../action/authentication-action";
 
 const Login = ({navigation}) => {
     //handle input
@@ -30,7 +32,6 @@ const Login = ({navigation}) => {
 
     return (
         <View style={styles.container}>
-            {console.log(Application.applicationId)}
             <Icon name='account-circle' type={'material-community'} color={myBlue} size={70}/>
             <Text style={styles.title}>Login</Text>
             {authContext.state.isAuthenticating && <MyActivityIndicator/>}
@@ -79,6 +80,12 @@ const Login = ({navigation}) => {
                         // setStatus(login(email, password))
                         authContext.login(email, password);
                     }
+                }}
+            />
+            <PrimaryButton
+                title='Login google'
+                onPress={async () => {
+                    authContext.loginGoogle();
                 }}
             />
 

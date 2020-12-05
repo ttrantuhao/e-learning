@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {apiLogin} from "../core/services/authentication-service";
+import {apiLogin, apiLoginGoogle} from "../core/services/authentication-service";
 
 export const LOGIN_SUCCEEDED = "LOGIN_SUCCEEDED";
 export const LOGIN_FAILED = "LOGIN_FAILED";
@@ -7,8 +7,8 @@ export const LOGOUT_REQUEST = "LOGOUT_REQUEST";
 export const LOGIN_REQUEST = "LOGIN_REQUEST";
 
 const loginSucceeded = (data) => ({type: "LOGIN_SUCCEEDED", data})
-const loginFailed= (data) => ({type: LOGIN_FAILED, data})
-const logoutRequest= () => ({type: LOGOUT_REQUEST})
+const loginFailed = (data) => ({type: LOGIN_FAILED, data})
+const logoutRequest = () => ({type: LOGOUT_REQUEST})
 
 export const login = (dispatch) => (email, password) => {
     dispatch({type: LOGIN_REQUEST})
@@ -19,19 +19,15 @@ export const login = (dispatch) => (email, password) => {
     })
 }
 
-export const logout = (dispatch) => () => {dispatch(logoutRequest())}
+export const logout = (dispatch) => () => {
+    dispatch(logoutRequest())
+}
 
-export const myRegister = (dispatch) => (email, password) => {
-    axios.post("http://api.dev.letstudy.org//user/login", {
-        email,
-        password
-    }).then(response => {
-        if (response.status === 200)
-            dispatch(loginSucceeded(response.data))
-        else {
-            dispatch({type: "LOGIN_FAILED"})
-        }
+export const loginGoogle = (dispatch) => () => {
+    dispatch({type: LOGIN_REQUEST})
+    apiLoginGoogle().then(response => {
+        dispatch(loginSucceeded(response.data))
     }).catch(err => {
-        dispatch({type: "LOGIN_FAILED"})
+        dispatch(loginFailed(err.response.data))
     })
 }

@@ -5,10 +5,10 @@ import PrimaryButton from "../../Common/primary-button";
 import {myBlue} from "../../../globals/styles";
 import {styles} from './styles'
 import {screenKey} from "../../../globals/constants";
-import {api_register} from "../../../core/services/authentication-service";
 import Error from "../../Common/error";
 import CustomAlert from "../../Common/custom-alert";
 import MyActivityIndicator from "../../Common/my-activity-indicator";
+import {apiRegister} from "../../../core/services/user-service";
 
 const Register = ({navigation}) => {
     const [errMessage, setErrMessage] = useState(null);
@@ -56,7 +56,7 @@ const Register = ({navigation}) => {
     const onPressRegister = () => {
         if (validateInput(username, email, phoneNumber, password, confirmPassword)) {
             setIsLoading(true);
-            api_register(username, email, phoneNumber, password)
+            apiRegister(username, email, phoneNumber, password)
                 .then(response => {
                     setIsLoading(false);
                     setShowSuccessModal(true);

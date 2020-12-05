@@ -1,6 +1,6 @@
-import React, {useReducer, useState} from 'react';
+import React, {useReducer} from 'react';
 import {reducer} from "../reducer/authentication-reducer";
-import {login, logout, myRegister} from "../action/authentication-action";
+import {login, loginGoogle, logout} from "../action/authentication-action";
 
 const AuthenticationContext = React.createContext();
 const initialState = {
@@ -36,8 +36,8 @@ const AuthenticationProvider = ({children}) => {
             value={{
                 state,
                 login: login(dispatch),
-                myRegister: myRegister(dispatch),
-                logout: logout(dispatch)
+                logout: logout(dispatch),
+                loginGoogle: loginGoogle(dispatch)
             }}
         >
             {children}

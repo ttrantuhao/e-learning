@@ -1,4 +1,6 @@
 import axios from "axios";
+import * as Google from "expo-google-app-auth";
+import {ANDROID_CLIENT_ID} from "../../globals/constants";
 
 export const apiLogin = (email, password) => {
     return axios.post("http://api.dev.letstudy.org/user/login", {
@@ -7,67 +9,27 @@ export const apiLogin = (email, password) => {
     })
 }
 
-export const api_register = (username, email, phoneNumber, password,) => {
-    return axios.post("http://api.dev.letstudy.org/user/register", {
-        username,
-        email,
-        phone: phoneNumber,
-        password
+export const apiLoginGoogle = async () => {
+    const {type, user, accessToken} = await Google.logInAsync({
+        androidClientId: ANDROID_CLIENT_ID,
+        scopes: ['profile', 'email'],
     })
-}
+    // console.log("in apiLoginGG function", type, user)
 
-export const sendActivateEmail = (email) => {
-    return {status: 200}
-}
-
-export const activateEmail = (email) => {
-    return {status: 200}
-}
-
-export const login = (email, password) => {
-    // if(email === 'tuhao99@gmail.com') {
-    //     if(password === '12345') {
-    //         return {
-    //             status: 200,
-    //             userInfo: {
-    //                 id: '123',
-    //                 email: 'tuhao99@gmail.com',
-    //                 name: 'tran tu hao',
-    //                 phone: '0932648392',
-    //                 avatar: '',
-    //                 type: '',
-    //             },
-    //             token: 'abc'
-    //         }
-    //     }
-    //     return {status: 404, errorString: 'Wrong password!'}
-    // }
-    // return {status: 404, errorString: 'Username is not exist!'}
-    return {
-        status: 200,
-        userInfo: {
-            id: '123',
-            email: 'tuhao99@gmail.com',
-            name: 'tran tu hao',
-            phone: '0932648392',
-            avatar: '',
-            type: '',
-        },
-        token: 'abc'
+    if (type === 'success') {
+        // await Google.logOutAsync({accessToken});
+        return axios.post("http://api.dev.letstudy.org/user/login-google-mobile", {
+            user: {
+                email: user.email,
+                id: user.id
+            }
+        });
     }
 }
 
-
-export const verifyAccount = (email, verifyCode) => {
-    if(verifyCode === '11111') {
-        return {status: 200}
-    }
-    return {status: 400, errorString: 'Invalid code'}
-}
-
-export const resetPassword = (email) => {
-    if(email === 'tuhao99@gmail.com') {
-        return {status: 200}
-    }
-    return {status: 404, errorString: 'user does not exist'}
-}
+// export const resetPassword = (email) => {
+//     if (email === 'tuhao99@gmail.com') {
+//         return {status: 200}
+//     }
+//     return {status: 404, errorString: 'user does not exist'}
+// }
