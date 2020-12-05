@@ -1,14 +1,14 @@
 import {comments, favoriteCourses, hotCourses, myCourses, newCourses, popularSkills} from "../../globals/mockData";
 
 export const getMyCourses = (token) => {
-    if(token !== 'abc')
-        return {status: 404}
+    // if(token !== 'abc')
+    //     return {status: 404}
     return {status: 200, courses: myCourses}
 }
 
 export const getFavoriteCourses = (token) => {
-    if(token !== 'abc')
-        return {status: 404}
+    // if(token !== 'abc')
+    //     return {status: 404}
     return {status: 200, courses: favoriteCourses}
 }
 

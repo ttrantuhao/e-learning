@@ -12,10 +12,10 @@ import SplashScreen from "./components/Others/SplashScreen/splash-screen";
 const Stack = createStackNavigator();
 
 const RootStack = () => {
-    const {isAuth} = useContext(AuthenticationContext);
+    const authContext = useContext(AuthenticationContext);
 
     return (
-        isAuth ? (
+        authContext.state.isAuthenticated ? (
             <Stack.Navigator initialRouteName={screenKey.SlashScreen}
                              headerMode={false}
             >

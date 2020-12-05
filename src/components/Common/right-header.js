@@ -8,7 +8,7 @@ import {AuthenticationContext} from "../../provider/authentication-provider";
 
 const RightHeader = ({navigation}) => {
     const {theme} = useContext(ThemeContext);
-    const {setIsAuth} = useContext(AuthenticationContext);
+    const authContext = useContext(AuthenticationContext);
     const styles = StyleSheet.create({
         rightHeader: {
             flexDirection: 'row',
@@ -39,7 +39,7 @@ const RightHeader = ({navigation}) => {
                     }
                 }}>
                     <MenuOption onSelect={() => {navigation.navigate(screenKey.SettingScreen)}} text='Setting'/>
-                    <MenuOption onSelect={() => {setIsAuth(false)}} text='Logout'/>
+                    <MenuOption onSelect={() => {authContext.logout()}} text='Logout'/>
                 </MenuOptions>
             </Menu>
         </View>

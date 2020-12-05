@@ -17,7 +17,8 @@ const Search = ({history, onPressItemHistory, noResult}) => {
         },
         title: {
             fontSize: 18,
-            marginVertical: 10
+            marginVertical: 10,
+            color: theme.colors.text
         }
     })
 

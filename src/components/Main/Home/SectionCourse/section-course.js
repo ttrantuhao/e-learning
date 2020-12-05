@@ -16,9 +16,10 @@ const SectionCourse = ({title, navigation, style, courses, onPressSeeAll}) => {
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}
                 data={courses}
-                renderItem={({item, index}) => (
-                    <CourseItem item={item} key={index} navigation={navigation} onPress={() => onPressCourseItem(item)}/>
+                renderItem={({item}) => (
+                    <CourseItem item={item} navigation={navigation} onPress={() => onPressCourseItem(item)}/>
                 )}
+                keyExtractor={((item,index) => index.toString())}
             />
         </View>
     );

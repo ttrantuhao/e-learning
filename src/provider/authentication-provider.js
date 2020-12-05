@@ -1,27 +1,44 @@
-import React, {useState} from 'react';
+import React, {useReducer, useState} from 'react';
+import {reducer} from "../reducer/authentication-reducer";
+import {login, logout, myRegister} from "../action/authentication-action";
 
 const AuthenticationContext = React.createContext();
+const initialState = {
+    isAuthenticated: false,
+    userInfo: null,
+    token: null,
+    errMessage: null
+}
 
 const AuthenticationProvider = ({children}) => {
-    const [isAuth, setIsAuth] = useState(false);
-    const [authUser, setAuthUser] = useState({
-        id: '123',
-        email: 'tuhao99@gmail.com',
-        name: 'tran tu hao',
-        phone: '0932648392',
-        avatar: '',
-        type: '',
-    });
+    const [state, dispatch] = useReducer(reducer, initialState);
+    // const [isAuth, setIsAuth] = useState(true);
+    // const [authUser, setAuthUser] = useState({
+    //     id: '123',
+    //     email: 'tuhao99@gmail.com',
+    //     name: 'tran tu hao',
+    //     phone: '0932648392',
+    //     avatar: '',
+    //     type: '',
+    // });
     // const [authUser, setAuthUser] = useState(null);
-    const [token, setToken] = useState('abc');
+    // const [token, setToken] = useState('abc');
     // setIsAuth(true);
     // setAuthUser({
     //     email: 'tuhao99@gmail.com',
     //     fullname: 'Tran tu hao',
     //     token: 'abc'
     // })
+
     return (
-        <AuthenticationContext.Provider value={{isAuth, setIsAuth, authUser, setAuthUser, token, setToken}}>
+        <AuthenticationContext.Provider
+            value={{
+                state,
+                login: login(dispatch),
+                myRegister: myRegister(dispatch),
+                logout: logout(dispatch)
+            }}
+        >
             {children}
         </AuthenticationContext.Provider>
     );
