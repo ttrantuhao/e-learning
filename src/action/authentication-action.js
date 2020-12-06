@@ -1,4 +1,3 @@
-import axios from 'axios'
 import {apiLogin, apiLoginGoogle} from "../core/services/authentication-service";
 
 export const LOGIN_SUCCEEDED = "LOGIN_SUCCEEDED";

@@ -1,6 +1,7 @@
 const {Dimensions} = require("react-native");
 
 export const ANDROID_CLIENT_ID = "917292171760-dff6mnok3ldka3o1bkp9kks285g74rhv.apps.googleusercontent.com";
+
 export const SCREEN_WIDTH = Dimensions.get('window').width;
 export const SCREEN_HEIGHT = Dimensions.get('window').height;
 

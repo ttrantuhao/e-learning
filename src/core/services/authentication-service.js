@@ -15,7 +15,6 @@ export const apiLoginGoogle = async () => {
         scopes: ['profile', 'email'],
     })
     // console.log("in apiLoginGG function", type, user)
-
     if (type === 'success') {
         // await Google.logOutAsync({accessToken});
         return axios.post("http://api.dev.letstudy.org/user/login-google-mobile", {

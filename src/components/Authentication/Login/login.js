@@ -4,13 +4,10 @@ import {Icon, Input} from "react-native-elements";
 import PrimaryButton from "../../Common/primary-button";
 import {myBlue} from "../../../globals/styles";
 import {styles} from './styles'
-import {ANDROID_CLIENT_ID, screenKey} from "../../../globals/constants";
+import {screenKey} from "../../../globals/constants";
 import {AuthenticationContext} from "../../../provider/authentication-provider";
 import MyActivityIndicator from "../../Common/my-activity-indicator";
 import Error from "../../Common/error";
-import * as Application from 'expo-application';
-import * as Google from 'expo-google-app-auth';
-import {loginGoogle} from "../../../action/authentication-action";
 
 const Login = ({navigation}) => {
     //handle input
@@ -69,7 +66,6 @@ const Login = ({navigation}) => {
                 onChangeText={text => {
                     setPassword(text);
                     setPasswordValid(true);
-                    // setStatus(null);
                 }}
             />
             {authContext.state.errMessage && <Error message={authContext.state.errMessage}/>}
@@ -77,7 +73,6 @@ const Login = ({navigation}) => {
                 title='Login'
                 onPress={() => {
                     if (validateInput(email, password)) {
-                        // setStatus(login(email, password))
                         authContext.login(email, password);
                     }
                 }}
