@@ -1,23 +1,44 @@
-import React, {useReducer} from 'react';
-import {reducer} from "../reducer/authentication-reducer";
+import React, {useEffect, useReducer} from 'react';
+import {authenticationReducer} from "../reducer/authentication-reducer";
 import {login, loginGoogle, logout} from "../action/authentication-action";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const AuthenticationContext = React.createContext();
-const initialState = {
-    isAuthenticated: false,
-    userInfo: null,
-    token: null,
-    errMessage: null,
-    isAuthenticating: false
+const getInitialState = async () => {
+    const isAuth = await AsyncStorage.getItem('userInfo');
+
+    if (isAuth === null) {
+        return {
+            isAuthenticated: false,
+            userInfo: null,
+            token: null,
+            errMessage: null,
+            isAuthenticating: false
+        }
+    }
+    return {
+        isAuthenticated: true,
+        userInfo: await JSON.parse(AsyncStorage.getItem('userInfo')),
+        token: await AsyncStorage.getItem('token'),
+        errMessage: null,
+        isAuthenticating: false,
+    }
 }
 
 const AuthenticationProvider = ({children}) => {
-    const [state, dispatch] = useReducer(reducer, initialState);
+    const initialState = getInitialState();
+    const [state, dispatch] = useReducer(authenticationReducer, initialState);
+
+    useEffect(() => {
+        if (state.token) {
+
+        }
+    }, [state.token])
 
     return (
         <AuthenticationContext.Provider
             value={{
-                state,
+                state: state,
                 login: login(dispatch),
                 logout: logout(dispatch),
                 loginGoogle: loginGoogle(dispatch)

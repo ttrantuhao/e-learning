@@ -1,5 +1,5 @@
 import React, {useContext, useState} from 'react';
-import {FlatList, ScrollView, StyleSheet, Text, View, Button, Alert, TouchableOpacity} from 'react-native';
+import {FlatList, ScrollView, StyleSheet, Text, View} from 'react-native';
 import {Avatar} from "react-native-elements";
 import SmallButton from "../../Common/small-button";
 import {popularSkills} from "../../../globals/mockData";
@@ -7,14 +7,13 @@ import {AuthenticationContext} from "../../../provider/authentication-provider";
 import {ThemeContext} from "../../../provider/theme-provider";
 import ProfileItem from "./ProfileItem/profile-item";
 import PrimaryButton from "../../Common/primary-button";
-import Modal from 'react-native-modal';
 import CustomAlert from "../../Common/custom-alert";
 
 const Profile = () => {
     const interests = popularSkills.slice(0, 5);
-    const {authUser, setAuthUser} = useContext(AuthenticationContext);
-    const [username, setUsername] = useState(authUser.name);
-    const [phone, setPhone] = useState(authUser.phone);
+    const authContext = useContext(AuthenticationContext);
+    const [username, setUsername] = useState(authContext.state.userInfo.name || '');
+    const [phone, setPhone] = useState(authContext.state.userInfo.phone);
     const [visible, setVisible] = useState(false);
     const {theme} = useContext(ThemeContext);
     const styles = StyleSheet.create({
@@ -39,8 +38,8 @@ const Profile = () => {
     })
 
     const onSaveProfile = () => {
-        setAuthUser({...authUser, name: username, phone: phone});
-        setVisible(true);
+        // setAuthUser({...authUser, name: username, phone: phone});
+        // setVisible(true);
         // Alert.alert('Update successfully!','Your information have been updated.', [{text: 'Ok'}]);
     }
 
@@ -64,10 +63,10 @@ const Profile = () => {
                 </Avatar>
                 <View style={{marginLeft: 20}}>
                     <Text style={{color: theme.colors.text, fontSize: 25}}>
-                        {authUser.name}
+                        {authContext.state.userInfo.name}
                     </Text>
                     <Text style={{color: theme.colors.text, fontSize: 13}}>
-                        {authUser.email}
+                        {authContext.state.userInfo.email}
                     </Text>
                 </View>
             </View>
@@ -90,7 +89,7 @@ const Profile = () => {
                              onChange={onUserChange}/>
                 <ProfileItem title='Phone number' value={phone} iconName='phone' iconType='simple-line-icon'
                              onChange={onPhoneChange}/>
-                <ProfileItem title='Email' subtitle='inactivate' value={authUser.email} iconName='email'
+                <ProfileItem title='Email' subtitle='inactivate' value={authContext.state.userInfo.email} iconName='email'
                              iconType='fontisto' editable={false}/>
                 <ProfileItem title='Password' value='********' iconName='lock' iconType='simple-line-icon'
                              editable={false}/>

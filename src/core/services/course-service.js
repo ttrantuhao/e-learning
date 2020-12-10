@@ -1,4 +1,7 @@
 import {comments, favoriteCourses, hotCourses, myCourses, newCourses, popularSkills} from "../../globals/mockData";
+import axios from "axios";
+
+axios.defaults.baseURL = 'http://api.dev.letstudy.org';
 
 export const getMyCourses = (token) => {
     // if(token !== 'abc')
@@ -27,3 +30,26 @@ export const getSearchHistory = () => {
 export const getComment = () => {
     return comments;
 }
+
+export const apiGetNewCourse = (limit, page) => {
+    return axios.post("/course/top-new", {
+        limit,
+        page
+    })
+}
+
+export const apiGetMyCourse = (token) => {
+    return axios.get("/user/get-process-courses", {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    })
+}
+
+export const apiGetTopSellCourse = (limit, page) => {
+    return axios.post("/course/top-sell", {
+        limit,
+        page
+    })
+}
+
