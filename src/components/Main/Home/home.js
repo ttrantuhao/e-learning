@@ -9,10 +9,12 @@ import {CourseContext} from "../../../provider/course-provider";
 
 const Home = ({navigation}) => {
     const courseContext = useContext(CourseContext);
+    const authContext = useContext(AuthenticationContext);
     useEffect(() => {
         courseContext.getNewCourse(10, 1);
         courseContext.getHotCourse( 10, 1);
-        courseContext.getMyCourse();
+        courseContext.getMyCourse(authContext.state.token);
+        courseContext.getRecommendedCourse(authContext.state.userInfo.id, 10, 1);
     }, [])
 
     const onPressSeeAll = (courses, title) => {
@@ -40,6 +42,12 @@ const Home = ({navigation}) => {
                 navigation={navigation}
                 courses={courseContext.state.hotCourse}
                 onPressSeeAll={() => onPressSeeAll(courseContext.state.hotCourse, 'Hot courses')}
+            />
+            <SectionCourse
+                title='Recommended courses'
+                navigation={navigation}
+                courses={courseContext.state.reCourse}
+                onPressSeeAll={() => onPressSeeAll(courseContext.state.reCourse, 'Recommended courses')}
             />
         </ScrollView>
 

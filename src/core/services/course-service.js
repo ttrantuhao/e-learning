@@ -56,6 +56,10 @@ export const apiGetTopSellCourse = (limit, page) => {
     })
 }
 
+export const apiGetRecommendedCourse = (userId, limit, page) => {
+    return axios.get(`/user/recommend-course/${userId}/${limit}/${page}`);
+}
+
 export const apiGetCourseDetail = async (id) => {
     // const token  = AsyncStorage.getItem('token');
     const userInfo = await AsyncStorage.getItem('userInfo')
