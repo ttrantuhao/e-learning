@@ -115,3 +115,12 @@ export const apiLikeCourse = async (courseId) => {
         }
     })
 }
+
+export const apiPaymentFreeCourse = async (courseId) => {
+    const token  = await AsyncStorage.getItem('token');
+    return axios.post(`/payment/get-free-courses`, {courseId},{
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    })
+}

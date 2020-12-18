@@ -6,7 +6,7 @@ export const REQUEST_FAILED = "REQUEST_FAILED"
 export const REQUEST_HOT_COURSE_SUCCEEDED = "REQUEST_HOT_COURSE_SUCCEEDED"
 export const REQUEST_MY_COURSE_SUCCEEDED = "REQUEST_MY_COURSE_SUCCEEDED"
 
-export const getNewCourse = (dispatch,limit, page) => {
+export const getNewCourse = (dispatch) => (limit, page) => {
     dispatch({type: REQUESTING})
     apiGetNewCourse(limit, page).then(response => {
         // console.log("apiGetNewCourse", response.data.payload)
@@ -22,10 +22,10 @@ export const getNewCourse = (dispatch,limit, page) => {
     })
 }
 
-export const getMyCourse = (dispatch, token) => {
+export const getMyCourse = (dispatch, token) => () => {
     dispatch({type: REQUESTING})
     apiGetMyCourse(token).then(response => {
-        console.log("getMyCourse", response.data.payload)
+        // console.log("getMyCourse", response.data.payload)
         dispatch({
             type: REQUEST_MY_COURSE_SUCCEEDED,
             data: response.data
@@ -38,7 +38,7 @@ export const getMyCourse = (dispatch, token) => {
     })
 }
 
-export const getHotCourse = (dispatch,limit, page) => {
+export const getHotCourse = (dispatch) => (limit, page) => {
     dispatch({type: REQUESTING})
     apiGetTopSellCourse(limit, page).then(response => {
         // console.log("apiGetTopSellCourse", response.data.payload)

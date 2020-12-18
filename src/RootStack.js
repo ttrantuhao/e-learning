@@ -16,14 +16,14 @@ const RootStack = () => {
 
     return (
         authContext.state.isAuthenticated ? (
-            <Stack.Navigator initialRouteName={screenKey.SlashScreen}
-                             headerMode={false}
+            <Stack.Navigator
+                headerMode={false}
             >
-                <Stack.Screen
-                    name={screenKey.SlashScreen}
-                    component={SplashScreen}
-                    options={{headerShown: false}}
-                />
+                {/*<Stack.Screen*/}
+                {/*    name={screenKey.SlashScreen}*/}
+                {/*    component={SplashScreen}*/}
+                {/*    options={{headerShown: false}}*/}
+                {/*/>*/}
                 <Stack.Screen
                     name={screenKey.MainTab}
                     component={MainTab}

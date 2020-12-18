@@ -1,35 +1,18 @@
-import React, {useContext, useEffect, useReducer} from 'react';
+import React, {useContext, useEffect} from 'react';
 import SectionCourse from "./SectionCourse/section-course";
 import {ScrollView} from "react-native";
 import WelcomeImage from "./WelcomeImage/welcome-image";
-import {CourseContext} from "../../../provider/course-provider";
 import {screenKey} from "../../../globals/constants";
 import MyActivityIndicator from "../../Common/my-activity-indicator";
-import {myCourses} from "../../../globals/mockData";
-import {CourseReducer} from "../../../reducer/course-reducer";
-import {getHotCourse, getMyCourse, getNewCourse} from "../../../action/course-action";
 import {AuthenticationContext} from "../../../provider/authentication-provider";
-
-const initialState = {
-    data: myCourses,
-    isLoading: false,
-    errMessage: null,
-    newCourse: [],
-    hotCourse: [],
-    myCourses: [],
-    reCourse: []
-};
+import {CourseContext} from "../../../provider/course-provider";
 
 const Home = ({navigation}) => {
-    const {myCourses, hotCourses} = useContext(CourseContext);
-    const authContext = useContext(AuthenticationContext)
-    // console.log("home component", authContext.state);
-    const [state, dispatch] = useReducer(CourseReducer, initialState);
-
+    const courseContext = useContext(CourseContext);
     useEffect(() => {
-        getNewCourse(dispatch, 10, 1);
-        getHotCourse(dispatch, 10, 1);
-        getMyCourse(dispatch, authContext.state.token);
+        courseContext.getNewCourse(10, 1);
+        courseContext.getHotCourse( 10, 1);
+        courseContext.getMyCourse();
     }, [])
 
     const onPressSeeAll = (courses, title) => {
@@ -39,24 +22,24 @@ const Home = ({navigation}) => {
     return (
         <ScrollView showsVerticalScrollIndicator={false} style={{flex: 1}}>
             <WelcomeImage/>
-            {state.isLoading && <MyActivityIndicator/>}
+            {courseContext.state.isLoading && <MyActivityIndicator/>}
             <SectionCourse
                 title='My courses'
                 navigation={navigation}
-                courses={state.myCourse}
-                onPressSeeAll={() => onPressSeeAll(state.myCourse, 'My courses')}
+                courses={courseContext.state.myCourse}
+                onPressSeeAll={() => onPressSeeAll(courseContext.state.myCourse, 'My courses')}
             />
             <SectionCourse
                 title='New courses'
                 navigation={navigation}
-                courses={state.newCourse}
-                onPressSeeAll={() => onPressSeeAll(state.newCourse, 'New courses')}
+                courses={courseContext.state.newCourse}
+                onPressSeeAll={() => onPressSeeAll(courseContext.state.newCourse, 'New courses')}
             />
             <SectionCourse
                 title='Hot courses'
                 navigation={navigation}
-                courses={state.hotCourse}
-                onPressSeeAll={() => onPressSeeAll(state.hotCourse, 'Hot courses')}
+                courses={courseContext.state.hotCourse}
+                onPressSeeAll={() => onPressSeeAll(courseContext.state.hotCourse, 'Hot courses')}
             />
         </ScrollView>
 

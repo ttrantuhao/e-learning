@@ -31,12 +31,6 @@ const AuthenticationProvider = ({children}) => {
     const initialState = getInitialState();
     const [state, dispatch] = useReducer(authenticationReducer, initialState);
 
-    useEffect(() => {
-        if (state.token) {
-
-        }
-    }, [state.token])
-
     return (
         <AuthenticationContext.Provider
             value={{
@@ -44,7 +38,7 @@ const AuthenticationProvider = ({children}) => {
                 login: login(dispatch),
                 logout: logout(dispatch),
                 loginGoogle: loginGoogle(dispatch),
-                updateProfile: updateProfile(dispatch)
+                updateProfile: updateProfile(dispatch),
             }}
         >
             {children}

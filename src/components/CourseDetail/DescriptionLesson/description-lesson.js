@@ -33,10 +33,13 @@ const DescriptionLesson = ({item, toggleLike, isLike, isOwn, onShare, onRegister
 
     return (
         <View style={styles.container}>
-
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
                 <Text style={styles.title}>{item.title || item.courseTitle}</Text>
-                <Text style={{color: 'red', fontSize: 16, marginLeft: 5}}>{item.price ? item.price + " vnd" : "Free"}</Text>
+                <Text style={{
+                    color: 'red',
+                    fontSize: 16,
+                    marginLeft: 5
+                }}>{item.price ? item.price + " vnd" : "Free"}</Text>
             </View>
             <Text style={{fontSize: 15, color: theme.colors.subtext}}>{item.subtitle}</Text>
             <View style={{flexDirection: 'row', alignItems: 'center', marginVertical: 5}}>
@@ -64,7 +67,7 @@ const DescriptionLesson = ({item, toggleLike, isLike, isOwn, onShare, onRegister
                 {
                     isOwn ?
                         renderButton('Joined', 'user-check', 'font-awesome-5', myBlue) :
-                        renderButton('Join class', 'user-plus', 'font-awesome-5')
+                        renderButton('Join class', 'user-plus', 'font-awesome-5', theme.colors.text, onRegister)
                 }
                 {renderButton('Share', 'share', 'entypo', theme.colors.text, (() => onShare(item)))}
                 {/*{renderButton('Bookmarked', 'bookmark', 'ionicons')}*/}
