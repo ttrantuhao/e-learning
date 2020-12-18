@@ -1,8 +1,6 @@
 import React, {useContext} from 'react';
-import {SectionList, Text, StyleSheet, View, Image} from 'react-native';
-import {lesson} from "../../../globals/mockData";
+import {Image, SectionList, StyleSheet, Text, View} from 'react-native';
 import ListLessonItem from "../ListLessonItem/list-lesson-item";
-import {myLightWhite, mySilver, myWhite} from "../../../globals/styles";
 import {ThemeContext} from "../../../provider/theme-provider";
 
 const ListLesson = ({navigation, route}) => {

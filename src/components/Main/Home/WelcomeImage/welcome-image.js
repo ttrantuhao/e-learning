@@ -1,7 +1,7 @@
 import React from 'react';
 import {ImageBackground, StyleSheet, Text} from 'react-native';
 import {myLightWhite, myWhite} from "../../../../globals/styles";
-import {welcomeTitle, welcomeContent} from "../../../../globals/mockData";
+import {welcomeContent, welcomeTitle} from "../../../../globals/constants";
 
 const WelcomeImage = () => {
     return (

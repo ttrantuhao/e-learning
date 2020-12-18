@@ -4,7 +4,9 @@ export const ANDROID_CLIENT_ID = "917292171760-dff6mnok3ldka3o1bkp9kks285g74rhv.
 
 export const SCREEN_WIDTH = Dimensions.get('window').width;
 export const SCREEN_HEIGHT = Dimensions.get('window').height;
-
+export const welcomeTitle = 'Welcome to E-learning';
+export const welcomeContent = 'With E-learning, you can build and apply skills in top technologies. You have free ' +
+    'access to Skill IQ, Role IQ, a limited library of courses and a weekly rotation of new courses.';
 export const screenKey = {
     //screen
     LoginScreen: 'login',
