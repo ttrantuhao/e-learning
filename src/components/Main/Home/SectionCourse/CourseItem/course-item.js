@@ -40,7 +40,7 @@ const CourseItem = ({item, onPress}) => {
                 <View style={{flexDirection: 'row', alignItems: 'center'}}>
                     <Rating
                         readonly
-                        startingValue={item.rating}
+                        startingValue={item.ratedNumber}
                         imageSize={15}
                         ratingBackgroundColor={theme.colors.subtext}
                         tintColor={theme.colors.card}

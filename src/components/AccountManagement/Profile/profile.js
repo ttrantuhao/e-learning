@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {FlatList, ScrollView, StyleSheet, Text, View} from 'react-native';
 import {Avatar} from "react-native-elements";
 import SmallButton from "../../Common/small-button";
@@ -37,10 +37,16 @@ const Profile = () => {
         },
     })
 
+    // useEffect(() => {
+    //     if(!authContext.state.isAuthenticating)
+    //         setVisible(true);
+    // }, [authContext.state.isAuthenticating]);
+
     const onSaveProfile = () => {
-        // setAuthUser({...authUser, name: username, phone: phone});
-        // setVisible(true);
-        // Alert.alert('Update successfully!','Your information have been updated.', [{text: 'Ok'}]);
+        if (username !== '' && phone !== '') {
+            authContext.updateProfile(username, phone);
+            setVisible(true)
+        }
     }
 
     const onUserChange = (text) => {
@@ -56,7 +62,7 @@ const Profile = () => {
             <View style={{...styles.card, flexDirection: 'row', alignItems: 'center'}}>
                 <Avatar
                     rounded
-                    source={{uri: 'https://image.tmdb.org/t/p/w235_and_h235_face/nD2rqT1Z0veXgcti6d9E61OqOx6.jpg'}}
+                    source={{uri: authContext.state.userInfo.avatar}}
                     size='large'
                 >
                     <Avatar.Accessory size={23}/>
@@ -86,17 +92,17 @@ const Profile = () => {
             <View style={styles.card}>
                 <Text style={{color: theme.colors.text, fontSize: 18}}>Profile information</Text>
                 <ProfileItem title='Username' value={username} iconName='user' iconType='simple-line-icon'
-                             onChange={onUserChange}/>
+                             onChange={onUserChange} editable={true}/>
                 <ProfileItem title='Phone number' value={phone} iconName='phone' iconType='simple-line-icon'
-                             onChange={onPhoneChange}/>
-                <ProfileItem title='Email' subtitle='inactivate' value={authContext.state.userInfo.email} iconName='email'
+                             onChange={onPhoneChange} editable={true}/>
+                <ProfileItem title='Email' subtitle='activate' value={authContext.state.userInfo.email} iconName='email'
                              iconType='fontisto' editable={false}/>
                 <ProfileItem title='Password' value='********' iconName='lock' iconType='simple-line-icon'
                              editable={false}/>
             </View>
             <PrimaryButton title='Save change' style={{marginBottom: 30, borderRadius: 5}} onPress={onSaveProfile}/>
-            <CustomAlert title='Update successfully!'
-                         message='Your information have been updated.'
+            <CustomAlert title={authContext.state.updateFailedMessage ? "Error" : 'Update successfully!'}
+                         message={authContext.state.updateFailedMessage || 'Your information have been updated.'}
                          visible={visible}
                          onOk={() => setVisible(false)}/>
         </ScrollView>

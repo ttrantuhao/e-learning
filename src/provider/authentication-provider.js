@@ -1,7 +1,8 @@
 import React, {useEffect, useReducer} from 'react';
 import {authenticationReducer} from "../reducer/authentication-reducer";
-import {login, loginGoogle, logout} from "../action/authentication-action";
+import {login, loginGoogle, logout, updateProfile} from "../action/authentication-action";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 const AuthenticationContext = React.createContext();
 const getInitialState = async () => {
@@ -13,7 +14,8 @@ const getInitialState = async () => {
             userInfo: null,
             token: null,
             errMessage: null,
-            isAuthenticating: false
+            isAuthenticating: false,
+
         }
     }
     return {
@@ -41,7 +43,8 @@ const AuthenticationProvider = ({children}) => {
                 state: state,
                 login: login(dispatch),
                 logout: logout(dispatch),
-                loginGoogle: loginGoogle(dispatch)
+                loginGoogle: loginGoogle(dispatch),
+                updateProfile: updateProfile(dispatch)
             }}
         >
             {children}

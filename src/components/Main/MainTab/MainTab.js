@@ -24,8 +24,8 @@ const MainTab = () => {
         } else if (route.name === screenKey.DownloadStack) {
             // iconName = 'file-download';
             // iconType = 'material';
-            iconName = 'heart'
-            iconType = 'fontisto'
+            iconName = 'like1'
+            iconType = 'antdesign'
             size = size - 3;
         } else if (route.name === screenKey.BrowseStack) {
             iconName = 'nav-icon-grid';
@@ -57,7 +57,7 @@ const MainTab = () => {
             <MainTabNavigator.Screen name={screenKey.HomeStack} component={HomeStack} options={{title: 'Home'}}
                                      listeners={tabBarListeners}
             />
-            <MainTabNavigator.Screen name={screenKey.DownloadStack} component={DownloadStack} options={{title: 'Favorite'}}
+            <MainTabNavigator.Screen name={screenKey.DownloadStack} component={DownloadStack} options={{title: 'Like'}}
                                      listeners={tabBarListeners}
             />
             <MainTabNavigator.Screen name={screenKey.BrowseStack} component={BrowseStack} options={{title: 'Browse'}}

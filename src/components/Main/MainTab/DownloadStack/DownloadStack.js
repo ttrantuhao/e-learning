@@ -13,13 +13,13 @@ const DownloadStackNavigator = createStackNavigator();
 
 const DownloadStack = () => {
     return (
-        <DownloadStackNavigator.Navigator initialRouteName='Home'>
+        <DownloadStackNavigator.Navigator/* initialRouteName='Home'*/>
             <DownloadStackNavigator.Screen
                 name={screenKey.DownloadScreen}
                 component={Download}
                 options={({navigation}) => (
                     {
-                        title: 'Download',
+                        title: 'Like courses',
                         headerRight: () => (<RightHeader navigation={navigation}/>),
                         headerLeft: null
                     }

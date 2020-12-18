@@ -1,4 +1,10 @@
-import {LOGIN_FAILED, LOGIN_REQUEST, LOGIN_SUCCEEDED, LOGOUT_REQUEST} from "../action/authentication-action";
+import {
+    LOGIN_FAILED,
+    LOGIN_REQUEST,
+    LOGIN_SUCCEEDED,
+    LOGOUT_REQUEST, UPDATE_FAILED,
+    UPDATE_PROFILE
+} from "../action/authentication-action";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export function authenticationReducer(prevState, action) {
@@ -24,6 +30,12 @@ export function authenticationReducer(prevState, action) {
             AsyncStorage.removeItem('userInfo');
             AsyncStorage.removeItem('token');
             return {...prevState, isAuthenticated: false}
+        case UPDATE_PROFILE:
+            AsyncStorage.setItem('userInfo', JSON.stringify(action.data.payload));
+            return {...prevState, userInfo: action.data.payload, updateFailedMessage: null, isAuthenticating: false}
+        case UPDATE_FAILED:
+            // console.log(action.data.message)
+            return {...prevState, updateFailedMessage: action.data.message, isAuthenticating: false}
         default:
             throw new Error()
     }

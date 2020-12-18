@@ -28,9 +28,9 @@ const ListLessonItem = ({item}) => {
         <TouchableOpacity style={styles.container}>
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
                 <Icon name='check-circle' color='green' size={13}/>
-                <Text style={styles.title}>{item}</Text>
+                <Text style={styles.title}>{item.name}</Text>
             </View>
-            <Text style={styles.time}>2:04</Text>
+            <Text style={styles.time}>{item.hours}</Text>
         </TouchableOpacity>
 
     );

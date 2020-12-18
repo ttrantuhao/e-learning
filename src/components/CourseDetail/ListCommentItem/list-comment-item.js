@@ -2,6 +2,7 @@ import React, {useContext} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {Avatar, Rating} from "react-native-elements";
 import {ThemeContext} from "../../../provider/theme-provider";
+import Moment from "moment"
 
 const ListCommentItem = ({item}) => {
     const {theme} = useContext(ThemeContext);
@@ -28,27 +29,27 @@ const ListCommentItem = ({item}) => {
             marginBottom: 5
         }
     })
-
+    const timeCreate = Moment(item.createdAt).format('d/MM/yyyy')
     return (
         <View style={styles.containerItem}>
             <Avatar
                 rounded
-                source={{uri: 'https://image.tmdb.org/t/p/w235_and_h235_face/nD2rqT1Z0veXgcti6d9E61OqOx6.jpg'}}
+                source={{uri: item.user.avatar}}
                 size='small'
             />
             <View style={{marginLeft: 20, flex: 1}}>
                 <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                    <Text style={styles.title}>{item.author}</Text>
+                    <Text style={styles.title}>{item.user.name}</Text>
                     <Rating
                         readonly={true}
-                        startingValue={item.score}
+                        startingValue={item.averagePoint}
                         imageSize={14}
                         ratingBackgroundColor={theme.colors.subtext}
                         tintColor={theme.colors.background}
                         type={'custom'}
                     />
                 </View>
-                <Text style={styles.time}>20-11-2020</Text>
+                <Text style={styles.time}>{Moment(item.createdAt).format('DD/MM/yyyy')}</Text>
                 <Text style={styles.content}>{item.content}</Text>
             </View>
         </View>

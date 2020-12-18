@@ -34,8 +34,8 @@ const ProfileItem = ({title, subtitle, value, iconName, iconType, editable, onCh
                                onChangeText={onChange}
                     />
                 </View>
-                {editable === false ?
-                    <Icon name={'edit'} type='material' color={theme.colors.text} size={18}/> : null}
+                {editable &&
+                    <Icon name={'edit'} type='material' color={theme.colors.text} size={18}/>}
 
             </View>
 
