@@ -1,6 +1,6 @@
 import React, {useContext, useState} from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
-import {Icon, Input} from "react-native-elements";
+import {Icon, Input, SocialIcon} from "react-native-elements";
 import PrimaryButton from "../../Common/primary-button";
 import {myBlue} from "../../../globals/styles";
 import {styles} from './styles'
@@ -8,6 +8,7 @@ import {screenKey} from "../../../globals/constants";
 import {AuthenticationContext} from "../../../provider/authentication-provider";
 import MyActivityIndicator from "../../Common/my-activity-indicator";
 import Error from "../../Common/error";
+import GoogleButton from "../../Common/google-button";
 
 const Login = ({navigation}) => {
     //handle input
@@ -77,11 +78,12 @@ const Login = ({navigation}) => {
                     }
                 }}
             />
-            <PrimaryButton
-                title='Login google'
-                onPress={async () => {
-                    authContext.loginGoogle();
-                }}
+            <SocialIcon
+                title='Sign In With Google'
+                button
+                type='google'
+                style={{height: 45}}
+                onPress={async () => {authContext.loginGoogle();}}
             />
 
             <View style={styles.textContainer}>

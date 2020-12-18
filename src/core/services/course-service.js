@@ -1,7 +1,12 @@
+import {popularSkills} from "../../globals/mockData";
 import axios from "axios";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 axios.defaults.baseURL = 'http://api.dev.letstudy.org';
+
+export const getSearchHistory = () => {
+    return popularSkills.slice(0, 10);
+}
 
 export const apiGetNewCourse = (limit, page) => {
     return axios.post("/course/top-new", {

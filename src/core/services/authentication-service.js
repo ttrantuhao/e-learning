@@ -28,9 +28,3 @@ export const apiLoginGoogle = async () => {
     }
 }
 
-// export const resetPassword = (email) => {
-//     if (email === 'tuhao99@gmail.com') {
-//         return {status: 200}
-//     }
-//     return {status: 404, errorString: 'user does not exist'}
-// }
