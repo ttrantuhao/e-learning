@@ -28,3 +28,7 @@ export const apiLoginGoogle = async () => {
     }
 }
 
+export const apiSendEmailForgetPassword = (email) => {
+    return axios.post("/user/forget-pass/send-email", {email});
+}
+

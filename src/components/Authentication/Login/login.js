@@ -8,7 +8,6 @@ import {screenKey} from "../../../globals/constants";
 import {AuthenticationContext} from "../../../provider/authentication-provider";
 import MyActivityIndicator from "../../Common/my-activity-indicator";
 import Error from "../../Common/error";
-import GoogleButton from "../../Common/google-button";
 
 const Login = ({navigation}) => {
     //handle input
