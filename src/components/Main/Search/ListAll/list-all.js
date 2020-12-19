@@ -18,7 +18,7 @@ const ListAll = ({navigation, route}) => {
             <ListHeader title='Courses' rightTitle={`${course.length} Results`}
                         onPress={() => navigation.navigate(screenKey.ListCourseStack, {}, {routeName: screenKey.ListCourse})}
             />
-            {course.map((item, index) => (
+            {course.slice(0,4).map((item, index) => (
                 <ListCourseItem navigation={navigation}
                                 item={item}
                                 key={index}
@@ -30,7 +30,7 @@ const ListAll = ({navigation, route}) => {
                 title='Authors' rightTitle={`${author.length} Results`}
                 onPress={() => navigation.navigate(screenKey.ListAuthorScreen)}
             />
-            {author.map((item, index) => (<ListAuthorItem navigation={navigation} item={item} key={index}/>))}
+            {author.slice(0,4).map((item, index) => (<ListAuthorItem navigation={navigation} item={item} key={index}/>))}
         </ScrollView>
     );
 };

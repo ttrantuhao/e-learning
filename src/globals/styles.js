@@ -1,12 +1,5 @@
-// export const myGray = "#7384B4"
-// export const myLightBlue='#B2CAF7';
-// export const myLightMediumBlue='#6799F5';
-// export const myMediumBlue = '#6495ED';
-// export const myGrayBlue='#546075';
-import {DarkTheme, DefaultTheme} from "@react-navigation/native";
 
 export const myBlue = '#0084BD';
-//my theme
 export const myWhite = '#FEFEFE';
 export const myLightWhite = '#E4E5E7';
 export const bgColor =/*'#15161C'*/'black';

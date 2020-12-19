@@ -11,10 +11,10 @@ const Home = ({navigation}) => {
     const courseContext = useContext(CourseContext);
     const authContext = useContext(AuthenticationContext);
     useEffect(() => {
-        courseContext.getNewCourse(10, 1);
-        courseContext.getHotCourse( 10, 1);
+        courseContext.getNewCourse(10, 0);
+        courseContext.getHotCourse( 10, 0);
         courseContext.getMyCourse(authContext.state.token);
-        courseContext.getRecommendedCourse(authContext.state.userInfo.id, 10, 1);
+        courseContext.getRecommendedCourse(authContext.state.userInfo.id, 10, 0);
     }, [])
 
     const onPressSeeAll = (courses, title) => {

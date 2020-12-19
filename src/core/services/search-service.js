@@ -32,3 +32,16 @@ export const apiDeleteSearchHistory = async (id) => {
         }
     })
 }
+
+export const apiSearchByCategory = async (id) => {
+    const token = await AsyncStorage.getItem('token');
+    return axios.post(`/course/searchV2`,{
+        token,
+        keyword: "",
+        limit: 12,
+        offset: 0,
+        opt: {
+            category: [id]
+        }
+    })
+}

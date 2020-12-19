@@ -102,3 +102,7 @@ export const apiPaymentFreeCourse = async (courseId) => {
         }
     })
 }
+
+export const apiGetCategory = async () => {
+    return axios.get(`/category/all`);
+}

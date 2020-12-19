@@ -1,3 +1,5 @@
+import {myBlue, mySilver} from "./styles";
+
 const {Dimensions} = require("react-native");
 
 export const ANDROID_CLIENT_ID = "917292171760-dff6mnok3ldka3o1bkp9kks285g74rhv.apps.googleusercontent.com";
@@ -37,4 +39,19 @@ export const screenKey = {
     ListCourseStack: 'listCourseStack',
     MainTab: 'mainTab'
 
+}
+
+export const Language = {
+    en: {
+        type: 'en',//Whether this is a dark theme or a light theme
+        student: 'student',
+        author: 'author',
+        seeAll: 'see all'
+    },
+    vn: {
+        type: 'vn',
+        student: 'học sinh',
+        author: 'giảng viên',
+        seeAll: 'xem thêm'
+    }
 }

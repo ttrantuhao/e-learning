@@ -48,10 +48,10 @@ const Search = () => {
     }
 
     const handleSearch = (keyword) => {
-        if (keyword !== '') {
+        // if (keyword !== '') {
             setIsLoading(true);
             setIsSearch(false);
-            apiSearch(keyword, 10, 1).then(res => {
+            apiSearch(keyword, 10, 0).then(res => {
                 setCourses(res.data.payload.courses.data);
                 setAuthors(res.data.payload.instructors.data);
                 setIsLoading(false);
@@ -59,7 +59,7 @@ const Search = () => {
             }).catch(err => {
                 console.log("err search: ", err.response.data);
             })
-        }
+        // }
     }
 
     const onPressItemHistory = (item) => {
