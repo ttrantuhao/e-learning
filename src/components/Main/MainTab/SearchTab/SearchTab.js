@@ -9,6 +9,7 @@ import {screenKey} from "../../../../globals/constants";
 import {ThemeContext} from "../../../../provider/theme-provider";
 import Search from "../../Search/search";
 import {getSearchHistory} from "../../../../core/services/course-service";
+import {apiSearch} from "../../../../core/services/search-service";
 
 const SearchTabNavigator = createMaterialTopTabNavigator();
 
@@ -18,17 +19,35 @@ const SearchTab = () => {
     const [isSearch, setIsSearch] = useState(true);
     const [history, setHistory] = useState([]);
     const [noResult, setNoResult] = useState(false);
+    const [courses, setCourses] = useState([]);
+    const [author, setAuthor] = useState([]);
+    // const [isLoading, setIsLoading] =
+    
+    const handleSearch = (keyword) => {
+        // if (value === 'abc')
+        //     setNoResult(true)
+        // else
+        //     setIsSearch(false);
+        if(keyword !== '') {
+            console.log(keyword);
+            apiSearch(keyword, 10, 1).then(res => {
+                setCourses(res.data.payload.courses.data);
+                setAuthor(res.data.payload.instructors.data);
+                console.log(courses);
+                if(courses.length === 0 && author.length ===0)
+                    setNoResult(true);
+                else
+                    setIsSearch(false);
+            }).catch(err => {
+                console.log("err search: ", err.response.data);
+            })
+        }
 
-    const handleSearch = () => {
-        if (value === 'abc')
-            setNoResult(true)
-        else
-            setIsSearch(false);
     }
 
-    const onPressItemHistory = (keyword) => {
-        setValue(keyword);
-        setIsSearch(false);
+    const onPressItemHistory = (item) => {
+        setValue(item.content);
+        handleSearch(item.content)
     }
 
     useEffect(() => {
@@ -88,9 +107,8 @@ const SearchTab = () => {
                         <SearchTabNavigator.Screen name={screenKey.ListCourseStack} component={ListCourseStack}
                                                    options={{title: 'COURSES'}}
                                                    listeners={tabBarListeners}
+                                                   initialParams={{courses}}
                         />
-                        {/*<SearchTabNavigator.Screen name={screenKey.ListPathScreen} component={ListPath}*/}
-                        {/*                           options={{title: 'PATHS'}}/>*/}
                         <SearchTabNavigator.Screen name={screenKey.ListAuthorScreen} component={ListAuthor}
                                                    options={{title: 'AUTHORS'}}
                                                    listeners={tabBarListeners}

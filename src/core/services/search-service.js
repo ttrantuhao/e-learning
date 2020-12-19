@@ -7,7 +7,7 @@ axios.defaults.baseURL = 'http://api.dev.letstudy.org';
 
 export const apiSearch = async (keyword, limit, page) => {
     const token = await AsyncStorage.getItem('token');
-    return axios.post(`/course/search-history/${id}`,{
+    return axios.post(`/course/searchV2`,{
         token,
         keyword,
         limit,

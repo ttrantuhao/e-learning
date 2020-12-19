@@ -2,9 +2,9 @@ import React, {useContext} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import ListCourse from "../../../Course/ListCourse/list-course";
 import {ThemeContext} from "../../../../provider/theme-provider";
-import {courses} from "../../../../globals/mockData";
 
-const ListCourseSearch = ({navigation}) => {
+const ListCourseSearch = ({navigation, route}) => {
+
     const {theme} = useContext(ThemeContext);
     const styles = StyleSheet.create({
         header: {
@@ -21,9 +21,9 @@ const ListCourseSearch = ({navigation}) => {
     return (
         <View style={styles.container}>
             <Text style={styles.header}>
-                100 Results
+                {`${route.params.courses.length} Results`}
             </Text>
-            <ListCourse navigation={navigation} courses={courses}/>
+            <ListCourse navigation={navigation} courses={route.params.courses}/>
         </View>
     );
 };

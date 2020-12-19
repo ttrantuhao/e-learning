@@ -6,7 +6,7 @@ import {screenKey} from "../../../../../globals/constants";
 
 const ListAllStackNavigator = createStackNavigator();
 
-const ListAllStack = () => {
+const ListAllStack = ({navigation, route}) => {
     return (
         <ListAllStackNavigator.Navigator initialRouteName='ListAll'>
             <ListAllStackNavigator.Screen

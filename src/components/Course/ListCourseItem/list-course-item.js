@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {Icon, Rating} from "react-native-elements";
+import {Rating} from "react-native-elements";
 import {ThemeContext} from "../../../provider/theme-provider";
 
 const ListCourseItem = ({item, onPress}) => {
@@ -40,7 +40,7 @@ const ListCourseItem = ({item, onPress}) => {
             />
             <View style={styles.courseInfo}>
                 <Text style={styles.title}>{item.title || item.courseTitle}</Text>
-                <Text style={styles.content}>{item["instructor.user.name"] || item.instructorName}</Text>
+                <Text style={styles.content}>{item["instructor.user.name"] || item.instructorName || item.name}</Text>
                 <View style={{flexDirection: 'row', alignItems: 'center'}}>
                     <Rating
                         readonly

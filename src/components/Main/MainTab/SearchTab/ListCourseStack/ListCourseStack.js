@@ -6,13 +6,14 @@ import ListCourseSearch from "../../../Search/ListCourseSearch/list-course-searc
 
 const ListCourseStackNavigator = createStackNavigator();
 
-const ListCourseStack = () => {
+const ListCourseStack = ({navigation, route}) => {
     return (
         <ListCourseStackNavigator.Navigator initialRouteName='ListAll'>
             <ListCourseStackNavigator.Screen
                 name={screenKey.ListCourse}
                 component={ListCourseSearch}
                 options={{headerShown: false}}
+                initialParams={{courses:  route.params.courses}}
             />
             <ListCourseStackNavigator.Screen
                 name={screenKey.CourseDetailScreen}
