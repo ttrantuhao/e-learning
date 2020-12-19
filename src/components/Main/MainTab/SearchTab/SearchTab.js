@@ -63,15 +63,12 @@ const SearchTab = () => {
                     paddingRight: 15,
                 }}
                 containerStyle={{
-                    // marginTop: 20,
                     paddingTop: 25,
                     backgroundColor: theme.colors.card,
                 }}
                 inputContainerStyle={{
-                    // backgroundColor: theme.colors.card
                     marginRight: 5,
                     marginLeft: 5,
-                    // paddingTop: 20,
                     borderRadius: 10
                 }}
                 placeholderTextColor={theme.dark ? theme.colors.subtext : myLightWhite}

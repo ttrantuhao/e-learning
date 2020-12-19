@@ -6,9 +6,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const AuthenticationContext = React.createContext();
 const getInitialState = async () => {
-    const isAuth = await AsyncStorage.getItem('userInfo');
+    // const isAuth = await AsyncStorage.getItem('userInfo');
 
-    if (isAuth === null) {
+    // if (isAuth === null) {
         return {
             isAuthenticated: false,
             userInfo: null,
@@ -17,14 +17,14 @@ const getInitialState = async () => {
             isAuthenticating: false,
 
         }
-    }
-    return {
-        isAuthenticated: true,
-        userInfo: await JSON.parse(AsyncStorage.getItem('userInfo')),
-        token: await AsyncStorage.getItem('token'),
-        errMessage: null,
-        isAuthenticating: false,
-    }
+    // }
+    // return {
+    //     isAuthenticated: true,
+    //     userInfo: await JSON.parse(AsyncStorage.getItem('userInfo')),
+    //     token: await AsyncStorage.getItem('token'),
+    //     errMessage: null,
+    //     isAuthenticating: false,
+    // }
 }
 
 const AuthenticationProvider = ({children}) => {
