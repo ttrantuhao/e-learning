@@ -7,15 +7,15 @@ import ListAuthorItem from "../ListAuthor/ListAuthorItem/list-author-item";
 import {screenKey} from "../../../../globals/constants";
 
 
-const ListAll = ({navigation}) => {
-    const course = courses.slice(0, 4);
-    const author = topAuthor.slice(0, 4);
+const ListAll = ({navigation, route}) => {
+    const course = route.params.courses;
+    const author = route.params.authors;
     const onPressListCourseItem = (item) => {
         navigation.navigate(screenKey.CourseDetailScreen, {item})
     }
     return (
         <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-            <ListHeader title='Courses' rightTitle='10 Results'
+            <ListHeader title='Courses' rightTitle={`${course.length} Results`}
                         onPress={() => navigation.navigate(screenKey.ListCourseStack, {}, {routeName: screenKey.ListCourse})}
             />
             {course.map((item, index) => (
@@ -27,7 +27,7 @@ const ListAll = ({navigation}) => {
             ))}
 
             <ListHeader
-                title='Authors' rightTitle='10 Results'
+                title='Authors' rightTitle={`${author.length} Results`}
                 onPress={() => navigation.navigate(screenKey.ListAuthorScreen)}
             />
             {author.map((item, index) => (<ListAuthorItem navigation={navigation} item={item} key={index}/>))}

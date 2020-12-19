@@ -9,6 +9,7 @@ import DownloadStack from "./DownloadStack/DownloadStack";
 import SearchTab from "./SearchTab/SearchTab";
 import {screenKey} from "../../../globals/constants";
 import {ThemeContext} from "../../../provider/theme-provider";
+import Search from "../Search/search";
 // import { createBottomTabNavigator } from 'react-navigation-tabs';
 
 const MainTabNavigator = createBottomTabNavigator();
@@ -31,7 +32,7 @@ const MainTab = () => {
             iconName = 'nav-icon-grid';
             iconType = 'fontisto';
             size = size - 5;
-        } else if (route.name === screenKey.SearchTab) {
+        } else if (route.name === screenKey.SearchScreen) {
             iconName = 'search';
             iconType = 'fontawesome';
             size = size + 5;
@@ -41,8 +42,6 @@ const MainTab = () => {
 
     const tabBarListeners = ({ navigation, route }) => ({
         tabPress: () => {
-            if(route.name === screenKey.SearchTab)
-                return navigation.navigate(route.name, {reset: true})
             return navigation.navigate(route.name)
         },
     });
@@ -63,7 +62,7 @@ const MainTab = () => {
             <MainTabNavigator.Screen name={screenKey.BrowseStack} component={BrowseStack} options={{title: 'Browse'}}
                                      listeners={tabBarListeners}
             />
-            <MainTabNavigator.Screen name={screenKey.SearchTab} component={SearchTab} options={{title: 'Search'}}
+            <MainTabNavigator.Screen name={screenKey.SearchScreen} component={Search} options={{title: 'Search'}}
                                      listeners={tabBarListeners}
             />
         </MainTabNavigator.Navigator>

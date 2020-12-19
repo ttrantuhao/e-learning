@@ -13,6 +13,7 @@ const ListAllStack = ({navigation, route}) => {
                 name={screenKey.ListAllScreen}
                 component={ListAll}
                 options={{headerShown: false}}
+                initialParams={{authors: route.params.authors, courses: route.params.courses}}
             />
             <ListAllStackNavigator.Screen
                 name={screenKey.CourseDetailScreen}

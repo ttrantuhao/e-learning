@@ -8,7 +8,7 @@ const ListCourseStackNavigator = createStackNavigator();
 
 const ListCourseStack = ({navigation, route}) => {
     return (
-        <ListCourseStackNavigator.Navigator initialRouteName='ListAll'>
+        <ListCourseStackNavigator.Navigator>
             <ListCourseStackNavigator.Screen
                 name={screenKey.ListCourse}
                 component={ListCourseSearch}
