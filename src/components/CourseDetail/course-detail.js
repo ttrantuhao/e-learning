@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {ScrollView, Share, StyleSheet, View} from 'react-native';
-import VideoPlayer from "./VideoPlayer/video-player";
+import MyVideoPlayer from "./VideoPlayer/video-player";
 import DescriptionLesson from "./DescriptionLesson/description-lesson";
 import SectionCourse from "../Main/Home/SectionCourse/section-course";
 import CustomAlert from "../Common/custom-alert";
@@ -31,9 +31,14 @@ const CourseDetail = ({route, navigation}) => {
     const [isLike, setIsLike] = useState(false);
     const [visible, setVisible] = useState(false);
     const courseContext = useContext(CourseContext);
+    const [urlVideo, setUrlVideo] = useState(null);
+    // const playerRef = useRef(null);
+
     useEffect(() => {
         apiGetCourseDetail(id).then(async (res) => {
             setItem(res.data.payload);
+            setUrlVideo(item.section[0].lesson[0].videoUrl);
+
         }).catch(err => {
             console.log("err", err.response.error.message);
         })
@@ -94,7 +99,8 @@ const CourseDetail = ({route, navigation}) => {
     return (
         item ?
             <View style={styles.container}>
-                <VideoPlayer/>
+                <MyVideoPlayer url={item.section[0].lesson[0].videoUrl}/>
+                {/*<Button title={'seek to'} onPress={() => playerRef.current.seekTo(20)}/>*/}
                 <ScrollView showsVerticalScrollIndicator={false}>
                     <DescriptionLesson item={item}
                                        toggleLike={toggleLike}
