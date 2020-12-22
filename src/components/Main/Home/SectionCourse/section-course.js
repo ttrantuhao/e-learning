@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, ScrollView, FlatList} from "react-native";
+import {FlatList, StyleSheet, View} from "react-native";
 import CourseItem from "./CourseItem/course-item";
 import ListHeader from "../../../Common/list-header";
 import {screenKey} from "../../../../globals/constants";
@@ -16,9 +16,10 @@ const SectionCourse = ({title, navigation, style, courses, onPressSeeAll}) => {
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}
                 data={courses}
-                renderItem={({item, index}) => (
-                    <CourseItem item={item} key={index} navigation={navigation} onPress={() => onPressCourseItem(item)}/>
+                renderItem={({item}) => (
+                    <CourseItem item={item} navigation={navigation} onPress={() => onPressCourseItem(item)}/>
                 )}
+                keyExtractor={((item,index) => index.toString())}
             />
         </View>
     );

@@ -6,10 +6,10 @@ import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import HomeStack from "./HomeStack/HomeStack";
 import BrowseStack from "./BrowseStack/BrowseStack";
 import DownloadStack from "./DownloadStack/DownloadStack";
-import SearchTab from "./SearchTab/SearchTab";
 import {screenKey} from "../../../globals/constants";
 import {ThemeContext} from "../../../provider/theme-provider";
-// import { createBottomTabNavigator } from 'react-navigation-tabs';
+import Search from "../Search/search";
+import SearchStack from "./SearchStack/SearchStack";
 
 const MainTabNavigator = createBottomTabNavigator();
 
@@ -24,14 +24,14 @@ const MainTab = () => {
         } else if (route.name === screenKey.DownloadStack) {
             // iconName = 'file-download';
             // iconType = 'material';
-            iconName = 'heart'
-            iconType = 'fontisto'
+            iconName = 'like1'
+            iconType = 'antdesign'
             size = size - 3;
         } else if (route.name === screenKey.BrowseStack) {
             iconName = 'nav-icon-grid';
             iconType = 'fontisto';
             size = size - 5;
-        } else if (route.name === screenKey.SearchTab) {
+        } else if (route.name === screenKey.SearchStack) {
             iconName = 'search';
             iconType = 'fontawesome';
             size = size + 5;
@@ -41,8 +41,6 @@ const MainTab = () => {
 
     const tabBarListeners = ({ navigation, route }) => ({
         tabPress: () => {
-            if(route.name === screenKey.SearchTab)
-                return navigation.navigate(route.name, {reset: true})
             return navigation.navigate(route.name)
         },
     });
@@ -57,13 +55,13 @@ const MainTab = () => {
             <MainTabNavigator.Screen name={screenKey.HomeStack} component={HomeStack} options={{title: 'Home'}}
                                      listeners={tabBarListeners}
             />
-            <MainTabNavigator.Screen name={screenKey.DownloadStack} component={DownloadStack} options={{title: 'Favorite'}}
+            <MainTabNavigator.Screen name={screenKey.DownloadStack} component={DownloadStack} options={{title: 'Like'}}
                                      listeners={tabBarListeners}
             />
             <MainTabNavigator.Screen name={screenKey.BrowseStack} component={BrowseStack} options={{title: 'Browse'}}
                                      listeners={tabBarListeners}
             />
-            <MainTabNavigator.Screen name={screenKey.SearchTab} component={SearchTab} options={{title: 'Search'}}
+            <MainTabNavigator.Screen name={screenKey.SearchStack} component={SearchStack} options={{title: 'Search'}}
                                      listeners={tabBarListeners}
             />
         </MainTabNavigator.Navigator>

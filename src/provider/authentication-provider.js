@@ -1,27 +1,46 @@
-import React, {useState} from 'react';
+import React, {useEffect, useReducer} from 'react';
+import {authenticationReducer} from "../reducer/authentication-reducer";
+import {login, loginGoogle, logout, updateProfile} from "../action/authentication-action";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 const AuthenticationContext = React.createContext();
+const getInitialState = async () => {
+    // const isAuth = await AsyncStorage.getItem('userInfo');
+
+    // if (isAuth === null) {
+        return {
+            isAuthenticated: false,
+            userInfo: null,
+            token: null,
+            errMessage: null,
+            isAuthenticating: false,
+
+        }
+    // }
+    // return {
+    //     isAuthenticated: true,
+    //     userInfo: await JSON.parse(AsyncStorage.getItem('userInfo')),
+    //     token: await AsyncStorage.getItem('token'),
+    //     errMessage: null,
+    //     isAuthenticating: false,
+    // }
+}
 
 const AuthenticationProvider = ({children}) => {
-    const [isAuth, setIsAuth] = useState(false);
-    const [authUser, setAuthUser] = useState({
-        id: '123',
-        email: 'tuhao99@gmail.com',
-        name: 'tran tu hao',
-        phone: '0932648392',
-        avatar: '',
-        type: '',
-    });
-    // const [authUser, setAuthUser] = useState(null);
-    const [token, setToken] = useState('abc');
-    // setIsAuth(true);
-    // setAuthUser({
-    //     email: 'tuhao99@gmail.com',
-    //     fullname: 'Tran tu hao',
-    //     token: 'abc'
-    // })
+    const initialState = getInitialState();
+    const [state, dispatch] = useReducer(authenticationReducer, initialState);
+
     return (
-        <AuthenticationContext.Provider value={{isAuth, setIsAuth, authUser, setAuthUser, token, setToken}}>
+        <AuthenticationContext.Provider
+            value={{
+                state: state,
+                login: login(dispatch),
+                logout: logout(dispatch),
+                loginGoogle: loginGoogle(dispatch),
+                updateProfile: updateProfile(dispatch),
+            }}
+        >
             {children}
         </AuthenticationContext.Provider>
     );

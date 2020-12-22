@@ -4,8 +4,9 @@ import {topAuthor} from "../../../../globals/mockData";
 import ListAuthorItem from "./ListAuthorItem/list-author-item";
 import {ThemeContext} from "../../../../provider/theme-provider";
 
-const ListAuthor = ({header}) => {
+const ListAuthor = ({route}) => {
     const {theme} = useContext(ThemeContext);
+    console.log(route.params.authors);
     const styles = StyleSheet.create({
         header: {
             color: theme.colors.text,
@@ -27,14 +28,14 @@ const ListAuthor = ({header}) => {
     return (
         <View style={styles.container}>
             <Text style={styles.header}>
-                100 Results
+                {`${route.params.authors.length} Results`}
             </Text>
             <FlatList
                 // style={{marginBottom: 20}}
-                data={topAuthor}
-                renderItem={({item, index}) => (<ListAuthorItem item={item}/>)}
+                data={route.params.authors}
+                renderItem={({item}) => (<ListAuthorItem item={item}/>)}
                 ItemSeparatorComponent={renderSeparator}
-                keyExtractor={((item, index) => index.toString())}
+                keyExtractor={((item) => item.id)}
             />
         </View>
     );

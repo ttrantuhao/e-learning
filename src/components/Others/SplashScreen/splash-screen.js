@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {Text, View} from 'react-native';
-import {bgColor, myBlue} from "../../../globals/styles";
+import {myBlue} from "../../../globals/styles";
 import * as Progress from 'react-native-progress';
 import {screenKey} from "../../../globals/constants";
 import {AuthenticationContext} from "../../../provider/authentication-provider";
@@ -9,7 +9,6 @@ import {getFavoriteCourses, getHotCourses, getMyCourses, getNewCourses} from "..
 
 
 const SplashScreen = ({navigation}) => {
-    const [isLoad, setIsLoad] = useState(false);
     const {token} = useContext(AuthenticationContext);
     const {initCourseContext} = useContext(CourseContext);
     useEffect(() => {

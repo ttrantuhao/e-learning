@@ -7,12 +7,13 @@ import Setting from "../../../AccountManagement/Setting/setting";
 import Profile from "../../../AccountManagement/Profile/profile";
 import {screenKey} from "../../../../globals/constants";
 import ListCourse from "../../../Course/ListCourse/list-course";
+import LeftHeader from "../../../Common/left-header";
 
 const HomeStackNavigator = createStackNavigator();
 
 const HomeStack = () => {
     return (
-        <HomeStackNavigator.Navigator initialRouteName='Home'>
+        <HomeStackNavigator.Navigator initialRouteName='Home' mode="modal">
             <HomeStackNavigator.Screen
                 name={screenKey.HomeScreen}
                 component={Home}
@@ -20,7 +21,7 @@ const HomeStack = () => {
                     {
                         title: 'Home',
                         headerRight: () => (<RightHeader navigation={navigation}/>),
-                        headerLeft: null
+                        headerLeft: () => (<LeftHeader navigation={navigation}/>)
                     }
                 )}
             />

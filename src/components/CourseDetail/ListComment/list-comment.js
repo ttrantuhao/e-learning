@@ -1,16 +1,17 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {FlatList, TextInput, View, StyleSheet, Text, TouchableOpacity} from 'react-native';
-import {getComment} from "../../../core/services/course-service";
+import {apiRatingCourse, getComment} from "../../../core/services/course-service";
 import {ThemeContext} from "../../../provider/theme-provider";
 import ListCommentItem from "../ListCommentItem/list-comment-item";
 import {myWhite} from "../../../globals/styles";
 import {Rating} from "react-native-elements";
 import {AuthenticationContext} from "../../../provider/authentication-provider";
 
-const ListComment = () => {
+const ListComment = ({navigation, route}) => {
+    // console.log("tab nav comments", route.params.ratings);
     const {theme} = useContext(ThemeContext);
-    const {authUser} = useContext(AuthenticationContext);
-    const [comments, setComments] = useState(null);
+    const authContext = useContext(AuthenticationContext);
+    const [comments, setComments] = useState(route.params.ratings);
     const [rating, setRating] = useState(5);
     const [commentValue, setCommentValue] = useState('');
     const styles = StyleSheet.create({
@@ -43,21 +44,19 @@ const ListComment = () => {
         }
     })
 
-    useEffect(() => {
-        const getComments = getComment();
-        setComments(getComments);
-    }, [])
-
     const onComment = () => {
         if (commentValue !== '') {
-            const newComment = {
-                id: 6,
-                score: rating,
-                content: commentValue,
-                author: authUser.name
-            }
-            setComments([newComment, ...comments]);
-            setCommentValue('');
+            apiRatingCourse(route.params.courseId, rating, commentValue)
+                .then(res => {
+                    console.log(res.data.payload);
+                    let newComment = res.data.payload;
+                    newComment.user = authContext.state.userInfo;
+                    let removeOldComments = comments.filter((item) => item.user.id !== newComment.user.id);
+                    setComments([newComment, ...removeOldComments]);
+                    setCommentValue('')
+                }).catch(err => {
+                    console.log("Comment Error: ", err.response.message);
+            })
         }
     }
 
@@ -98,7 +97,7 @@ const ListComment = () => {
                 ItemSeparatorComponent={() => (
                     <View style={{height: 1, backgroundColor: theme.colors.border, margin: 5}}/>
                 )}
-                keyExtractor={(item) => item.id.toString()}
+                keyExtractor={(item) => item.id}
                 ListHeaderComponent={renderCommentSection()}
             />
         </View>

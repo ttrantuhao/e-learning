@@ -31,12 +31,12 @@ const ListAuthorItem = ({item}) => {
         <TouchableOpacity style={styles.container}>
             <Avatar
                 rounded
-                source={{uri:'https://image.tmdb.org/t/p/w235_and_h235_face/nD2rqT1Z0veXgcti6d9E61OqOx6.jpg'}}
+                source={{uri:item.avatar}}
                 size='medium'
             />
             <View style={styles.authorInfo}>
-                <Text style={styles.title}>{item}</Text>
-                <Text style={styles.content}>10 courses</Text>
+                <Text style={styles.title}>{item.name}</Text>
+                <Text style={styles.content}>{`${item.numcourses} courses`}</Text>
             </View>
         </TouchableOpacity>
     );

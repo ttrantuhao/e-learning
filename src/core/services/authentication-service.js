@@ -1,62 +1,34 @@
-export const registerAccount = (username, email, phoneNumber, password, confirmPassword) => {
-    if(email === 'tuhao99@gmail.com' || phoneNumber === '0932648392') {
-        return {status: 400, errorString: 'Email or phone number is exist!'}
-    }
-    return {status: 200}
+import axios from "axios";
+import * as Google from "expo-google-app-auth";
+import {ANDROID_CLIENT_ID} from "../../globals/constants";
+
+axios.defaults.baseURL = 'http://api.dev.letstudy.org';
+
+export const apiLogin = (email, password) => {
+    return axios.post("/user/login", {
+        email,
+        password
+    })
 }
 
-export const sendActivateEmail = (email) => {
-    return {status: 200}
-}
-
-export const activateEmail = (email) => {
-    return {status: 200}
-}
-
-export const login = (email, password) => {
-    // if(email === 'tuhao99@gmail.com') {
-    //     if(password === '12345') {
-    //         return {
-    //             status: 200,
-    //             userInfo: {
-    //                 id: '123',
-    //                 email: 'tuhao99@gmail.com',
-    //                 name: 'tran tu hao',
-    //                 phone: '0932648392',
-    //                 avatar: '',
-    //                 type: '',
-    //             },
-    //             token: 'abc'
-    //         }
-    //     }
-    //     return {status: 404, errorString: 'Wrong password!'}
-    // }
-    // return {status: 404, errorString: 'Username is not exist!'}
-    return {
-        status: 200,
-        userInfo: {
-            id: '123',
-            email: 'tuhao99@gmail.com',
-            name: 'tran tu hao',
-            phone: '0932648392',
-            avatar: '',
-            type: '',
-        },
-        token: 'abc'
+export const apiLoginGoogle = async () => {
+    const {type, user, accessToken} = await Google.logInAsync({
+        androidClientId: ANDROID_CLIENT_ID,
+        scopes: ['profile', 'email'],
+    })
+    // console.log("in apiLoginGG function", type, user)
+    if (type === 'success') {
+        // await Google.logOutAsync({accessToken});
+        return axios.post("/user/login-google-mobile", {
+            user: {
+                email: user.email,
+                id: user.idc
+            }
+        });
     }
 }
 
-
-export const verifyAccount = (email, verifyCode) => {
-    if(verifyCode === '11111') {
-        return {status: 200}
-    }
-    return {status: 400, errorString: 'Invalid code'}
+export const apiSendEmailForgetPassword = (email) => {
+    return axios.post("/user/forget-pass/send-email", {email});
 }
 
-export const resetPassword = (email) => {
-    if(email === 'tuhao99@gmail.com') {
-        return {status: 200}
-    }
-    return {status: 404, errorString: 'user does not exist'}
-}

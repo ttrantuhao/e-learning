@@ -1,11 +1,17 @@
 import React, {useContext} from 'react';
-import {SectionList, Text, StyleSheet, View, Image} from 'react-native';
-import {lesson} from "../../../globals/mockData";
+import {Image, SectionList, StyleSheet, Text, View} from 'react-native';
 import ListLessonItem from "../ListLessonItem/list-lesson-item";
-import {myLightWhite, mySilver, myWhite} from "../../../globals/styles";
 import {ThemeContext} from "../../../provider/theme-provider";
 
-const ListLesson = () => {
+const ListLesson = ({navigation, route}) => {
+
+    const data = route.params.section.map((section) => {
+        return {
+            title: section.name,
+            data: section.lesson
+        }
+    })
+    console.log(data);
     const {theme} = useContext(ThemeContext);
     const styles = StyleSheet.create({
         container: {
@@ -41,12 +47,12 @@ const ListLesson = () => {
         return (
             <View style={styles.sectionContainer}>
                 <Image
-                    source={require('../../../../assets/ic_course.png')}
+                    source={{uri: route.params.image}}
                     style={styles.image}
                 />
                 <View style={{marginLeft: 15}}>
                     <Text style={styles.sectionTitle}>{title}</Text>
-                    <Text style={styles.sectionTime}>2:04</Text>
+                    {/*<Text style={styles.sectionTime}>{title.hours}</Text>*/}
                 </View>
             </View>
         )
@@ -54,8 +60,8 @@ const ListLesson = () => {
     return (
         <SectionList
             style={styles.container}
-            sections={lesson}
-            renderItem={({item, index}) => <ListLessonItem item={item} key={index}/>}
+            sections={data}
+            renderItem={({item, index}) => <ListLessonItem item={item} key={index} onPress={route.params.onPressLesson}/>}
             renderSectionHeader={({section: {title}}) => renderSectionTitle(title)}
             renderSectionFooter={() => (<View style={styles.separator}/>)}
         />

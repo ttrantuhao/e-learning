@@ -1,14 +1,21 @@
-import React, {useContext, useState} from 'react';
-import {ScrollView, StyleSheet, View, Share, ActivityIndicator, Box} from 'react-native';
-import VideoPlayer from "./VideoPlayer/video-player";
+import React, {useContext, useEffect, useState} from 'react';
+import {ScrollView, Share, StyleSheet, View} from 'react-native';
+import MyVideoPlayer from "./VideoPlayer/video-player";
 import DescriptionLesson from "./DescriptionLesson/description-lesson";
-import ListLesson from "./ListLesson/list-lesson";
-import {courses} from "../../globals/mockData";
 import SectionCourse from "../Main/Home/SectionCourse/section-course";
-import {CourseContext} from "../../provider/course-provider";
 import CustomAlert from "../Common/custom-alert";
 import CourseDetailTab from "./CourseDetailTab/course-detail-tab";
 import {screenKey} from "../../globals/constants";
+import {
+    apiCheckOwnCourse,
+    apiGetCourseDetail,
+    apiGetCourseLikeStatus,
+    apiLikeCourse,
+    apiPaymentFreeCourse,
+} from "../../core/services/course-service";
+import MyActivityIndicator from "../Common/my-activity-indicator";
+import {CourseContext} from "../../provider/course-provider";
+
 
 const CourseDetail = ({route, navigation}) => {
     const styles = StyleSheet.create({
@@ -18,27 +25,54 @@ const CourseDetail = ({route, navigation}) => {
         }
     })
 
-    const {favoriteCourses, setFavoriteCourses, myCourses, setMyCourses} = useContext(CourseContext);
-    const item = route.params.item;
-    const [isFavorite, setIsFavorite] = useState(item.isFavorite);
+    const id = route.params.item.id;
+    const [item, setItem] = useState(null);
+    const [isOwn, setisOwn] = useState(false);
+    const [isLike, setIsLike] = useState(false);
     const [visible, setVisible] = useState(false);
-    const [activeTab, setActiveTab] = useState(screenKey.ListLesson) //your default (first) tab
+    const courseContext = useContext(CourseContext);
+    const [urlVideo, setUrlVideo] = useState(null);
+    // const playerRef = useRef(null);
 
-    const toggleFavorite = (item) => {
-        if (item.isFavorite) {
-            item.isFavorite = false
-            setFavoriteCourses(favoriteCourses.filter((fItem) => fItem.id !== item.id));
-        } else {
-            item.isFavorite = true;
-            setFavoriteCourses([...favoriteCourses, item]);
-        }
-        setIsFavorite(!isFavorite);
+    useEffect(() => {
+        apiGetCourseDetail(id).then(async (res) => {
+            setItem(res.data.payload);
+            setUrlVideo(res.data.payload.section[0].lesson[0].videoUrl);
+        }).catch(err => {
+            console.log("err", err.response.data);
+        })
+
+        apiCheckOwnCourse(id).then(res => {
+            setisOwn(res.data.payload.isUserOwnCourse);
+        }).catch(err => {
+            console.log("err", err.response.data);
+        })
+
+        apiGetCourseLikeStatus(id).then(res => {
+            setIsLike(res.data.likeStatus);
+        }).catch(err => {
+            console.log("err", err.response.data);
+        })
+    }, []);
+
+    const toggleLike = () => {
+        apiLikeCourse(item.id).then(res => {
+            setIsLike(!isLike)
+        }).catch(err => {
+            console.log("like course err: ", err.response.data);
+        })
     }
 
-    const onRegister = (item) => {
-        item.isMine = true;
-        setMyCourses([...myCourses, item]);
-        setVisible(true);
+    const onRegister = () => {
+        if (!item.price) {
+            apiPaymentFreeCourse(item.id).then(res => {
+                setisOwn(true);
+                setVisible(true);
+                courseContext.getMyCourse();
+            }).catch(err => {
+                console.log("like course err: ", err.response.data);
+            })
+        }
     }
 
     const onPressShareBtn = async (item) => {
@@ -60,25 +94,39 @@ const CourseDetail = ({route, navigation}) => {
         }
     }
 
-    return (
-        <View style={styles.container}>
-            <VideoPlayer/>
-            <ScrollView showsVerticalScrollIndicator={false}>
-                <DescriptionLesson item={item} toggleFavorite={toggleFavorite} isFavorite={isFavorite}
-                                   onShare={onPressShareBtn}
-                                   onRegister={onRegister}
-                />
-                <CustomAlert title='Enroll course successfully!'
-                             message='This course is added to "my course" list'
-                             visible={visible}
-                             onOk={() => setVisible(false)}
-                />
-                <CourseDetailTab activeTab={activeTab} onChange={(tab) => setActiveTab(tab)}/>
-                <SectionCourse title={'Related courses'} style={{margin: 10}} courses={courses}
-                               navigation={navigation}/>
-            </ScrollView>
+    const onPressLesson = (url) => {
+        setUrlVideo(url)
+        console.log("lesson url video", url);
+    }
 
-        </View>
+    return (
+        item ?
+            <View style={styles.container}>
+                <MyVideoPlayer url={urlVideo} onBack={()=>navigation.goBack()}/>
+                {/*<Button title={'seek to'} onPress={() => playerRef.current.seekTo(20)}/>*/}
+                <ScrollView showsVerticalScrollIndicator={false}>
+                    <DescriptionLesson item={item}
+                                       toggleLike={toggleLike}
+                                       isLike={isLike}
+                                       isOwn={isOwn}
+                                       onShare={onPressShareBtn}
+                                       onRegister={onRegister}
+                    />
+                    <CustomAlert title='Enroll course successfully!'
+                                 message='This course is added to "my course" list'
+                                 visible={visible}
+                                 onOk={() => setVisible(false)}
+                    />
+                    <CourseDetailTab section={item.section} ratings={item.ratings.ratingList} courseId={item.id}
+                                     image={item.imageUrl} onPressLesson={onPressLesson}/>
+                    <SectionCourse title={'Related courses'} style={{margin: 10}} courses={item.coursesLikeCategory}
+                                   navigation={navigation}
+                                   onPressSeeAll={() => {
+                                       navigation.navigate(screenKey.ListCourse, {courses: item.coursesLikeCategory, title: 'Related courses'});
+                                   }}/>
+                </ScrollView>
+            </View> :
+            <MyActivityIndicator style={{flex: 1}}/>
     );
 };
 

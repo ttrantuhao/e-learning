@@ -5,24 +5,45 @@ import PrimaryButton from "../../Common/primary-button";
 import {myBlue} from "../../../globals/styles";
 import {styles} from './styles'
 import {screenKey} from "../../../globals/constants";
-import {resetPassword} from "../../../core/services/authentication-service";
+import {apiSendEmailForgetPassword, resetPassword} from "../../../core/services/authentication-service";
+import Error from "../../Common/error";
+import CustomAlert from "../../Common/custom-alert";
+import MyActivityIndicator from "../../Common/my-activity-indicator";
 
 const ForgetPassword = ({navigation}) => {
     const [emailValid, setEmailValid] = useState(true);
     const [status, setStatus] = useState(null);
     const [email, setEmail] = useState('');
+    const [isloading, setIsLoading] = useState(false);
+    const [errMessage, setErrMessage] = useState(null);
+    const [visible, setVisible] = useState(false);
+
     const validateInput = (email) => {
         if (email === '')
             setEmailValid(false);
         return (email !== '');
     }
-    const renderStatus = (status) => {
-        if (status && status.status === 404)
-            return <Text style={{...styles.errorInputStyle, textAlign: 'center'}}>{status.errorString}</Text>
+
+    const sendEmailForgetPassword = () => {
+        if(validateInput(email)) {
+            setIsLoading(true);
+            apiSendEmailForgetPassword(email)
+                .then(res => {
+                    setIsLoading(false);
+                    setErrMessage(null);
+                    setVisible(true);
+                }).catch(err => {
+                    setIsLoading(false);
+                    console.log(err.response);
+                    setErrMessage(err.response.data.message);
+            })
+        }
     }
+
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Forget password</Text>
+            {isloading && <MyActivityIndicator/>}
             <Input
                 inputContainerStyle={styles.inputContainer}
                 inputStyle={styles.inputStyle}
@@ -38,14 +59,17 @@ const ForgetPassword = ({navigation}) => {
                     setEmailValid(true);
                 }}
             />
-            {renderStatus(status)}
-            <PrimaryButton title='reset password' onPress={() => {
-                if(validateInput(email)) {
-                    setStatus(resetPassword(email));
-                    if(status && status.status === 200)
-                        navigation.navigate(screenKey.LoginScreen);
-                }
-            }}/>
+            {errMessage && <Error message={errMessage}/>}
+            <PrimaryButton title='reset password' onPress={sendEmailForgetPassword}/>
+            <CustomAlert
+                visible={visible}
+                message='Please check your email to change password.'
+                title='Send email successfully!'
+                onOk={() => {
+                    setVisible(false);
+                    navigation.navigate(screenKey.LoginScreen)
+                }}
+            />
         </View>
     );
 };

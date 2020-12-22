@@ -6,9 +6,11 @@ import PrimaryButton from "../../Common/primary-button";
 import {ThemeContext} from "../../../provider/theme-provider";
 import SettingSwitchItem from "./SettingSwitchItem/setting-switch-item";
 import SettingTextItem from "./SettingTextItem/setting-text-item";
+import {AuthenticationContext} from "../../../provider/authentication-provider";
 
 const Setting = () => {
     const {theme, toggleTheme} = useContext(ThemeContext);
+    const authContext = useContext(AuthenticationContext);
     const styles = StyleSheet.create({
         container: {
             flex: 1,
@@ -49,10 +51,10 @@ const Setting = () => {
                     <Icon name='settings' type='material' color={theme.colors.text} size={60}/>
                     <View style={{marginLeft: 10}}>
                         <Text style={styles.username}>
-                            Tran Tu Hao
+                            {authContext.state.userInfo.name}
                         </Text>
                         <Text style={styles.email}>
-                            1712421@student.hcmus.edu.vn
+                            {authContext.state.userInfo.email}
                         </Text>
                     </View>
                 </View>

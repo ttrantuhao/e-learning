@@ -1,25 +1,23 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
-import {Icon, Input} from "react-native-elements";
+import {Icon, Input, SocialIcon} from "react-native-elements";
 import PrimaryButton from "../../Common/primary-button";
 import {myBlue} from "../../../globals/styles";
 import {styles} from './styles'
-import {login} from "../../../core/services/authentication-service";
 import {screenKey} from "../../../globals/constants";
 import {AuthenticationContext} from "../../../provider/authentication-provider";
+import MyActivityIndicator from "../../Common/my-activity-indicator";
+import Error from "../../Common/error";
 
 const Login = ({navigation}) => {
-    const {setIsAuth, setAuthUser, setToken} = useContext(AuthenticationContext);
     //handle input
     const [email, setUsername] = useState('');
     const [password, setPassword] = useState('');
-
     //handle valid input
     const [emailValid, setEmailValid] = useState(true);
     const [passwordValid, setPasswordValid] = useState(true);
 
-    //handle login
-    const [status, setStatus] = useState(null);
+    const authContext = useContext(AuthenticationContext)
 
     const validateInput = (email, password) => {
         if (email === '')
@@ -29,24 +27,11 @@ const Login = ({navigation}) => {
         return (email !== '' && password !== '');
     }
 
-    useEffect(() => {
-        if (status && status.status === 200) {
-            setAuthUser(status.userInfo);
-            setToken(status.token);
-            setIsAuth(true);
-            console.log(status)
-        }
-    }, [status])
-
-    const renderStatus = (status) => {
-        if (status && status.status === 404)
-            return <Text style={{...styles.errorInputStyle, textAlign: 'center'}}>{status.errorString}</Text>
-    }
-
     return (
         <View style={styles.container}>
             <Icon name='account-circle' type={'material-community'} color={myBlue} size={70}/>
             <Text style={styles.title}>Login</Text>
+            {authContext.state.isAuthenticating && <MyActivityIndicator/>}
             <Input
                 inputContainerStyle={styles.inputContainer}
                 leftIcon={
@@ -62,7 +47,6 @@ const Login = ({navigation}) => {
                 onChangeText={text => {
                     setUsername(text);
                     setEmailValid(true);
-                    setStatus(null);
                 }}
             />
 
@@ -82,16 +66,23 @@ const Login = ({navigation}) => {
                 onChangeText={text => {
                     setPassword(text);
                     setPasswordValid(true);
-                    setStatus(null);
                 }}
             />
-            {renderStatus(status)}
+            {authContext.state.errMessage && <Error message={authContext.state.errMessage}/>}
             <PrimaryButton
                 title='Login'
                 onPress={() => {
-                    if (validateInput(email, password))
-                        setStatus(login(email, password))
+                    if (validateInput(email, password)) {
+                        authContext.login(email, password);
+                    }
                 }}
+            />
+            <SocialIcon
+                title='Sign In With Google'
+                button
+                type='google'
+                style={{height: 45}}
+                onPress={async () => {authContext.loginGoogle();}}
             />
 
             <View style={styles.textContainer}>

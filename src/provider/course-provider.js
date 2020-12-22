@@ -1,32 +1,31 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useReducer} from 'react';
+
+import {CourseReducer} from "../reducer/course-reducer";
+import {getHotCourse, getMyCourse, getNewCourse, getRecommendedCourse} from "../action/course-action";
+import {AuthenticationContext} from "./authentication-provider";
 
 const CourseContext = React.createContext();
 
+const initialState = {
+    isLoading: false,
+    errMessage: null,
+    newCourse: [],
+    hotCourse: [],
+    myCourse: [],
+    reCourse: []
+};
+
 const CourseProvider = ({children}) => {
-    const [favoriteCourses, setFavoriteCourses] = useState(null);
-    const [myCourses, setMyCourses] = useState(null);
-    const [hotCourses, setHotCourses] = useState(null);
-    const [newCourses, setNewCourses] = useState(null);
-
-    const initCourseContext = (myCourses, favoriteCourses, hotCourses, newCourses) => {
-        setFavoriteCourses(favoriteCourses);
-        setMyCourses(myCourses);
-        setHotCourses(hotCourses);
-        setNewCourses(newCourses);
-        return true;
-    }
-
+    const [state, dispatch] = useReducer(CourseReducer, initialState);
+    const authContext = useContext(AuthenticationContext);
+    // console.log(authContext.state.token)
     return (
         <CourseContext.Provider value={{
-            initCourseContext,
-            favoriteCourses,
-            setFavoriteCourses,
-            myCourses,
-            setMyCourses,
-            hotCourses,
-            setHotCourses,
-            newCourses,
-            setNewCourses
+            state,
+            getNewCourse: getNewCourse(dispatch),
+            getHotCourse: getHotCourse(dispatch),
+            getMyCourse: getMyCourse(dispatch),
+            getRecommendedCourse: getRecommendedCourse(dispatch)
         }}>
             {children}
         </CourseContext.Provider>

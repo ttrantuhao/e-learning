@@ -1,15 +1,19 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {ScrollView, Text, TouchableOpacity} from 'react-native';
 import {Icon, Input} from "react-native-elements";
 import PrimaryButton from "../../Common/primary-button";
 import {myBlue} from "../../../globals/styles";
 import {styles} from './styles'
 import {screenKey} from "../../../globals/constants";
-import {registerAccount} from "../../../core/services/authentication-service";
+import Error from "../../Common/error";
+import CustomAlert from "../../Common/custom-alert";
+import MyActivityIndicator from "../../Common/my-activity-indicator";
+import {apiRegister} from "../../../core/services/user-service";
 
 const Register = ({navigation}) => {
-    //handle login
-    const [status, setStatus] = useState(null);
+    const [errMessage, setErrMessage] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
+    const [showSuccessModal, setShowSuccessModal] = useState(false);
     //handle input
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
@@ -23,12 +27,6 @@ const Register = ({navigation}) => {
     const [passwordValid, setPasswordValid] = useState(true);
     const [confirmPasswordValid, setConfirmPasswordValid] = useState(true);
     const [matchPassword, setMatchPassword] = useState(true);
-
-    useEffect(() => {
-        if(status && status.status === 200) {
-            navigation.navigate(screenKey.VerifyEmailScreen, {email});
-        }
-    }, [status])
 
     const validateInput = (username, email, phoneNumber, password, confirmPassword) => {
         if (username === '')
@@ -54,10 +52,18 @@ const Register = ({navigation}) => {
         }
         return 'Please enter confirm password ';
     }
-    const renderStatus = (status) => {
-        if(status) {
-            if(status.status === 409)
-                return <Text style={{...styles.errorInputStyle, textAlign: 'center'}}>{status.errorString}</Text>
+
+    const onPressRegister = () => {
+        if (validateInput(username, email, phoneNumber, password, confirmPassword)) {
+            setIsLoading(true);
+            apiRegister(username, email, phoneNumber, password)
+                .then(response => {
+                    setIsLoading(false);
+                    setShowSuccessModal(true);
+                }).catch(err => {
+                setIsLoading(false);
+                setErrMessage(err.response.data.message)
+            })
         }
     }
 
@@ -65,6 +71,7 @@ const Register = ({navigation}) => {
         <ScrollView style={styles.container}>
             <Icon name='account-circle' type={'material-community'} color={myBlue} size={70}/>
             <Text style={styles.title}>Register</Text>
+            {isLoading && <MyActivityIndicator/>}
             <Input
                 inputContainerStyle={styles.inputContainer}
                 leftIcon={
@@ -80,7 +87,6 @@ const Register = ({navigation}) => {
                 onChangeText={text => {
                     setUsername(text);
                     setUsernameValid(true);
-                    setStatus(null);
                 }}
             />
             <Input
@@ -98,7 +104,6 @@ const Register = ({navigation}) => {
                 onChangeText={text => {
                     setEmail(text);
                     setEmailValid(true);
-                    setStatus(null);
                 }}
             />
             <Input
@@ -116,7 +121,6 @@ const Register = ({navigation}) => {
                 onChangeText={text => {
                     setPhoneNumber(text);
                     setPhoneNumberValid(true);
-                    setStatus(null);
                 }}
             />
             <Input
@@ -135,7 +139,6 @@ const Register = ({navigation}) => {
                 onChangeText={text => {
                     setPassword(text);
                     setPasswordValid(true);
-                    setStatus(null);
                 }}
             />
             <Input
@@ -153,24 +156,23 @@ const Register = ({navigation}) => {
                     setConfirmPassword(text);
                     setMatchPassword(true);
                     setConfirmPasswordValid(true);
-                    setStatus(null);
                 }}
             />
-            {renderStatus(status)}
+            {errMessage && <Error message={errMessage}/>}
             <PrimaryButton
                 title='Register'
-                onPress={() => {
-                    if (validateInput(username, email, phoneNumber, password, confirmPassword)) {
-                        setStatus(registerAccount(email, password));
-
-                    }
-                }}
+                onPress={onPressRegister}
             />
             <TouchableOpacity onPress={() => (navigation.navigate(screenKey.LoginScreen))}>
                 <Text style={styles.loginText}>
                     Already have an account? Login here!
                 </Text>
             </TouchableOpacity>
+            <CustomAlert visible={showSuccessModal}
+                         title="Register successfully!"
+                         message={`Check ${email} to verify account.`}
+                         onOk={() => navigation.navigate(screenKey.LoginScreen)}
+            />
         </ScrollView>
     );
 };

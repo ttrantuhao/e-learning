@@ -8,27 +8,40 @@ import {createStackNavigator} from "@react-navigation/stack";
 import {screenKey} from "./globals/constants";
 import {AuthenticationContext} from "./provider/authentication-provider";
 import SplashScreen from "./components/Others/SplashScreen/splash-screen";
+import CourseDetail from "./components/CourseDetail/course-detail";
 
 const Stack = createStackNavigator();
 
 const RootStack = () => {
-    const {isAuth} = useContext(AuthenticationContext);
+    const authContext = useContext(AuthenticationContext);
 
     return (
-        isAuth ? (
-            <Stack.Navigator initialRouteName={screenKey.SlashScreen}
-                             headerMode={false}
+        authContext.state.isAuthenticated ? (
+            <Stack.Navigator
+                headerMode={false}
+                mode="modal"
             >
-                <Stack.Screen
-                    name={screenKey.SlashScreen}
-                    component={SplashScreen}
-                    options={{headerShown: false}}
-                />
+                {/*<Stack.Screen*/}
+                {/*    name={screenKey.SlashScreen}*/}
+                {/*    component={SplashScreen}*/}
+                {/*    options={{headerShown: false}}*/}
+                {/*/>*/}
                 <Stack.Screen
                     name={screenKey.MainTab}
                     component={MainTab}
                     options={{headerShown: false}}
                 />
+                {/*<Stack.Screen*/}
+                {/*    name={screenKey.CourseDetailScreen}*/}
+                {/*    component={CourseDetail}*/}
+                {/*    options={({route}) => (*/}
+                {/*        {*/}
+                {/*            title: route.params.item.title,*/}
+                {/*            headerShown: false*/}
+                {/*        }*/}
+                {/*    )}*/}
+                {/*/>*/}
+
             </Stack.Navigator>
         ) : (
             <Stack.Navigator initialRouteName={screenKey.LoginScreen}>
@@ -40,11 +53,6 @@ const RootStack = () => {
                 <Stack.Screen
                     name={screenKey.RegisterScreen}
                     component={Register}
-                    options={{headerShown: false}}
-                />
-                <Stack.Screen
-                    name={screenKey.VerifyEmailScreen}
-                    component={VerifyEmail}
                     options={{headerShown: false}}
                 />
                 <Stack.Screen

@@ -2,8 +2,9 @@ import React, {useContext} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {Icon, Rating} from "react-native-elements";
 import {ThemeContext} from "../../../provider/theme-provider";
+import {myBlue} from "../../../globals/styles";
 
-const DescriptionLesson = ({item, toggleFavorite, isFavorite, onShare, onRegister}) => {
+const DescriptionLesson = ({item, toggleLike, isLike, isOwn, onShare, onRegister}) => {
     const {theme} = useContext(ThemeContext);
     const styles = StyleSheet.create({
         container: {
@@ -32,44 +33,42 @@ const DescriptionLesson = ({item, toggleFavorite, isFavorite, onShare, onRegiste
 
     return (
         <View style={styles.container}>
-            <View style={{flexDirection: 'row', marginBottom: 10, alignItems: 'center'}}>
-                <Text style={styles.title}>{item.title}</Text>
-                {
-                    item.isMine ?
-                        <Text style={{ color: theme.colors.subtext, fontSize: 16, marginLeft: 5}}>Đã đăng ký</Text> :
-                        <TouchableOpacity onPress={() => onRegister(item)}>
-                            <Text style={{ color: theme.colors.primary, fontSize: 16}}>Đăng ký</Text>
-                        </TouchableOpacity>
-                }
-
+            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                <Text style={styles.title}>{item.title || item.courseTitle}</Text>
+                <Text style={{
+                    color: 'red',
+                    fontSize: 16,
+                    marginLeft: 5
+                }}>{item.price ? item.price + " vnd" : "Free"}</Text>
             </View>
-
-            <View style={{flexDirection: 'row', alignItems: 'center', marginBottom: 10}}>
+            <Text style={{fontSize: 15, color: theme.colors.subtext}}>{item.subtitle}</Text>
+            <View style={{flexDirection: 'row', alignItems: 'center', marginVertical: 5}}>
                 <Rating
                     readonly={true}
-                    startingValue={item.rating}
-                    imageSize={18}
+                    startingValue={item.averagePoint}
+                    imageSize={20}
                     ratingBackgroundColor={theme.colors.subtext}
                     tintColor={theme.colors.card}
                     type={'custom'}
                 />
-                <Text style={{fontSize: 13, color: theme.colors.subtext, marginHorizontal: 5}}>(200)</Text>
+                <Text style={{
+                    fontSize: 15,
+                    color: theme.colors.subtext,
+                    marginHorizontal: 5
+                }}>{` - ${item.soldNumber} students`}</Text>
             </View>
 
-
-            {/*<View style={styles.author}>*/}
-            {/*    <SmallButton title={'Jim Cooper'}/>*/}
-            {/*    <SmallButton title={'Joe Eames'}/>*/}
-            {/*</View>*/}
-            <Text style={{fontSize: 12, color: theme.colors.subtext, marginTop: 5}}>
-                {`${item.level} . ${item.released} . ${item.duration}`}
-            </Text>
             <View style={{flexDirection: 'row', justifyContent: 'space-around', marginTop: 15}}>
-                {isFavorite ?
-                    renderButton('Favorite', 'heart', 'antdesign', "#B22222", (() => toggleFavorite(item))) :
-                    renderButton('Favorite', 'hearto', 'antdesign', theme.colors.text, (() => toggleFavorite(item)))
+                {isLike ?
+                    renderButton('Unlike', 'like1', 'antdesign', myBlue, toggleLike) :
+                    renderButton('Like', 'like1', 'antdesign', theme.colors.text, toggleLike)
                 }
-                {renderButton('Download', 'file-download', 'material')}
+                {/*{renderButton('Download', 'file-download', 'material')}*/}
+                {
+                    isOwn ?
+                        renderButton('Joined', 'user-check', 'font-awesome-5', myBlue) :
+                        renderButton('Join class', 'user-plus', 'font-awesome-5', theme.colors.text, onRegister)
+                }
                 {renderButton('Share', 'share', 'entypo', theme.colors.text, (() => onShare(item)))}
                 {/*{renderButton('Bookmarked', 'bookmark', 'ionicons')}*/}
                 {/*{renderButton('Add to channel', 'broadcast-tower', 'font-awesome-5')}*/}
