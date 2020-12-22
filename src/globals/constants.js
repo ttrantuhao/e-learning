@@ -29,11 +29,13 @@ export const screenKey = {
     SearchScreen: 'searchScreen',
     ListLesson: 'ListLesson',
     ListComment: 'listComment',
+    ListCourseSearch: 'listCourseSearch',
 
     //navigation
     HomeStack: 'homeStack',
     DownloadStack: 'downloadStack',
     BrowseStack: 'browseStack',
+    SearchStack: 'searchStack',
     SearchTab: 'searchTab',
     ListAllStack: 'listAllStack',
     ListCourseStack: 'listCourseStack',

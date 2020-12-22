@@ -4,6 +4,8 @@ import ListAuthor from "../../Search/ListAuthor/list-author";
 import ListAllStack from "./ListAllStack/ListAllStack";
 import ListCourseStack from "./ListCourseStack/ListCourseStack";
 import {screenKey} from "../../../../globals/constants";
+import ListAll from "../../Search/ListAll/list-all";
+import ListCourseSearch from "../../Search/ListCourseSearch/list-course-search";
 
 const SearchTabNavigator = createMaterialTopTabNavigator();
 
@@ -16,12 +18,12 @@ const SearchTab = ({courses, authors}) => {
         <SearchTabNavigator.Navigator
             tabBarOptions={{labelStyle: {fontWeight: 'bold', margin: 0, padding: 0}}}
         >
-            <SearchTabNavigator.Screen name={screenKey.ListAllStack} component={ListAllStack}
+            <SearchTabNavigator.Screen name={screenKey.ListAllScreen} component={ListAll}
                                        options={{title: 'ALL'}}
                                        listeners={tabBarListeners}
                                        initialParams={{authors, courses}}
             />
-            <SearchTabNavigator.Screen name={screenKey.ListCourseStack} component={ListCourseStack}
+            <SearchTabNavigator.Screen name={screenKey.ListCourseSearch} component={ListCourseSearch}
                                        options={{title: 'COURSES'}}
                                        listeners={tabBarListeners}
                                        initialParams={{courses}}

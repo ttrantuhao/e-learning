@@ -8,6 +8,7 @@ import {createStackNavigator} from "@react-navigation/stack";
 import {screenKey} from "./globals/constants";
 import {AuthenticationContext} from "./provider/authentication-provider";
 import SplashScreen from "./components/Others/SplashScreen/splash-screen";
+import CourseDetail from "./components/CourseDetail/course-detail";
 
 const Stack = createStackNavigator();
 
@@ -18,6 +19,7 @@ const RootStack = () => {
         authContext.state.isAuthenticated ? (
             <Stack.Navigator
                 headerMode={false}
+                mode="modal"
             >
                 {/*<Stack.Screen*/}
                 {/*    name={screenKey.SlashScreen}*/}
@@ -29,6 +31,17 @@ const RootStack = () => {
                     component={MainTab}
                     options={{headerShown: false}}
                 />
+                {/*<Stack.Screen*/}
+                {/*    name={screenKey.CourseDetailScreen}*/}
+                {/*    component={CourseDetail}*/}
+                {/*    options={({route}) => (*/}
+                {/*        {*/}
+                {/*            title: route.params.item.title,*/}
+                {/*            headerShown: false*/}
+                {/*        }*/}
+                {/*    )}*/}
+                {/*/>*/}
+
             </Stack.Navigator>
         ) : (
             <Stack.Navigator initialRouteName={screenKey.LoginScreen}>

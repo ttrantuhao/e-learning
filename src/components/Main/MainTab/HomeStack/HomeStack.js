@@ -13,7 +13,7 @@ const HomeStackNavigator = createStackNavigator();
 
 const HomeStack = () => {
     return (
-        <HomeStackNavigator.Navigator initialRouteName='Home'>
+        <HomeStackNavigator.Navigator initialRouteName='Home' mode="modal">
             <HomeStackNavigator.Screen
                 name={screenKey.HomeScreen}
                 component={Home}

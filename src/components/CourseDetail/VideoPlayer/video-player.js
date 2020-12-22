@@ -1,12 +1,14 @@
 import React, {useCallback, useState, useRef, useContext} from "react";
-import {Alert, Button, Text, View} from "react-native";
+import {Alert, Button, Text, TouchableOpacity, View} from "react-native";
 import YoutubePlayer from "react-native-youtube-iframe";
 import {ThemeContext} from "../../../provider/theme-provider";
 import {Video} from "expo-av";
 import VideoPlayer from 'expo-video-player'
 import * as ScreenOrientation from 'expo-screen-orientation'
+import {Icon} from "react-native-elements";
+import {mySilver, myWhite} from "../../../globals/styles";
 
-export default function MyVideoPlayer({url, playerRef}) {
+export default function MyVideoPlayer({url, playerRef, onBack}) {
     const {theme} = useContext(ThemeContext);
     const [playing, setPlaying] = useState(false);
     const [orientationIsLandscape, setOrientationIsLandscape] = useState(false);
@@ -39,15 +41,20 @@ export default function MyVideoPlayer({url, playerRef}) {
         url ?
             <>
                 {analysisUrl(url).isYoutube ?
-                    <YoutubePlayer
-                        ref={playerRef}
-                        height={220}
-                        play={playing}
-                        videoId={analysisUrl(url).idYoutube}
-                        onChangeState={onStateChange}
-                        onError={error => console.log(error)}
+                    <View>
+                        <YoutubePlayer
+                            ref={playerRef}
+                            height={220}
+                            play={playing}
+                            videoId={analysisUrl(url).idYoutube}
+                            onChangeState={onStateChange}
+                            onError={error => console.log(error)}
 
-                    />
+                        />
+                        <TouchableOpacity style={{position: 'absolute'}}>
+                            <Icon name='clear' type='material' color={myWhite} onPress={onBack} size={40}/>
+                        </TouchableOpacity>
+                    </View>
                     :
                     <Video
                         source={{uri: url}}
@@ -67,23 +74,28 @@ export default function MyVideoPlayer({url, playerRef}) {
             //     resizeMode="cover"
             //     style={{height: 300}}
             // />
-            <VideoPlayer
-                videoProps={{
-                    shouldPlay: true,
-                    resizeMode: "cover",
-                    source: {
-                        uri: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4',
-                    },
-                }}
-                height={220}
-                // inFullscreen={true}
-                switchToLandscape={async () => {
-                    await ScreenOrientation.lockAsync(
-                        orientationIsLandscape ? ScreenOrientation.OrientationLock.PORTRAIT :
-                            ScreenOrientation.OrientationLock.LANDSCAPE_LEFT,
-                    );
-                    setOrientationIsLandscape(!orientationIsLandscape);
-                }}
-            />
+            <View>
+                <VideoPlayer
+                    videoProps={{
+                        shouldPlay: true,
+                        resizeMode: "cover",
+                        source: {
+                            uri: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4',
+                        },
+                    }}
+                    height={220}
+                    // inFullscreen={true}
+                    switchToLandscape={async () => {
+                        await ScreenOrientation.lockAsync(
+                            orientationIsLandscape ? ScreenOrientation.OrientationLock.PORTRAIT :
+                                ScreenOrientation.OrientationLock.LANDSCAPE_LEFT,
+                        );
+                        setOrientationIsLandscape(!orientationIsLandscape);
+                    }}
+                />
+                <TouchableOpacity style={{position: 'absolute'}}>
+                    <Icon name='clear' type='material' color={myWhite} onPress={onBack} size={40}/>
+                </TouchableOpacity>
+            </View>
     );
 }

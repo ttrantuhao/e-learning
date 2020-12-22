@@ -74,7 +74,6 @@ const CourseDetail = ({route, navigation}) => {
                 console.log("like course err: ", err.response.message);
             })
         }
-
     }
 
     const onPressShareBtn = async (item) => {
@@ -99,7 +98,7 @@ const CourseDetail = ({route, navigation}) => {
     return (
         item ?
             <View style={styles.container}>
-                <MyVideoPlayer url={item.section[0].lesson[0].videoUrl}/>
+                <MyVideoPlayer url={item.section[0].lesson[0].videoUrl} onBack={()=>navigation.goBack()}/>
                 {/*<Button title={'seek to'} onPress={() => playerRef.current.seekTo(20)}/>*/}
                 <ScrollView showsVerticalScrollIndicator={false}>
                     <DescriptionLesson item={item}

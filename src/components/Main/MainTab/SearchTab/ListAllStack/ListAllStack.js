@@ -15,16 +15,16 @@ const ListAllStack = ({navigation, route}) => {
                 options={{headerShown: false}}
                 initialParams={{authors: route.params.authors, courses: route.params.courses}}
             />
-            <ListAllStackNavigator.Screen
-                name={screenKey.CourseDetailScreen}
-                component={CourseDetail}
-                options={({route}) => (
-                    {
-                        title: route.params.item.title,
-                        headerShown: false
-                    }
-                )}
-            />
+            {/*<ListAllStackNavigator.Screen*/}
+            {/*    name={screenKey.CourseDetailScreen}*/}
+            {/*    component={CourseDetail}*/}
+            {/*    options={({route}) => (*/}
+            {/*        {*/}
+            {/*            title: route.params.item.title,*/}
+            {/*            headerShown: false*/}
+            {/*        }*/}
+            {/*    )}*/}
+            {/*/>*/}
         </ListAllStackNavigator.Navigator>
     )
 };
