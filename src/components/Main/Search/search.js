@@ -48,7 +48,7 @@ const Search = () => {
     }
 
     const handleSearch = (keyword) => {
-        // if (keyword !== '') {
+        if (keyword !== '') {
             setIsLoading(true);
             setIsSearch(false);
             apiSearch(keyword, 10, 0).then(res => {
@@ -59,7 +59,7 @@ const Search = () => {
             }).catch(err => {
                 console.log("err search: ", err.response.data);
             })
-        // }
+        }
     }
 
     const onPressItemHistory = (item) => {

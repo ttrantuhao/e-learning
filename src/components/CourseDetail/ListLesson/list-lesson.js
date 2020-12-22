@@ -4,6 +4,7 @@ import ListLessonItem from "../ListLessonItem/list-lesson-item";
 import {ThemeContext} from "../../../provider/theme-provider";
 
 const ListLesson = ({navigation, route}) => {
+
     const data = route.params.section.map((section) => {
         return {
             title: section.name,
@@ -60,7 +61,7 @@ const ListLesson = ({navigation, route}) => {
         <SectionList
             style={styles.container}
             sections={data}
-            renderItem={({item, index}) => <ListLessonItem item={item} key={index}/>}
+            renderItem={({item, index}) => <ListLessonItem item={item} key={index} onPress={route.params.onPressLesson}/>}
             renderSectionHeader={({section: {title}}) => renderSectionTitle(title)}
             renderSectionFooter={() => (<View style={styles.separator}/>)}
         />

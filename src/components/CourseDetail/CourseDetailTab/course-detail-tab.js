@@ -6,7 +6,7 @@ import ListComment from "../ListComment/list-comment";
 
 const CourseDetailTabNavigator = createMaterialTopTabNavigator();
 
-const CourseDetailTab = ({section, ratings, courseId, image}) => {
+const CourseDetailTab = ({section, ratings, courseId, image, onPressLesson}) => {
 
     return (
         <CourseDetailTabNavigator.Navigator
@@ -15,7 +15,7 @@ const CourseDetailTab = ({section, ratings, courseId, image}) => {
             <CourseDetailTabNavigator.Screen name={screenKey.ListLesson}
                                              component={ListLesson}
                                              options={{title: 'Lessons'}}
-                                             initialParams={{section, image}}
+                                             initialParams={{section, image, onPressLesson: onPressLesson}}
             />
             <CourseDetailTabNavigator.Screen name={screenKey.ListComment}
                                              component={ListComment}

@@ -37,22 +37,21 @@ const CourseDetail = ({route, navigation}) => {
     useEffect(() => {
         apiGetCourseDetail(id).then(async (res) => {
             setItem(res.data.payload);
-            setUrlVideo(item.section[0].lesson[0].videoUrl);
-
+            setUrlVideo(res.data.payload.section[0].lesson[0].videoUrl);
         }).catch(err => {
-            console.log("err", err.response.error.message);
+            console.log("err", err.response.data);
         })
 
         apiCheckOwnCourse(id).then(res => {
             setisOwn(res.data.payload.isUserOwnCourse);
         }).catch(err => {
-            console.log("err", err.response.error.message);
+            console.log("err", err.response.data);
         })
 
         apiGetCourseLikeStatus(id).then(res => {
             setIsLike(res.data.likeStatus);
         }).catch(err => {
-            console.log("err", err.response.error.message);
+            console.log("err", err.response.data);
         })
     }, []);
 
@@ -60,7 +59,7 @@ const CourseDetail = ({route, navigation}) => {
         apiLikeCourse(item.id).then(res => {
             setIsLike(!isLike)
         }).catch(err => {
-            console.log("like course err: ", err.response.message);
+            console.log("like course err: ", err.response.data);
         })
     }
 
@@ -71,7 +70,7 @@ const CourseDetail = ({route, navigation}) => {
                 setVisible(true);
                 courseContext.getMyCourse();
             }).catch(err => {
-                console.log("like course err: ", err.response.message);
+                console.log("like course err: ", err.response.data);
             })
         }
     }
@@ -95,10 +94,15 @@ const CourseDetail = ({route, navigation}) => {
         }
     }
 
+    const onPressLesson = (url) => {
+        setUrlVideo(url)
+        console.log("lesson url video", url);
+    }
+
     return (
         item ?
             <View style={styles.container}>
-                <MyVideoPlayer url={item.section[0].lesson[0].videoUrl} onBack={()=>navigation.goBack()}/>
+                <MyVideoPlayer url={urlVideo} onBack={()=>navigation.goBack()}/>
                 {/*<Button title={'seek to'} onPress={() => playerRef.current.seekTo(20)}/>*/}
                 <ScrollView showsVerticalScrollIndicator={false}>
                     <DescriptionLesson item={item}
@@ -114,7 +118,7 @@ const CourseDetail = ({route, navigation}) => {
                                  onOk={() => setVisible(false)}
                     />
                     <CourseDetailTab section={item.section} ratings={item.ratings.ratingList} courseId={item.id}
-                                     image={item.imageUrl}/>
+                                     image={item.imageUrl} onPressLesson={onPressLesson}/>
                     <SectionCourse title={'Related courses'} style={{margin: 10}} courses={item.coursesLikeCategory}
                                    navigation={navigation}
                                    onPressSeeAll={() => {

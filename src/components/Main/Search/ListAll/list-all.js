@@ -16,7 +16,7 @@ const ListAll = ({navigation, route}) => {
     return (
         <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
             <ListHeader title='Courses' rightTitle={`${course.length} Results`}
-                        onPress={() => navigation.navigate(screenKey.ListCourseStack, {}, {routeName: screenKey.ListCourse})}
+                        onPress={() => navigation.navigate(screenKey.ListCourseSearch)}
             />
             {course.slice(0,4).map((item, index) => (
                 <ListCourseItem navigation={navigation}

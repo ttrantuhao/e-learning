@@ -4,7 +4,7 @@ import {mySilver, myWhite} from "../../../globals/styles";
 import {Icon} from "react-native-elements";
 import {ThemeContext} from "../../../provider/theme-provider";
 
-const ListLessonItem = ({item}) => {
+const ListLessonItem = ({item, onPress}) => {
     const {theme} = useContext(ThemeContext);
     const styles= StyleSheet.create({
         container: {
@@ -25,7 +25,7 @@ const ListLessonItem = ({item}) => {
     })
 
     return (
-        <TouchableOpacity style={styles.container}>
+        <TouchableOpacity style={styles.container} onPress={() => onPress(item.videoUrl)}>
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
                 <Icon name='check-circle' color='green' size={13}/>
                 <Text style={styles.title}>{item.name}</Text>
