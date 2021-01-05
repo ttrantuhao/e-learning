@@ -59,7 +59,6 @@ const ListCourseItem = ({item, onPress}) => {
                 </View>
                 <Text style={{fontSize: 14, color: 'red'}}>{item.price ? item.price + " vnd": "free"}</Text>
             </View>
-            {/*<Icon name='more-vertical' type='feather' style={styles.icon} color={theme.colors.text}/>*/}
         </TouchableOpacity>
     );
 };

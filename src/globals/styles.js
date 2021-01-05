@@ -11,7 +11,8 @@ export const navColor = '#181B20';
 export const MyTheme = {
     dark: {
         dark: true,//Whether this is a dark theme or a light theme
-        colors: { //Various colors used by react navigation components:
+        colors: {
+            //Various colors used by react navigation components:
             // primary: myWhite, //The primary color of the app used to tint various elements. Usually you'll want to use your brand color for this.
             // background: bgColor, // The color of various backgrounds, such as background color for the screens.
             // card: The background color of card-like elements, such as headers, tab bars etc.

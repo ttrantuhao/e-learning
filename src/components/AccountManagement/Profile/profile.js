@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {FlatList, ScrollView, StyleSheet, Text, View} from 'react-native';
 import {Avatar} from "react-native-elements";
 import SmallButton from "../../Common/small-button";
@@ -36,11 +36,6 @@ const Profile = () => {
             marginTop: 22
         },
     })
-
-    // useEffect(() => {
-    //     if(!authContext.state.isAuthenticating)
-    //         setVisible(true);
-    // }, [authContext.state.isAuthenticating]);
 
     const onSaveProfile = () => {
         if (username !== '' && phone !== '') {

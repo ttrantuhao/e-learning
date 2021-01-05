@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
-import {cardColor, myLightWhite, mySilver, myWhite} from "../../../../globals/styles";
+import {mySilver} from "../../../../globals/styles";
 import {ThemeContext} from "../../../../provider/theme-provider";
 
 const PathItem = ({item}) => {

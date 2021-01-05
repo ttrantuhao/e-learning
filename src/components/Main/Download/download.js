@@ -1,7 +1,6 @@
-import React, {useContext, useEffect, useState} from 'react';
-import {View, StyleSheet} from "react-native";
+import React, {useEffect, useState} from 'react';
+import {StyleSheet, View} from "react-native";
 import ListCourse from "../../Course/ListCourse/list-course";
-import {CourseContext} from "../../../provider/course-provider";
 import MyActivityIndicator from "../../Common/my-activity-indicator";
 import {apiGetFavoriteCourse} from "../../../core/services/course-service";
 

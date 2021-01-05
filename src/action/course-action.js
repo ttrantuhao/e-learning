@@ -11,6 +11,7 @@ export const REQUEST_FAILED = "REQUEST_FAILED"
 export const REQUEST_HOT_COURSE_SUCCEEDED = "REQUEST_HOT_COURSE_SUCCEEDED"
 export const REQUEST_MY_COURSE_SUCCEEDED = "REQUEST_MY_COURSE_SUCCEEDED"
 export const REQUEST_RECOMMENDED_COURSE_SUCCEEDED = "REQUEST_RECOMMENDED_COURSE_SUCCEEDED"
+
 export const getNewCourse = (dispatch) => (limit, page) => {
     dispatch({type: REQUESTING})
     apiGetNewCourse(limit, page).then(response => {

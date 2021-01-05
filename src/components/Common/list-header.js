@@ -1,9 +1,7 @@
 import React, {useContext} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {Icon} from "react-native-elements";
-import {myBlue, mySilver, myWhite} from "../../globals/styles";
 import {ThemeContext} from "../../provider/theme-provider";
-
 
 
 const ListHeader = ({title, rightTitle, onPress}) => {

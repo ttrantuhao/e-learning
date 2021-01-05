@@ -1,8 +1,6 @@
 import React, {useContext} from 'react';
 import {FlatList, StyleSheet, Text, View} from 'react-native';
 import {popularSkills} from "../../../../globals/mockData";
-import SkillItem from "./SkillItem/skill-item";
-import {myWhite} from "../../../../globals/styles";
 import SmallButton from "../../../Common/small-button";
 import {ThemeContext} from "../../../../provider/theme-provider";
 

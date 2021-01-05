@@ -1,5 +1,3 @@
-import {myBlue, mySilver} from "./styles";
-
 const {Dimensions} = require("react-native");
 
 export const ANDROID_CLIENT_ID = "917292171760-dff6mnok3ldka3o1bkp9kks285g74rhv.apps.googleusercontent.com";

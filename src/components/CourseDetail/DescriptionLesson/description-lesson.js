@@ -70,8 +70,6 @@ const DescriptionLesson = ({item, toggleLike, isLike, isOwn, onShare, onRegister
                         renderButton('Join class', 'user-plus', 'font-awesome-5', theme.colors.text, onRegister)
                 }
                 {renderButton('Share', 'share', 'entypo', theme.colors.text, (() => onShare(item)))}
-                {/*{renderButton('Bookmarked', 'bookmark', 'ionicons')}*/}
-                {/*{renderButton('Add to channel', 'broadcast-tower', 'font-awesome-5')}*/}
             </View>
             <Text style={{
                 color: theme.colors.text,

@@ -1,7 +1,6 @@
 import React, {useContext} from 'react';
 import {FlatList, StyleSheet, Text, View} from 'react-native';
 import {topAuthor} from "../../../../globals/mockData";
-import {myWhite} from "../../../../globals/styles";
 import AuthorItem from "./AuthorItem/author-item";
 import {ThemeContext} from "../../../../provider/theme-provider";
 

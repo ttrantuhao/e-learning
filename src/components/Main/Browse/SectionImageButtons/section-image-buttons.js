@@ -1,7 +1,6 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {ScrollView, View} from 'react-native';
 import ImageButton from "../../../Common/image-button";
-import {apiGetCategory} from "../../../../core/services/course-service";
 
 const SectionImageButtons = () => {
 

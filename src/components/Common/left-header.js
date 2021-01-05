@@ -1,16 +1,14 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {StyleSheet, View} from 'react-native';
-import {Avatar, Icon} from "react-native-elements";
+import {Icon} from "react-native-elements";
 import {Menu, MenuOption, MenuOptions, MenuTrigger} from "react-native-popup-menu";
 import {screenKey} from "../../globals/constants";
 import {ThemeContext} from "../../provider/theme-provider";
-import {AuthenticationContext} from "../../provider/authentication-provider";
 import {apiGetCategory} from "../../core/services/course-service";
-import {apiSearch, apiSearchByCategory} from "../../core/services/search-service";
+import {apiSearchByCategory} from "../../core/services/search-service";
 
 const LeftHeader = ({navigation}) => {
     const {theme} = useContext(ThemeContext);
-    const authContext = useContext(AuthenticationContext);
     const [category, setCategory] = useState([]);
     const styles = StyleSheet.create({
         leftHeader: {

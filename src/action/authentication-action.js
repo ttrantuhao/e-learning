@@ -1,7 +1,6 @@
 import {apiLogin, apiLoginGoogle} from "../core/services/authentication-service";
 import {apiUpdateProfile} from "../core/services/user-service";
 
-
 export const LOGIN_SUCCEEDED = "LOGIN_SUCCEEDED";
 export const LOGIN_FAILED = "LOGIN_FAILED";
 export const LOGOUT_REQUEST = "LOGOUT_REQUEST";

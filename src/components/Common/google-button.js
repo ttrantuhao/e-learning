@@ -1,18 +1,12 @@
-import React, {useContext} from 'react';
-import {Image, StyleSheet, Text, TouchableOpacity} from 'react-native';
-import {myBlue, myWhite} from "../../globals/styles";
-import ImageButton from "./image-button";
+import React from 'react';
+import {StyleSheet} from 'react-native';
+import {myWhite} from "../../globals/styles";
 import {SocialIcon} from "react-native-elements";
 
 const GoogleButton = ({onPress}) => {
     const styles = StyleSheet.create({
         button: {
-            // backgroundColor: myBlue,
-            // borderRadius: 40,
             height: 45,
-            // justifyContent: 'center',
-            // margin: 10,
-            // marginBottom: 20
         },
         text: {
             fontSize: 20,

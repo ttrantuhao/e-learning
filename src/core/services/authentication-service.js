@@ -22,7 +22,7 @@ export const apiLoginGoogle = async () => {
         return axios.post("/user/login-google-mobile", {
             user: {
                 email: user.email,
-                id: user.idc
+                id: user.id
             }
         });
     }

@@ -1,8 +1,7 @@
 import React, {useContext} from 'react';
 import {StyleSheet, Text, TouchableOpacity} from 'react-native';
-import {myLightWhite, myWhite, skillBtnColor} from "../../globals/styles";
+import {myWhite} from "../../globals/styles";
 import {ThemeContext} from "../../provider/theme-provider";
-
 
 const SmallButton = ({title, onPress}) => {
     const {theme} = useContext(ThemeContext);
