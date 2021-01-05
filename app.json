@@ -10,6 +10,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+
     "updates": {
       "fallbackToCacheTimeout": 0
     },
@@ -24,6 +25,15 @@
     },
     "androidNavigationBar": {
       "backgroundColor": "#000000"
+    },
+    "android": {
+      "package": "com.trantuhao.onlinelearning",
+      "config": {
+        "googleSignIn": {
+          "apiKey": "AIzaSyBRgm2UFeLRBSwvRvz-pfkp9OhSqgDteFU",
+          "certificateHash": "15730CA85499C22BE1A0039E7D6DE4545D2AF0DB"
+        }
+      }
     }
   }
 }
