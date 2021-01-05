@@ -11,7 +11,7 @@ const ListLesson = ({navigation, route}) => {
             data: section.lesson
         }
     })
-    console.log(data);
+    // console.log(data);
     const {theme} = useContext(ThemeContext);
     const styles = StyleSheet.create({
         container: {

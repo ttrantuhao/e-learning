@@ -15,6 +15,7 @@ import {
 } from "../../core/services/course-service";
 import MyActivityIndicator from "../Common/my-activity-indicator";
 import {CourseContext} from "../../provider/course-provider";
+import {AuthenticationContext} from "../../provider/authentication-provider";
 
 
 const CourseDetail = ({route, navigation}) => {
@@ -32,6 +33,7 @@ const CourseDetail = ({route, navigation}) => {
     const [visible, setVisible] = useState(false);
     const courseContext = useContext(CourseContext);
     const [urlVideo, setUrlVideo] = useState(null);
+    const authContext = useContext(AuthenticationContext)
     // const playerRef = useRef(null);
 
     useEffect(() => {
@@ -39,19 +41,19 @@ const CourseDetail = ({route, navigation}) => {
             setItem(res.data.payload);
             setUrlVideo(res.data.payload.section[0].lesson[0].videoUrl);
         }).catch(err => {
-            console.log("err", err.response.data);
+            console.log("get course details err", err.response.data);
         })
 
         apiCheckOwnCourse(id).then(res => {
             setisOwn(res.data.payload.isUserOwnCourse);
         }).catch(err => {
-            console.log("err", err.response.data);
+            console.log("get own course err", err.response.data);
         })
 
         apiGetCourseLikeStatus(id).then(res => {
             setIsLike(res.data.likeStatus);
         }).catch(err => {
-            console.log("err", err.response.data);
+            console.log("get like status err", err.response.data);
         })
     }, []);
 
@@ -68,9 +70,9 @@ const CourseDetail = ({route, navigation}) => {
             apiPaymentFreeCourse(item.id).then(res => {
                 setisOwn(true);
                 setVisible(true);
-                courseContext.getMyCourse();
+                courseContext.getMyCourse(authContext.state.token);
             }).catch(err => {
-                console.log("like course err: ", err.response.data);
+                console.log("register course err: ", err.response.data);
             })
         }
     }
