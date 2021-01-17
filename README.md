@@ -11,5 +11,5 @@ Link demo youtube: https://youtu.be/L-9aX4D2fr8
 * **Dealine tiến độ 4: Final**  
 Link demo youtube: https://youtu.be/ylJxOHRYcBo 
 
-* **Hướng dẫn để cài đặt và chạy ứng dụng**
+* **Hướng dẫn để cài đặt và chạy ứng dụng**  
 Làm theo hướng dẫn của video sau: https://youtu.be/x1PHFKZX7Ys 
