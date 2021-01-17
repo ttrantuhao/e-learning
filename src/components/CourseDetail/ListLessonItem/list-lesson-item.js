@@ -1,6 +1,5 @@
 import React, {useContext} from 'react';
-import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
-import {mySilver, myWhite} from "../../../globals/styles";
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {Icon} from "react-native-elements";
 import {ThemeContext} from "../../../provider/theme-provider";
 

@@ -5,7 +5,7 @@ import PrimaryButton from "../../Common/primary-button";
 import {myBlue} from "../../../globals/styles";
 import {styles} from './styles'
 import {screenKey} from "../../../globals/constants";
-import {apiSendEmailForgetPassword, resetPassword} from "../../../core/services/authentication-service";
+import {apiSendEmailForgetPassword} from "../../../core/services/authentication-service";
 import Error from "../../Common/error";
 import CustomAlert from "../../Common/custom-alert";
 import MyActivityIndicator from "../../Common/my-activity-indicator";

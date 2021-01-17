@@ -1,6 +1,6 @@
-import React, {useContext, useEffect, useState} from 'react';
-import {FlatList, TextInput, View, StyleSheet, Text, TouchableOpacity} from 'react-native';
-import {apiRatingCourse, getComment} from "../../../core/services/course-service";
+import React, {useContext, useState} from 'react';
+import {FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View} from 'react-native';
+import {apiRatingCourse} from "../../../core/services/course-service";
 import {ThemeContext} from "../../../provider/theme-provider";
 import ListCommentItem from "../ListCommentItem/list-comment-item";
 import {myWhite} from "../../../globals/styles";

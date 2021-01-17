@@ -1,9 +1,8 @@
 import React, {useContext} from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from "react-native";
-import {cardColor, myBlue, mySilver, myWhite} from "../../../../../globals/styles";
 import {ThemeContext} from "../../../../../provider/theme-provider";
-import Moment from 'moment';
 import {Rating} from "react-native-elements";
+
 const CourseItem = ({item, onPress}) => {
     const {theme} = useContext(ThemeContext);
     const styles = StyleSheet.create ({

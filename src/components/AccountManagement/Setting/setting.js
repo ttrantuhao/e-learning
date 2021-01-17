@@ -1,6 +1,5 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext} from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
-import {bgColor, mySilver, MyTheme, myWhite} from "../../../globals/styles";
 import {Icon} from "react-native-elements";
 import PrimaryButton from "../../Common/primary-button";
 import {ThemeContext} from "../../../provider/theme-provider";
@@ -14,9 +13,6 @@ const Setting = () => {
     const styles = StyleSheet.create({
         container: {
             flex: 1,
-            // marginBottom: 20
-            // padding: 15,
-            // paddingTop: 50
         },
         usernameContainer: {
             flexDirection: 'row',
@@ -38,11 +34,6 @@ const Setting = () => {
             marginBottom: 10
         }
     })
-
-    // const onSwitchTheme = () => {
-    //     // setDarkThemeOn(!darkThemeOn);
-    //     setTheme(theme.dark ? MyTheme.light : MyTheme.dark);
-    // }
 
     return (
         <View style={styles.container}>

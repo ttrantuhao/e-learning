@@ -1,5 +1,5 @@
-import React, {useContext, useState} from 'react';
-import {Text, View, Modal, StyleSheet, Alert, TouchableOpacity, TextInput} from 'react-native';
+import React, {useContext} from 'react';
+import {Text, TextInput, View} from 'react-native';
 import {Icon} from "react-native-elements";
 import {ThemeContext} from "../../../../provider/theme-provider";
 

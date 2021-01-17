@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {createStackNavigator} from "@react-navigation/stack";
 import RightHeader from "../../../Common/right-header";
 import CourseDetail from "../../../CourseDetail/course-detail";
@@ -6,8 +6,6 @@ import Setting from "../../../AccountManagement/Setting/setting";
 import Profile from "../../../AccountManagement/Profile/profile";
 import Download from "../../Download/download";
 import {screenKey} from "../../../../globals/constants";
-import ListCourse from "../../../Course/ListCourse/list-course";
-import {CourseContext} from "../../../../provider/course-provider";
 
 const DownloadStackNavigator = createStackNavigator();
 

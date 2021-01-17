@@ -13,7 +13,8 @@ export const apiLogin = (email, password) => {
 
 export const apiLoginGoogle = async () => {
     const {type, user, accessToken} = await Google.logInAsync({
-        androidClientId: ANDROID_CLIENT_ID,
+        androidStandaloneAppClientId: ANDROID_CLIENT_ID,
+        // androidStandaloneAppClientId: ,
         scopes: ['profile', 'email'],
     })
     // console.log("in apiLoginGG function", type, user)
@@ -22,7 +23,7 @@ export const apiLoginGoogle = async () => {
         return axios.post("/user/login-google-mobile", {
             user: {
                 email: user.email,
-                id: user.idc
+                id: user.id
             }
         });
     }

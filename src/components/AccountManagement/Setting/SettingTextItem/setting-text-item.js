@@ -1,6 +1,5 @@
 import React, {useContext} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {bgColor, mySilver, myWhite} from "../../../../globals/styles";
 import {ThemeContext} from "../../../../provider/theme-provider";
 
 const SettingTextItem = ({title, content}) => {

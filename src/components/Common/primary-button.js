@@ -12,7 +12,6 @@ const PrimaryButton = ({title, onPress, style}) => {
             height: 45,
             justifyContent: 'center',
             margin: 10,
-            // marginBottom: 20
         },
         text: {
             fontSize: 20,

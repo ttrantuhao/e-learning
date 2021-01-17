@@ -70,6 +70,7 @@ const CourseDetail = ({route, navigation}) => {
             apiPaymentFreeCourse(item.id).then(res => {
                 setisOwn(true);
                 setVisible(true);
+                console.log(authContext.state.token);
                 courseContext.getMyCourse(authContext.state.token);
             }).catch(err => {
                 console.log("register course err: ", err.response.data);
